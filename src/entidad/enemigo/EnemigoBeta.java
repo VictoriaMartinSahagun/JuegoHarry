@@ -2,6 +2,8 @@ package entidad.enemigo;
 
 import java.util.List;
 
+import javax.swing.JLabel;
+
 import entidad.Entidad;
 import entidad_grafica.EntidadGrafica;
 import entidad_grafica.EntidadGraficaEnemigo;
@@ -14,13 +16,13 @@ import visitor.VisitorEnemigo;
 public class EnemigoBeta extends Enemigo{
 	protected int rango,direccion,velocidad;
 	
-	public EnemigoBeta(Juego j) {
+	public EnemigoBeta(Juego j,JLabel label) {
 		juego = j;
 		v = new VisitorEnemigo();
 		activa=true;
 		vida=100;
 		danio_ataque=10;
-		grafica = new EntidadGraficaEnemigo();
+		grafica = new EntidadGraficaEnemigo(label);
 		rango = 15;
 		direccion = -1;
 		velocidad = 3;
@@ -72,12 +74,12 @@ public class EnemigoBeta extends Enemigo{
 	}
 
 	@Override
-	public EntidadGrafica getEntidad() {
+	public EntidadGraficaEnemigo getEntidad() {
 		return this.grafica;
 	}
 
 	@Override
-	public void setEntidad(EntidadGrafica ent) {
+	public void setEntidad(EntidadGraficaEnemigo ent) {
 		this.grafica=ent;
 	}
 

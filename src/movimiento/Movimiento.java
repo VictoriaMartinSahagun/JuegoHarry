@@ -1,5 +1,6 @@
 package movimiento;
 
+
 import entidad.Entidad;
 import entidad_grafica.EntidadGrafica;
 

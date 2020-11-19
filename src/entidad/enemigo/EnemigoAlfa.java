@@ -21,7 +21,7 @@ public class EnemigoAlfa extends Enemigo{
 		activa=true;
 		vida=100;
 		danio_ataque=5;
-		grafica = new EntidadGraficaEnemigo(etiqueta,this);
+		grafica = new EntidadGraficaEnemigo(etiqueta);
 		rango = 10;
 		direccion = -1;
 		velocidad = 2;
