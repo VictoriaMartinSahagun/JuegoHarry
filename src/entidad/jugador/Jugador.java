@@ -4,18 +4,21 @@ import java.util.*;
 import javax.swing.JLabel;
 import entidad.*;
 import entidad_grafica.*;
-import entidad_grafica.EntidadGraficaJugador;
 import visitor.*;
 
 public class Jugador extends Entidad{
 	
-	private int danio_recibido,velocidad,coords;
+	private int danio_recibido,velocidad,posX,posY;
 	private EntidadGraficaJugador ent_graf;
 	
-	public Jugador() {
+	/**
+	 * Constructor del jugador.
+	 * @param label etiqueta del jugador.
+	 */
+	public Jugador(JLabel label) {
 		v = new VisitorJugador(this);
 		activa = true;
-		ent_graf = new EntidadGraficaJugador();
+		ent_graf = new EntidadGraficaJugador(label);
 	}
 	
 	@Override
@@ -56,12 +59,25 @@ public class Jugador extends Entidad{
 		this.velocidad = velocidad;
 	}
 
-	public int getCoords() {
-		return coords;
+	public int getPosX() {
+		return posX;
 	}
 
-	public void setCoords(int coords) {
-		this.coords = coords;
+	public void setPosX(int posX) {
+		this.posX = posX;
+	}
+
+	public int getPosY() {
+		return posY;
+	}
+
+	public void setPosY(int posY) {
+		this.posY = posY;
+	}
+	
+	public void setPos(int x, int y) {
+		posX = x;
+		posY = y;
 	}
 	
 }
