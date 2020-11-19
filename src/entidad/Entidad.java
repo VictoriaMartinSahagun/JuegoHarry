@@ -1,12 +1,18 @@
 package entidad;
 
 import java.util.List;
+
+import juego.Juego;
+import movimiento.Movimiento;
+
 import visitor.Visitor;
 
 public abstract class Entidad {
 	
+	protected Juego juego;
 	protected Visitor v;
 	protected boolean activa;
+	protected Movimiento movimiento;
 	
 	/**
 	 * Acepta el visitor.
@@ -19,7 +25,7 @@ public abstract class Entidad {
 	 * @return Lista de entidades.
 	 */
 	public abstract List<Entidad> detectarColisiones();
-	
+
 	/**
 	 * Desactiva la entidad.
 	 */
@@ -37,3 +43,4 @@ public abstract class Entidad {
 		return activa;
 	}
 }
+
