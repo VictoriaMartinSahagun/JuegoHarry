@@ -7,9 +7,14 @@ import entidad.jugador.Jugador;
 public class TecladoJugador implements KeyListener{
 	
 	private Jugador j;
+	private Juego juego;
+	private int limite_izq, limite_der;
 	
-	public TecladoJugador(Jugador j) {
+	public TecladoJugador(Juego juego, Jugador j, int lim_izq, int lim_der) {
+		this.juego = juego;
 		this.j = j;
+		limite_izq = lim_izq;
+		limite_der = lim_der;
 	}
 	
 	@Override
@@ -22,13 +27,23 @@ public class TecladoJugador implements KeyListener{
 			//movimiento a izquierda
 			case KeyEvent.VK_Q: {
 				posX = posX - factor_movimiento;
+				
+				if(posX<limite_izq)
+					posX=limite_izq;
+				
 				j.setPosX(posX);
+				j.mover();
 				break;
 			}
 			//movimiento a derecha
 			case KeyEvent.VK_S: {
 				posX = posX + factor_movimiento;
+				
+				if(posX<limite_der)
+					posX=limite_der;
+				
 				j.setPosX(posX);
+				j.mover();
 				break;
 			}
 			//disparo

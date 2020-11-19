@@ -15,5 +15,9 @@ public class EntidadGraficaJugador extends EntidadGrafica{
 		grafica.setImage(imagen.getImage());
 	}
 	
+	public void moverEtiqueta(int x, int y) {
+		etiqueta.setLocation(x,y);
+	}
+	
 	
 }

@@ -37,9 +37,12 @@ public class Jugador extends Entidad{
 
 	@Override
 	public void mover() {
-		//TODO
+		ent_graf.moverEtiqueta(posX, posY);
 	}
 	
+	public void atacar() {
+		
+	}
 	
 	//Getters y setters
 	
