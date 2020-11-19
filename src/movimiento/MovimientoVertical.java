@@ -4,6 +4,8 @@ import entidad_grafica.EntidadGrafica;
 
 public class MovimientoVertical extends Movimiento{
 	
+	private int v;
+	
 	public MovimientoVertical(int dir, int vel, EntidadGrafica e) {
 		direccion = dir;
 		velocidad = vel;
