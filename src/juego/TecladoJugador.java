@@ -19,30 +19,30 @@ public class TecladoJugador implements KeyListener{
 	
 	@Override
 	public void keyPressed(KeyEvent e) {
-		int posX = j.getPosX();
+		int pos_x = j.getPosX();
 		int factor_movimiento = 2;
 		
 		switch(e.getKeyCode()){
 			
 			//movimiento a izquierda
 			case KeyEvent.VK_Q: {
-				posX = posX - factor_movimiento;
+				pos_x = pos_x - factor_movimiento;
 				
-				if(posX<limite_izq)
-					posX=limite_izq;
+				if(pos_x<limite_izq)
+					pos_x=limite_izq;
 				
-				j.setPosX(posX);
+				j.setPosX(pos_x);
 				j.mover();
 				break;
 			}
 			//movimiento a derecha
 			case KeyEvent.VK_S: {
-				posX = posX + factor_movimiento;
+				pos_x = pos_x + factor_movimiento;
 				
-				if(posX<limite_der)
-					posX=limite_der;
+				if(pos_x<limite_der)
+					pos_x=limite_der;
 				
-				j.setPosX(posX);
+				j.setPosX(pos_x);
 				j.mover();
 				break;
 			}
