@@ -1,15 +1,49 @@
 package gui;
 
 import java.awt.BorderLayout;
-import java.awt.EventQueue;
+import java.awt.FlowLayout;
+import java.awt.Point;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.io.File;
+import java.io.FileInputStream;
+
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JSeparator;
+import javax.swing.JToggleButton;
+import javax.swing.JToolBar;
+import javax.swing.SwingConstants;
+
+import javax.swing.WindowConstants;
+
+import audio.AudioPlayer;
+import entidad.jugador.Jugador;
+
+import javax.swing.SwingUtilities;
+
 import img.ImagenFondo;
 import juego.Juego;
+import javax.swing.JTextField;
+import java.awt.Color;
+import java.awt.Font;
 
 public class JFrameJuego extends JFrame {
 	private Juego juego;
+	private JPanel jPanelNivel;
+	private JLabel jLabelVida;
+	private JLabel jLabelJugador;
+	private JToggleButton jToggleButtonAudio;
+	
+	private AudioPlayer ap;
+	private Thread audio;
+	private JTextField textField;
+	
 	/**
 	 * Create the frame.
 	 */
@@ -27,22 +61,71 @@ public class JFrameJuego extends JFrame {
 		
 		//Comienza el juego
 		
+		initGUI();
 		initJuego();
+		//initAudio();
 		
 	}
 	
 	private void initJuego(){
 		juego = new Juego();
-		/*
-		menteTeclado = new MenteTeclado();
-		menteTeclado.setJuego(this);
-		menteTeclado.setNave(jLabelNaveJugador);
-		this.addKeyListener(menteTeclado);
-		megaMente = new MegaMente();
-		megaMente.setJuego(this);
-		megaMente.setNave(jLabelBoss);
-		megaMente.preparar();
-		megaMente.jugar();
-		*/
+		juego.iniciar();
 	}
+	
+	private void initGUI() {
+		try {
+			
+			this.setLocationByPlatform(true);
+			setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+			this.setResizable(false);
+			this.addWindowListener(new WindowAdapter() {
+				public void windowClosing(WindowEvent evt) {
+					thisWindowClosing(evt);
+				}
+			});
+			
+			{//Panel nivel
+				jPanelNivel = new JPanel();
+				getContentPane().add(jPanelNivel, BorderLayout.CENTER);
+				jPanelNivel.setLayout(null);
+				jPanelNivel.setOpaque(false);
+				{//Jugador
+					jLabelJugador = new JLabel();
+					//juego.getJugador().getLabel();
+					//juego.getJugador().setPos(10, 5);
+					jLabelJugador.setIcon(new ImageIcon(getClass().getResource("/img/Harry.png")));
+					jLabelJugador.setBounds(205, 492, 80, 68);
+					jPanelNivel.add(jLabelJugador);
+			
+				}
+				{//Contador vida
+					int cantVida = 100;
+					JLabel lblCantVida = new JLabel("Vida: "+cantVida+ " %");
+					lblCantVida.setHorizontalAlignment(SwingConstants.RIGHT);
+					lblCantVida.setForeground(Color.WHITE);
+					lblCantVida.setFont(new Font("Tempus Sans ITC", Font.BOLD, 20));
+					lblCantVida.setBounds(10, 11, 109, 29);
+					jPanelNivel.add(lblCantVida);
+				}
+				{
+				}
+			}
+		} catch (Exception e) {
+		    //add your error handling code here
+			e.printStackTrace();
+		}
+	}
+	
+	private void thisWindowClosing(WindowEvent evt) {
+		cerrarJuego();
+	}
+	
+	private void cerrarJuego() {
+		this.dispose();
+		System.exit(0);
+	}
+	
+	//private void initAudio() {}
+	
+	//private void jToggleButtonAudioActionPerformed(ActionEvent evt) {}
 }

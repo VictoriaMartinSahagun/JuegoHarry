@@ -15,10 +15,10 @@ public class Jugador extends Entidad{
 	 * Constructor del jugador.
 	 * @param label etiqueta del jugador.
 	 */
-	public Jugador(JLabel label) {
+	public Jugador() {
 		v = new VisitorJugador(this);
 		activa = true;
-		ent_graf = new EntidadGraficaJugador(label);
+		ent_graf = new EntidadGraficaJugador( new JLabel() );
 	}
 	
 	@Override
@@ -83,4 +83,7 @@ public class Jugador extends Entidad{
 		posY = y;
 	}
 	
+	public JLabel getLabel() {	
+		return ent_graf.getEtiqueta();
+	}
 }
