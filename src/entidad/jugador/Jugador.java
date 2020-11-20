@@ -8,7 +8,7 @@ import visitor.*;
 
 public class Jugador extends Entidad{
 	
-	private int danio_recibido,velocidad,posX,posY;
+	private int danio_recibido,posX,posY;
 	private EntidadGraficaJugador ent_graf;
 	
 	/**
@@ -50,16 +50,16 @@ public class Jugador extends Entidad{
 		return danio_recibido;
 	}
 
-	public void setDanioRecibido(int danio_recibido) {
-		this.danio_recibido = danio_recibido;
-	}
-
-	public int getVelocidad() {
-		return velocidad;
-	}
-
-	public void setVelocidad(int velocidad) {
-		this.velocidad = velocidad;
+	public void recibir_danio(int danio) {
+		this.danio_recibido += danio;
+		
+		if(this.danio_recibido >= 100) {
+			ent_graf.muerte();
+			//terminar juego?
+		}else {
+			ent_graf.danio();
+		}
+		
 	}
 
 	public int getPosX() {

@@ -16,7 +16,7 @@ import visitor.VisitorEnemigo;
 public class EnemigoBeta extends Enemigo{
 	protected int rango,direccion,velocidad;
 	
-	public EnemigoBeta(Juego j,JLabel label) {
+	public EnemigoBeta(Juego j,JLabel label,int lim_inf, int lim_sup) {
 		juego = j;
 		v = new VisitorEnemigo();
 		activa=true;
@@ -26,7 +26,7 @@ public class EnemigoBeta extends Enemigo{
 		rango = 15;
 		direccion = -1;
 		velocidad = 3;
-		movimiento = new MovimientoVertical(direccion,velocidad, grafica);
+		movimiento = new MovimientoVertical(direccion,velocidad, grafica,lim_inf,lim_sup);
 	}
 	
 	@Override
@@ -73,6 +73,36 @@ public class EnemigoBeta extends Enemigo{
 		this.danio_ataque=danio;	
 	}
 
+	@Override
+	public int getRango() {
+		return this.rango;
+	}
+
+	@Override
+	public void setRango(int rango) {
+		this.rango=rango;
+		
+	}
+
+	@Override
+	public int getDireccion() {
+		return this.direccion;
+	}
+
+	@Override
+	public void setDireccion(int direccion) {
+		this.direccion=direccion;
+	}
+
+	@Override
+	public int getVelocidad() {
+		return this.velocidad;
+	}
+
+	@Override
+	public void setVelocidad(int velocidad) {
+		this.velocidad=velocidad;
+	}
 	@Override
 	public EntidadGraficaEnemigo getEntidad() {
 		return this.grafica;
