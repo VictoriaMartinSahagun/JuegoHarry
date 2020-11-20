@@ -19,5 +19,36 @@ public class EntidadGraficaJugador extends EntidadGrafica{
 		etiqueta.setLocation(x,y);
 	}
 	
+	public void danio() {
+		ImageIcon imagen;
+		
+		imagen = new ImageIcon(this.getClass().getResource(harry_daniado));
+		grafica.setImage(imagen.getImage());
+		
+		//COMO METO UN DELAY ACA?
+		
+		imagen = new ImageIcon(this.getClass().getResource(harry));
+		grafica.setImage(imagen.getImage());
+	}
+	
+	public void muerte() {
+		ImageIcon imagen;
+		
+		imagen = new ImageIcon(this.getClass().getResource(harry_muerto[0]));
+		grafica.setImage(imagen.getImage());
+	}
+	
 	
 }
+
+
+
+
+
+
+
+
+
+
+
+

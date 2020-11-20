@@ -8,7 +8,7 @@ import visitor.*;
 
 public class Jugador extends Entidad{
 	
-	private int danio_recibido,velocidad,posX,posY;
+	private int danio_recibido,pos_x,pos_y;
 	private EntidadGraficaJugador ent_graf;
 	
 	/**
@@ -37,7 +37,7 @@ public class Jugador extends Entidad{
 
 	@Override
 	public void mover() {
-		ent_graf.moverEtiqueta(posX, posY);
+		ent_graf.moverEtiqueta(pos_x, pos_y);
 	}
 	
 	public void atacar() {
@@ -50,37 +50,37 @@ public class Jugador extends Entidad{
 		return danio_recibido;
 	}
 
-	public void setDanioRecibido(int danio_recibido) {
-		this.danio_recibido = danio_recibido;
-	}
-
-	public int getVelocidad() {
-		return velocidad;
-	}
-
-	public void setVelocidad(int velocidad) {
-		this.velocidad = velocidad;
+	public void recibir_danio(int danio) {
+		this.danio_recibido += danio;
+		
+		if(this.danio_recibido >= 100) {
+			ent_graf.muerte();
+			//terminar juego?
+		}else {
+			ent_graf.danio();
+		}
+		
 	}
 
 	public int getPosX() {
-		return posX;
+		return pos_x;
 	}
 
 	public void setPosX(int posX) {
-		this.posX = posX;
+		this.pos_x = posX;
 	}
 
 	public int getPosY() {
-		return posY;
+		return pos_y;
 	}
 
 	public void setPosY(int posY) {
-		this.posY = posY;
+		this.pos_y = posY;
 	}
 	
 	public void setPos(int x, int y) {
-		posX = x;
-		posY = y;
+		pos_x = x;
+		pos_y = y;
 	}
 	
 	public JLabel getLabel() {	
