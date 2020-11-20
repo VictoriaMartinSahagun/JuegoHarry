@@ -5,11 +5,11 @@ import java.util.List;
 import javax.swing.JLabel;
 
 import entidad.Entidad;
-import entidad_grafica.EntidadGrafica;
+import entidad.proyectil.ProyectilEnemigo;
 import entidad_grafica.EntidadGraficaEnemigo;
 import juego.Juego;
 import movimiento.Movimiento;
-import movimiento.MovimientoVertical;
+import movimiento.MovimientoVerticalEnemigo;
 import visitor.Visitor;
 import visitor.VisitorEnemigo;
 
@@ -26,13 +26,16 @@ public class EnemigoBeta extends Enemigo{
 		rango = 15;
 		direccion = -1;
 		velocidad = 3;
-		movimiento = new MovimientoVertical(direccion,velocidad, grafica,lim_inf,lim_sup);
+		movimiento = new MovimientoVerticalEnemigo(direccion,velocidad, grafica,lim_inf,lim_sup);
 	}
 	
 	@Override
 	public void atacar() {
-		// TODO Auto-generated method stub
-		
+		int lim_inferior = 0;
+		int lim_superior = 600;
+		ProyectilEnemigo proyectil = new ProyectilEnemigo(lim_inferior,lim_superior);
+		juego.agregarProyectilActivo(proyectil);
+		//juego.agregarEntidadActiva(proyectil);		
 	}
 
 	@Override

@@ -34,16 +34,23 @@ public class EntidadGraficaEnemigo extends EntidadGrafica {
 		this.imagenes=img;
 	}
 	
+	public void iniciar() {
+		ImageIcon nuevo = new ImageIcon(this.getClass().getResource(this.imagenes[2]));
+		grafica = nuevo;
+	}
+	
 	public void daniar() {
-		ImageIcon nuevo = new ImageIcon(this.getClass().getResource(this.imagenes[4]));
+		ImageIcon nuevo = new ImageIcon(this.getClass().getResource(this.imagenes[3]));
 		grafica = nuevo;
 	}
 	
 	public void liberar() {
 		//ver como reproducir un gif y hacer q seaa herido, agarre la media y quede como bueno
-		ImageIcon nuevo = new ImageIcon(this.getClass().getResource(this.imagenes[2]));
+		ImageIcon nuevo = new ImageIcon(this.getClass().getResource(this.imagenes[1]));
 		grafica = nuevo;
 	}
 
-
+	public void desaparecer() {
+		this.etiqueta.setVisible(false);
+	}
 }
