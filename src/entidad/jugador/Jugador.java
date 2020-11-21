@@ -16,9 +16,11 @@ public class Jugador extends Entidad{
 	 * @param label etiqueta del jugador.
 	 */
 	public Jugador() {
+		pos_x=200;
+		pos_y=500;
 		v = new VisitorJugador(this);
 		activa = true;
-		ent_graf = new EntidadGraficaJugador( new JLabel() );
+		ent_graf = new EntidadGraficaJugador();
 	}
 	
 	@Override
@@ -83,7 +85,7 @@ public class Jugador extends Entidad{
 		pos_y = y;
 	}
 	
-	public JLabel getLabel() {	
-		return ent_graf.getEtiqueta();
+	public EntidadGraficaJugador getEntidadGraficaJugador() {
+		return ent_graf;
 	}
 }

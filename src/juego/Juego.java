@@ -14,7 +14,12 @@ public class Juego {
 	private int cantHorda1,cantHorda2,cantHorda3,cantHorda4;
 	
 	
-    public void iniciar() {}
+    public void iniciar() {
+    	horda = new Horda(5,5);
+    	harry = new Jugador();
+    	//mapa = new Mapa(harry,horda); //<-- esto tiraba exception, hay que verlo despues
+    	
+    }
     public void ganar() {}
     public void perder() {}
     

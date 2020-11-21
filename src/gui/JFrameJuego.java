@@ -29,6 +29,8 @@ import javax.swing.SwingUtilities;
 
 import img.ImagenFondo;
 import juego.Juego;
+import juego.TecladoJugador;
+
 import javax.swing.JTextField;
 import java.awt.Color;
 import java.awt.Font;
@@ -37,9 +39,8 @@ public class JFrameJuego extends JFrame {
 	private Juego juego;
 	private JPanel jPanelNivel;
 	private JLabel jLabelVida;
-	private JLabel jLabelJugador;
+	private JLabel lbl_jugador;
 	private JToggleButton jToggleButtonAudio;
-	
 	private AudioPlayer ap;
 	private Thread audio;
 	private JTextField textField;
@@ -60,9 +61,9 @@ public class JFrameJuego extends JFrame {
 		
 		
 		//Comienza el juego
-		
-		initGUI();
 		initJuego();
+		initGUI();
+		
 		//initAudio();
 		
 	}
@@ -90,13 +91,15 @@ public class JFrameJuego extends JFrame {
 				jPanelNivel.setLayout(null);
 				jPanelNivel.setOpaque(false);
 				{//Jugador
-					jLabelJugador = new JLabel();
-					//juego.getJugador().getLabel();
-					//juego.getJugador().setPos(10, 5);
-					jLabelJugador.setIcon(new ImageIcon(getClass().getResource("/img/Harry.png")));
-					jLabelJugador.setBounds(205, 492, 80, 68);
-					jPanelNivel.add(jLabelJugador);
-			
+					
+					lbl_jugador = new JLabel();
+					lbl_jugador.setIcon(juego.getJugador().getEntidadGraficaJugador().getGrafica());
+					lbl_jugador.setBounds(200, 500, 50, 50);
+					juego.getJugador().getEntidadGraficaJugador().setEtiqueta(lbl_jugador);
+					juego.getJugador().mover();
+					jPanelNivel.add(lbl_jugador);
+					addKeyListener(new TecladoJugador(juego,juego.getJugador(),0,400));
+					
 				}
 				{//Contador vida
 					int cantVida = 100;
