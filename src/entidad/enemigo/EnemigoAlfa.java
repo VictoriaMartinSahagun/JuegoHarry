@@ -7,6 +7,7 @@ import javax.swing.JLabel;
 import entidad.Entidad;
 import entidad.proyectil.ProyectilEnemigo;
 import entidad_grafica.EntidadGraficaEnemigo;
+import fabrica.FabricaProyectilEnemigo;
 import juego.Juego;
 import movimiento.Movimiento;
 import movimiento.MovimientoVerticalEnemigo;
@@ -25,15 +26,14 @@ public class EnemigoAlfa extends Enemigo{
 		direccion = -1;
 		velocidad = 2;
 		movimiento = new MovimientoVerticalEnemigo(direccion,velocidad, grafica,lim_inf,lim_sup);
+		fabrica = new FabricaProyectilEnemigo();
 	}
 	
 	@Override
 	public void atacar() {
-		int lim_inferior = 0;
-		int lim_superior = 600;
-		ProyectilEnemigo proyectil = new ProyectilEnemigo(lim_inferior,lim_superior);
+
+		ProyectilEnemigo proyectil = (ProyectilEnemigo) fabrica.crearProyectil();
 		juego.agregarProyectilActivo(proyectil);
-		//Abstract factory de proyectiles
 	}
 
 	@Override
