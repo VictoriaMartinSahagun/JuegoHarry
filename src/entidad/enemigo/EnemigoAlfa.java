@@ -1,5 +1,6 @@
 package entidad.enemigo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JLabel;
@@ -32,21 +33,29 @@ public class EnemigoAlfa extends Enemigo{
 	
 	@Override
 	public void atacar() {
-
 		ProyectilEnemigo proyectil = (ProyectilEnemigo) fabrica.crearProyectil(juego,this);
 		juego.agregarProyectilActivo(proyectil);
 	}
 
 	@Override
 	public void aceptar(Visitor v) {
-		// TODO Auto-generated method stub
-		
+		v.visitarEnemigoAlfa(this);
 	}
 
 	@Override
 	public List<Entidad> detectarColisiones() {
-		// TODO Auto-generated method stub
-		return null;
+		List<Entidad> lista = new ArrayList<Entidad>();
+		
+		for (Entidad e: juego.getMapa().ElementosActivos()) {
+			if( (e.getBordeIzq()>=borde_izq && e.getBordeIzq()<=borde_der) || (e.getBordeDer()>=borde_izq && e.getBordeDer()<=borde_der) ) {
+				
+				if(borde_abajo<=e.getBordeArriba()) {
+					lista.add(e);
+				}
+				
+			}
+		}
+		return lista;
 	}
 
 	@Override

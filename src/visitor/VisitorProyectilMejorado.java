@@ -18,7 +18,7 @@ public class VisitorProyectilMejorado {
 		p.colisionarAlfa(e);
 	}
 	
-	public void visitarEnemgioBeta(EnemigoBeta e) {
+	public void visitarEnemigoBeta(EnemigoBeta e) {
 		p.colisionarBeta(e);
 	}
 }

@@ -8,7 +8,7 @@ public abstract class Visitor {
 	
 	public void visitarEnemigoAlfa(EnemigoAlfa e) {}
 	
-	public void visitarEnemgioBeta(EnemigoBeta e) {}
+	public void visitarEnemigoBeta(EnemigoBeta e) {}
 	
 	public void visitarJugador(Jugador j) {}
 	

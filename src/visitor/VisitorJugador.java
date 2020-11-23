@@ -16,7 +16,7 @@ public class VisitorJugador extends Visitor{
 		j.recibirDanio(e.getDanioAtaque());
 	}
 	
-	public void visitarEnemgioBeta(EnemigoBeta e) {
+	public void visitarEnemigoBeta(EnemigoBeta e) {
 		j.recibirDanio(e.getDanioAtaque());
 	}
 	

@@ -38,14 +38,23 @@ public class Jugador extends Entidad{
 	
 	@Override
 	public void aceptar(Visitor v) {
-		
+		v.visitarJugador(this);
 	}
 
 	@Override
 	public List<Entidad> detectarColisiones() {
 		List<Entidad> lista = new ArrayList<Entidad>();
 		
-		//TODO
+		for (Entidad e : juego.getMapa().ElementosActivos()) {
+			if( (e.getBordeIzq()>=borde_izq && e.getBordeIzq()<=borde_der) || (e.getBordeDer()>=borde_izq && e.getBordeDer()<=borde_der) ) {
+				
+				if(borde_arriba>=e.getBordeAbajo()) {
+					lista.add(e);
+				}
+				
+			}
+		}
+		
 		
 		return lista;
 	}
