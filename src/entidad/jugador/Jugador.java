@@ -19,7 +19,7 @@ public class Jugador extends Entidad{
 	 * @param label etiqueta del jugador.
 	 */
 	public Jugador(Juego juego) {
-		pos_x=200;
+		pos_x=300;
 		pos_y=460;
 		v = new VisitorJugador(this);
 		activa = true;

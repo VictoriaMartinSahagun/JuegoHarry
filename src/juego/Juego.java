@@ -15,11 +15,12 @@ public class Juego {
 	
 	
     public void iniciar() {
-    	horda = new Horda(5,5);
+    	horda = new Horda(1,this); //nose si esto esta bien
     	harry = new Jugador(this);
     	//mapa = new Mapa(harry,horda); //<-- esto tiraba exception, hay que verlo despues
     	
     }
+    
     public void ganar() {}
     public void perder() {}
     
@@ -42,10 +43,7 @@ public class Juego {
     public Jugador getJugador() {
         return harry;
     }
-	public Jugador getHarry() {
-		return harry;
-	}
-	public void setHarry(Jugador harry) {
+	public void setJugador(Jugador harry) {
 		this.harry = harry;
 	}
 	public Horda getHorda() {

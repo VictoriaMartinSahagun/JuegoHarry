@@ -40,7 +40,7 @@ public class JFrameCarga extends JFrame {
 		setContentPane(imagen_Fondo);
 		setTitle("Las aventuras de Potter");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 600);
+		setBounds(100, 100, 600, 600);
 		getContentPane().setLayout(new BorderLayout(0, 0));
 		
 		//Creo el audio

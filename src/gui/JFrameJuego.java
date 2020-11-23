@@ -56,7 +56,7 @@ public class JFrameJuego extends JFrame {
 		setContentPane(imagen_Fondo);
 		setTitle("Las aventuras de Potter");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 600);
+		setBounds(100, 100, 600, 600);
 		getContentPane().setLayout(new BorderLayout(0, 0));
 		
 		
@@ -93,6 +93,9 @@ public class JFrameJuego extends JFrame {
 				
 				{//Jugador
 					lbl_jugador = new JLabel();
+					lbl_jugador.setIcon(juego.getJugador().getEntidadGrafica().getGrafica());
+					lbl_jugador.setBounds(200, 500, 100, 100);
+					juego.getJugador().getEntidadGrafica().setEtiqueta(lbl_jugador);
 					juego.getJugador().mover();
 					jPanelNivel.add(lbl_jugador);
 					addKeyListener(new TecladoJugador(juego,juego.getJugador(),0,400));
@@ -107,9 +110,7 @@ public class JFrameJuego extends JFrame {
 					lblCantVida.setBounds(10, 11, 109, 29);
 					jPanelNivel.add(lblCantVida);
 				}
-				{//Enemigos
-					
-				}
+				
 			}
 		} catch (Exception e) {
 		    //add your error handling code here
