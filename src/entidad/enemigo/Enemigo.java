@@ -2,11 +2,13 @@ package entidad.enemigo;
 
 import entidad.Entidad;
 import entidad_grafica.EntidadGraficaEnemigo;
+import fabrica.FabricaProyectil;
 import movimiento.Movimiento;
 
 public abstract class Enemigo extends Entidad{
 	protected int vida,danio_ataque,rango,direccion,velocidad;
 	protected EntidadGraficaEnemigo grafica;
+	protected FabricaProyectil fabrica;
 	
 	public abstract void atacar();
 	
