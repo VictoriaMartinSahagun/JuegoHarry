@@ -10,12 +10,7 @@ import javax.swing.border.EmptyBorder;
 
 import audio.AudioPlayer;
 import img.ImagenFondo;
-import juego.Juego;
-import javax.swing.JLabel;
-import java.awt.FlowLayout;
-import java.awt.Graphics;
-import java.awt.Image;
-import java.awt.CardLayout;
+
 import javax.swing.JButton;
 import java.awt.Color;
 import java.awt.Font;

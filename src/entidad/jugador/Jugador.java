@@ -17,7 +17,7 @@ public class Jugador extends Entidad{
 	 */
 	public Jugador() {
 		pos_x=200;
-		pos_y=500;
+		pos_y=460;
 		v = new VisitorJugador(this);
 		activa = true;
 		ent_graf = new EntidadGraficaJugador();

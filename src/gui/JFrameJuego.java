@@ -90,11 +90,11 @@ public class JFrameJuego extends JFrame {
 				getContentPane().add(jPanelNivel, BorderLayout.CENTER);
 				jPanelNivel.setLayout(null);
 				jPanelNivel.setOpaque(false);
+				
 				{//Jugador
-					
 					lbl_jugador = new JLabel();
 					lbl_jugador.setIcon(juego.getJugador().getEntidadGraficaJugador().getGrafica());
-					lbl_jugador.setBounds(200, 500, 50, 50);
+					lbl_jugador.setBounds(200, 500, 100, 100);
 					juego.getJugador().getEntidadGraficaJugador().setEtiqueta(lbl_jugador);
 					juego.getJugador().mover();
 					jPanelNivel.add(lbl_jugador);
@@ -110,7 +110,8 @@ public class JFrameJuego extends JFrame {
 					lblCantVida.setBounds(10, 11, 109, 29);
 					jPanelNivel.add(lblCantVida);
 				}
-				{
+				{//Enemigos
+					
 				}
 			}
 		} catch (Exception e) {
