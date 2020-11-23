@@ -25,10 +25,10 @@ public abstract class Proyectil extends Entidad{
 	public void setVelocidad(int velocidad) {
 		this.velocidad = velocidad;
 	}
-	public int getCap_penetracion() {
+	public int getCapPenetracion() {
 		return cap_penetracion;
 	}
-	public void setCap_penetracion(int cap_penetracion) {
+	public void setCapPenetracion(int cap_penetracion) {
 		this.cap_penetracion = cap_penetracion;
 	}
 	public EntidadGraficaProyectil getGrafica() {

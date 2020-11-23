@@ -24,11 +24,11 @@ public class Horda {
 		this.horda = horda;
 	}
 
-	public int getEnemigos_restantes() {
+	public int getEnemigosRestantes() {
 		return enemigos_restantes;
 	}
 
-	public void setEnemigos_restantes(int enemigos_restantes) {
+	public void setEnemigosRestantes(int enemigos_restantes) {
 		this.enemigos_restantes = enemigos_restantes;
 	}
 }

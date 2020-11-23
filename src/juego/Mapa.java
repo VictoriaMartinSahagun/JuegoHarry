@@ -36,12 +36,12 @@ public class Mapa {
 	
 	public void agregarEnemigoActivo(Enemigo e) {
 		enemigos.add(e);
-		e.getEntidad().iniciar();
+		e.getEntidadGrafica().iniciar();
 	}
 	
 	public void eliminarEnemigoActivo(Enemigo e) {
 		enemigos.remove(e);
-		e.getEntidad().desaparecer();
+		e.getEntidadGrafica().desaparecer();
 	}
 	
 	public void agregarProyectilActivo(Proyectil p) {

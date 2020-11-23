@@ -20,4 +20,17 @@ public abstract class EntidadGrafica {
 		this.grafica = grafica;
 	}
 	
+	public void iniciar() {}
+	
+	public void liberar() {}
+	
+	public void disparo() {}
+	
+	public void daniar() {}
+	
+	public void desaparecer() {}
+	
+	public void moverEtiqueta(int x, int y) {}
+	
+	public void muerte() {}
 }

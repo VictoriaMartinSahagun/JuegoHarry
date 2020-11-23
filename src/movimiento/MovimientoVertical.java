@@ -1,7 +1,5 @@
 package movimiento;
 
-import entidad_grafica.EntidadGrafica;
-
 public abstract class MovimientoVertical extends Movimiento{
 	public static int ARRIBA = 1;
 	public static int ABAJO = -1;
@@ -18,17 +16,5 @@ public abstract class MovimientoVertical extends Movimiento{
 		
 	}
 
-	@Override
-	public EntidadGrafica getEntidad() {
-		return entidad;
-	}
-
-	@Override
-	public void setEntidad(EntidadGrafica e) {
-		entidad = e;
-		
-	}
-
-	@Override
 	public abstract void mover();
 }

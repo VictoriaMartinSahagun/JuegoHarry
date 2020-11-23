@@ -17,7 +17,7 @@ public class EntidadGraficaJugador extends EntidadGrafica{
 		etiqueta.setLocation(x,y);
 	}
 	
-	public void danio() {
+	public void daniar() {
 		ImageIcon imagen;
 		
 		imagen = new ImageIcon(this.getClass().getResource(harry_daniado));

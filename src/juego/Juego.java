@@ -16,7 +16,7 @@ public class Juego {
 	
     public void iniciar() {
     	horda = new Horda(5,5);
-    	harry = new Jugador();
+    	harry = new Jugador(this);
     	//mapa = new Mapa(harry,horda); //<-- esto tiraba exception, hay que verlo despues
     	
     }
