@@ -23,6 +23,7 @@ import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
 
 import audio.AudioPlayer;
+import entidad.Entidad;
 import entidad.jugador.Jugador;
 import img.ImagenFondo;
 
@@ -110,7 +111,11 @@ public class JFrameJuego extends JFrame {
 					lblCantVida.setBounds(10, 11, 109, 29);
 					jPanelNivel.add(lblCantVida);
 				}
-				
+				{//Agrego elementos activos a la gui
+					for(Entidad e: juego.getMapa().ElementosActivos()) {
+						jPanelNivel.add(e.getEntidadGrafica().getEtiqueta());
+					}
+				}
 			}
 		} catch (Exception e) {
 		    //add your error handling code here

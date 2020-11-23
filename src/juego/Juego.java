@@ -24,6 +24,10 @@ public class Juego {
     public void ganar() {}
     public void perder() {}
     
+    //premios con timers
+    public void pausar() {}
+    public void mejorarHechizos() {}
+    
     public void agregarEnemigoActivo(Enemigo en) {
     	mapa.agregarEnemigoActivo(en);
     }

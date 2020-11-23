@@ -19,6 +19,7 @@ public class Jugador extends Entidad{
 	 * @param label etiqueta del jugador.
 	 */
 	public Jugador(Juego juego) {
+		this.danio_recibido=0;
 		pos_x=300;
 		pos_y=460;
 		v = new VisitorJugador(this);
@@ -95,6 +96,11 @@ public class Jugador extends Entidad{
 	
 	public int getDanioRecibido() {
 		return danio_recibido;
+	}
+	
+	//efecto pocion
+	public void curar() {
+		this.danio_recibido=0;
 	}
 
 	public void recibirDanio(int danio) {
