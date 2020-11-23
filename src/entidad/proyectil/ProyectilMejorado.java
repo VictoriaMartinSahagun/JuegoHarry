@@ -35,7 +35,7 @@ public class ProyectilMejorado extends Proyectil{
 
 	@Override
 	public void aceptar(Visitor v) {
-		// TODO Auto-generated method stub
+		v.visitarProyectilMejorado(this);
 	}
 	
 	public void colisionarAlfa(EnemigoAlfa e) {
@@ -48,7 +48,6 @@ public class ProyectilMejorado extends Proyectil{
 	
 	@Override
 	public List<Entidad> detectarColisiones() {
-		//int borde_arriba, borde_abajo, borde_izq, borde_der;
 		List<Entidad> lista = new ArrayList<Entidad>();
 		
 		for(Entidad e: juego.getMapa().ElementosActivos()) {
