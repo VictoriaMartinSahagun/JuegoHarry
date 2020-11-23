@@ -53,4 +53,9 @@ public class EntidadGraficaEnemigo extends EntidadGrafica {
 	public void desaparecer() {
 		this.etiqueta.setVisible(false);
 	}
+
+	@Override
+	public JLabel getEtiqueta() {
+		return this.etiqueta;
+	}
 }

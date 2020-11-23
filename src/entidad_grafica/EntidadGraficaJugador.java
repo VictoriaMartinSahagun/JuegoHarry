@@ -7,6 +7,7 @@ public class EntidadGraficaJugador extends EntidadGrafica{
 	private String[] harry_muerto = {"/img/HarryMuerte2.png","/img/HarryMuerte3.png"};
 	
 	public EntidadGraficaJugador() {
+		etiqueta = new JLabel();
 		ImageIcon imagen;
 		grafica = new ImageIcon();
 		imagen = new ImageIcon(this.getClass().getResource(harry));
@@ -34,6 +35,11 @@ public class EntidadGraficaJugador extends EntidadGrafica{
 		
 		imagen = new ImageIcon(this.getClass().getResource(harry_muerto[0]));
 		grafica.setImage(imagen.getImage());
+	}
+
+	@Override
+	public JLabel getEtiqueta() {
+		return this.etiqueta;
 	}
 	
 	

@@ -28,6 +28,11 @@ public class Jugador extends Entidad{
 		fabrica_base = new FabricaProyectilBase();
 		fabrica_mejorado = new FabricaProyectilMejorado();
 		
+		borde_arriba =  pos_y + ent_graf.getEtiqueta().getY()/2;
+		borde_abajo = pos_y - ent_graf.getEtiqueta().getY()/2;
+		borde_izq = pos_x - ent_graf.getEtiqueta().getX()/2;
+		borde_der = pos_x + ent_graf.getEtiqueta().getX()/2;
+		
 		actualizarBordes();
 	}
 	
