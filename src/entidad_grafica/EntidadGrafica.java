@@ -7,9 +7,7 @@ public abstract class EntidadGrafica {
 	protected JLabel etiqueta;
 	protected ImageIcon grafica;
 	
-	public JLabel getEtiqueta() {
-		return etiqueta;
-	}
+	public abstract JLabel getEtiqueta();
 	public void setEtiqueta(JLabel etiqueta) {
 		this.etiqueta = etiqueta;
 	}

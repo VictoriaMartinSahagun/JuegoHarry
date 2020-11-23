@@ -24,10 +24,10 @@ import javax.swing.WindowConstants;
 
 import audio.AudioPlayer;
 import entidad.jugador.Jugador;
+import img.ImagenFondo;
 
 import javax.swing.SwingUtilities;
 
-import img.ImagenFondo;
 import juego.Juego;
 import juego.TecladoJugador;
 

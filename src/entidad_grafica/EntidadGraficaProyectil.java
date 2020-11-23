@@ -1,6 +1,7 @@
 package entidad_grafica;
 
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
 public class EntidadGraficaProyectil extends EntidadGrafica{
 	protected String imagen;
@@ -19,5 +20,10 @@ public class EntidadGraficaProyectil extends EntidadGrafica{
 	
 	public void desaparecer() {
 		this.etiqueta.setVisible(false);
+	}
+
+	@Override
+	public JLabel getEtiqueta() {
+		return this.etiqueta;
 	}
 }
