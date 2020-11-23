@@ -15,24 +15,25 @@ import visitor.*;
 
 public class EnemigoAlfa extends Enemigo{
 	
-	public EnemigoAlfa(Juego j, JLabel etiqueta,int lim_inf, int lim_sup) {
+	public EnemigoAlfa(Juego j, JLabel etiqueta,int lim_inf, int lim_sup, int pos_X, int pos_y) {
 		juego = j;
-		v = new VisitorEnemigo();
 		activa=true;
 		vida=100;
 		danio_ataque=5;
-		grafica = new EntidadGraficaEnemigo(etiqueta);
+		ent_graf = new EntidadGraficaEnemigo(etiqueta);
 		rango = 10;
 		direccion = -1;
 		velocidad = 2;
-		movimiento = new MovimientoVerticalEnemigo(direccion,velocidad, grafica,lim_inf,lim_sup);
+		movimiento = new MovimientoVerticalEnemigo(direccion,velocidad, this,lim_inf,lim_sup);
 		fabrica = new FabricaProyectilEnemigo();
+		
+		actualizarBordes();
 	}
 	
 	@Override
 	public void atacar() {
 
-		ProyectilEnemigo proyectil = (ProyectilEnemigo) fabrica.crearProyectil();
+		ProyectilEnemigo proyectil = (ProyectilEnemigo) fabrica.crearProyectil(juego,this);
 		juego.agregarProyectilActivo(proyectil);
 	}
 
@@ -51,8 +52,39 @@ public class EnemigoAlfa extends Enemigo{
 	@Override
 	public void mover() {
 		movimiento.mover();
+		actualizarBordes();
 	}
-
+	
+	/**
+	 * Actualiza los bordes del enemigo.
+	 */
+	private void actualizarBordes() {
+		JLabel lbl;
+		
+		lbl = ent_graf.getEtiqueta();
+		
+		borde_arriba =  pos_y + lbl.getY()/2;
+		borde_abajo = pos_y - lbl.getY()/2;
+		borde_izq = pos_x - lbl.getX()/2;
+		borde_der = pos_x + lbl.getX()/2;
+	}
+	
+	public void recibirDanio(int danio) {
+		this.vida -= danio;
+		
+		if(this.vida <= 0) {
+			ent_graf.desaparecer();
+			//terminar juego?
+		}else {
+			ent_graf.daniar();
+			//ent_graf.danio();
+		}
+		
+	}
+	
+	/*
+	//Getters y setters
+	
 	@Override
 	public int getVida() {
 		return vida;
@@ -69,7 +101,7 @@ public class EnemigoAlfa extends Enemigo{
 		return this.danio_ataque;
 	}
 
-	@Override
+	
 	public void setDanio(int danio) {
 		this.danio_ataque=danio;	
 	}
@@ -123,6 +155,6 @@ public class EnemigoAlfa extends Enemigo{
 	@Override
 	public void setMovimiento(Movimiento mov) {
 		this.movimiento=mov;
-	}
+	}*/
 	
 }

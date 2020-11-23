@@ -3,24 +3,32 @@ package entidad.jugador;
 import java.util.*;
 import javax.swing.JLabel;
 import entidad.*;
+import entidad.proyectil.*;
 import entidad_grafica.*;
+import fabrica.*;
+import juego.Juego;
 import visitor.*;
 
 public class Jugador extends Entidad{
 	
 	private int danio_recibido,pos_x,pos_y;
-	private EntidadGraficaJugador ent_graf;
+	private FabricaProyectil fabrica_base, fabrica_mejorado;
 	
 	/**
 	 * Constructor del jugador.
 	 * @param label etiqueta del jugador.
 	 */
-	public Jugador() {
+	public Jugador(Juego juego) {
 		pos_x=200;
 		pos_y=460;
 		v = new VisitorJugador(this);
 		activa = true;
 		ent_graf = new EntidadGraficaJugador();
+		this.juego = juego;
+		fabrica_base = new FabricaProyectilBase();
+		fabrica_mejorado = new FabricaProyectilMejorado();
+		
+		actualizarBordes();
 	}
 	
 	@Override
@@ -40,10 +48,33 @@ public class Jugador extends Entidad{
 	@Override
 	public void mover() {
 		ent_graf.moverEtiqueta(pos_x, pos_y);
+		actualizarBordes();
 	}
 	
-	public void atacar() {
+	/**
+	 * Actualiza los bordes del jugador.
+	 */
+	private void actualizarBordes() {
+		JLabel lbl;
 		
+		lbl = ent_graf.getEtiqueta();
+		
+		borde_arriba =  pos_y + lbl.getY()/2;
+		borde_abajo = pos_y - lbl.getY()/2;
+		borde_izq = pos_x - lbl.getX()/2;
+		borde_der = pos_x + lbl.getX()/2;
+	}
+	
+	//Ataques
+	
+	public void atacarBase() {
+		ProyectilBase p = (ProyectilBase) fabrica_base.crearProyectil(juego,this);
+		juego.agregarProyectilActivo(p);
+	}
+	
+	public void atacarMejorado() {
+		ProyectilMejorado p = (ProyectilMejorado) fabrica_mejorado.crearProyectil(juego,this);
+		juego.agregarProyectilActivo(p);
 	}
 	
 	//Getters y setters
@@ -52,14 +83,14 @@ public class Jugador extends Entidad{
 		return danio_recibido;
 	}
 
-	public void recibir_danio(int danio) {
+	public void recibirDanio(int danio) {
 		this.danio_recibido += danio;
 		
 		if(this.danio_recibido >= 100) {
 			ent_graf.muerte();
 			//terminar juego?
 		}else {
-			ent_graf.danio();
+			ent_graf.daniar();
 		}
 		
 	}
@@ -85,7 +116,4 @@ public class Jugador extends Entidad{
 		pos_y = y;
 	}
 	
-	public EntidadGraficaJugador getEntidadGraficaJugador() {
-		return ent_graf;
-	}
 }

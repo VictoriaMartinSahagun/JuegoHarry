@@ -1,21 +1,21 @@
 package movimiento;
 
 import javax.swing.JLabel;
-import entidad_grafica.EntidadGrafica;
+import entidad.proyectil.*;
 
 public class MovimientoVerticalProyectilJugador extends MovimientoVertical{
 	
-	public MovimientoVerticalProyectilJugador(int dir, int vel, EntidadGrafica ent_graf, int lim) {
+	public MovimientoVerticalProyectilJugador(int dir, int vel, Proyectil p, int lim) {
 		direccion = dir;
 		velocidad = vel;
-		entidad = ent_graf;
+		entidad = p;
 		lim_superior = lim;
 	}
 	
 	
 	@Override
 	public void mover() {
-		JLabel lbl = entidad.getEtiqueta();
+		JLabel lbl = entidad.getEntidadGrafica().getEtiqueta();
 		int pos_y = lbl.getY() + direccion * velocidad;
 		
 		//si se pasa del rango desaparece
@@ -25,6 +25,7 @@ public class MovimientoVerticalProyectilJugador extends MovimientoVertical{
 			lbl.setLocation(lbl.getX(), pos_y);
 		}
 		
+		entidad.setPosY(pos_y);
 	}
 
 }
