@@ -14,7 +14,6 @@ public class Horda {
 	
 	public Horda(int dificultad,Juego j) {
 		this.juego = j;
-		//Creo q lo mejor seria llamar a un metodo privado que con el parametro dificultad cree los Enemigos con los random
 		switch (dificultad) {
 			case 1: crearHorda(8,5);
 			case 2: crearHorda(12,4);

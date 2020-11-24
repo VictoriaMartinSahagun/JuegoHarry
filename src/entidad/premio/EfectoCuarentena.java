@@ -14,12 +14,14 @@ import visitor.VisitorPremio;
 
 public class EfectoCuarentena extends Efecto{
 
-	public EfectoCuarentena(String nombre, Juego juego) {
+	public EfectoCuarentena(int lim_inf,int lim_sup,String nombre, Juego juego) {
 		this.nombre=nombre;
 		this.juego=juego;
+		int direccion=-1;
+		int velocidad=2;
 		JLabel etiqueta = new JLabel();
 		EntidadGraficaPremioTiempo ent = new EntidadGraficaPremioTiempo(etiqueta);
-		movimiento = new MovimientoVerticalPremio();
+		movimiento = new MovimientoVerticalPremio(direccion,velocidad,this,lim_inf,lim_sup);
 		v = new VisitorPremio(this);
 	}
 	

@@ -8,12 +8,15 @@ public abstract class EntidadGrafica {
 	protected ImageIcon grafica;
 	
 	public abstract JLabel getEtiqueta();
+	
 	public void setEtiqueta(JLabel etiqueta) {
 		this.etiqueta = etiqueta;
 	}
+	
 	public ImageIcon getGrafica() {
 		return grafica;
 	}
+	
 	public void setGrafica(ImageIcon grafica) {
 		this.grafica = grafica;
 	}
@@ -26,7 +29,9 @@ public abstract class EntidadGrafica {
 	
 	public void daniar() {}
 	
-	public void desaparecer() {}
+	public void desaparecer() {
+		//this.etiqueta.setVisible(false);
+	}
 	
 	public void moverEtiqueta(int x, int y) {}
 	

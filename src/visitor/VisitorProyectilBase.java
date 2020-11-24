@@ -11,14 +11,14 @@ public class VisitorProyectilBase extends Visitor{
 		this.p = p;
 	}
 	
-	//AGREGAR LA DESAPARICION
-	
 	public void visitarEnemigoAlfa(EnemigoAlfa e) {
 		p.colisionarAlfa(e);
+		p.desactivar();
 	}
 	
 	public void visitarEnemigoBeta(EnemigoBeta e) {
 		p.colisionarBeta(e);
+		p.desactivar();
 	}
 	
 }

@@ -15,13 +15,15 @@ import visitor.VisitorPremio;
 
 public class MejoraPocion extends Mejora{
 
-	public MejoraPocion(String nombre, Juego juego) {
+	public MejoraPocion(int lim_inf,int lim_sup,String nombre, Juego juego) {
 		this.nombre=nombre;
 		this.juego=juego;
+		int direccion=-1;
+		int velocidad=3;
 		JLabel etiqueta = new JLabel();
 		EntidadGraficaPremio ent = new EntidadGraficaPremioPocion(etiqueta);
 		v = new VisitorPremio(this);
-		movimiento = new MovimientoVerticalPremio();
+		movimiento = new MovimientoVerticalPremio(direccion, velocidad, this, lim_sup, lim_inf);
 	}
 	@Override
 	public void activar() {

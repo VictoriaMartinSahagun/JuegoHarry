@@ -3,6 +3,9 @@ package visitor;
 import entidad.enemigo.EnemigoAlfa;
 import entidad.enemigo.EnemigoBeta;
 import entidad.jugador.Jugador;
+import entidad.premio.EfectoArma;
+import entidad.premio.EfectoCuarentena;
+import entidad.premio.MejoraPocion;
 
 public class VisitorJugador extends Visitor{
 	
@@ -20,5 +23,15 @@ public class VisitorJugador extends Visitor{
 		j.recibirDanio(e.getDanioAtaque());
 	}
 	
-	//TODO AGREGAR PREMIOS
+	public void visitarEfectoCuarentena(EfectoCuarentena e) {
+		e.activar();
+	}
+	
+	public void visitarEfectoSuperArma(EfectoArma e) {
+		e.activar();
+	}
+	
+	public void visitarPocion(MejoraPocion p) {
+		p.activar();
+	}
 }

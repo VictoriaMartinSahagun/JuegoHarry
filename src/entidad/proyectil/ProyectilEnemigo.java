@@ -6,7 +6,6 @@ import java.util.List;
 import javax.swing.JLabel;
 
 import entidad.Entidad;
-import entidad.jugador.Jugador;
 import entidad_grafica.EntidadGraficaProyectilEnemigo;
 import juego.Juego;
 import movimiento.MovimientoVerticalProyectilEnemigo;

@@ -34,6 +34,7 @@ public abstract class Entidad {
 	 */
 	public void desactivar() {
 		activa=false;
+		ent_graf.desaparecer();
 	}
 	
 	public abstract void mover();

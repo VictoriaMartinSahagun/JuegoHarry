@@ -18,8 +18,6 @@ public class Juego {
     	mapa = new Mapa(harry);
     	horda = new Horda(1,this); //nose si esto esta bien
     	harry = new Jugador(this);
-    	//mapa = new Mapa(harry,horda); //<-- esto tiraba exception, hay que verlo despues
-    	
     }
     
     public void ganar() {}

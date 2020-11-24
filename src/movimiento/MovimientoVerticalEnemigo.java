@@ -3,7 +3,6 @@ package movimiento;
 import javax.swing.JLabel;
 
 import entidad.enemigo.Enemigo;
-import entidad_grafica.EntidadGrafica;
 
 public class MovimientoVerticalEnemigo extends MovimientoVertical {
 	

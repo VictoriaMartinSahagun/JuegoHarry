@@ -118,7 +118,6 @@ public class JFrameJuego extends JFrame {
 				}
 			}
 		} catch (Exception e) {
-		    //add your error handling code here
 			e.printStackTrace();
 		}
 	}

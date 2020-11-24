@@ -15,13 +15,15 @@ import visitor.VisitorPremio;
 
 public class EfectoArma extends Efecto {
 
-	public EfectoArma(String nombre, Juego juego) {
+	public EfectoArma(int lim_inf,int lim_sup,String nombre, Juego juego) {
 		this.nombre=nombre;
 		this.juego=juego;
+		int direccion=-1;
+		int velocidad=2;
 		JLabel etiqueta = new JLabel();
 		EntidadGraficaPremio ent_graf = new EntidadGraficaPremioSnitch(etiqueta);
 		v = new VisitorPremio(this);
-		movimiento = new MovimientoVerticalPremio();
+		movimiento = new MovimientoVerticalPremio(direccion,velocidad,this,lim_inf,lim_sup);
 	}
 	
 	@Override

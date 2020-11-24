@@ -11,6 +11,6 @@ public class VisitorPremio extends Visitor{
 	}
 	
 	public void visitarJugador(Jugador j) {
-		this.p.activar();;
+		this.p.activar();
 	}
 }
