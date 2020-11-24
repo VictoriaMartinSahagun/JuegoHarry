@@ -1,11 +1,10 @@
-package premio;
+package entidad.premio;
 
+import entidad.Entidad;
 import juego.Juego;
 import movimiento.Movimiento;
 
-public abstract class Premio {
+public abstract class Premio extends Entidad{
 	protected String nombre;
-	protected Juego juego;
-	protected Movimiento movimiento;
 	public abstract void activar(); 
 }

@@ -16,10 +16,10 @@ public class Horda {
 		this.juego = j;
 		//Creo q lo mejor seria llamar a un metodo privado que con el parametro dificultad cree los Enemigos con los random
 		switch (dificultad) {
-			case 1: crearHorda(8);
-			case 2: crearHorda(12);
-			case 3: crearHorda(16);
-			case 4: crearHorda(20);
+			case 1: crearHorda(8,5);
+			case 2: crearHorda(12,4);
+			case 3: crearHorda(16,3);
+			case 4: crearHorda(20,2);
 		}
 		
 	}
@@ -40,28 +40,34 @@ public class Horda {
 		this.enemigos_restantes = enemigos_restantes;
 	}
 	
-	private void crearHorda(int chance) {
-		Random rand = new Random();
+	private void crearHorda(int cant_enemigos, int probabilidad) {
 		int randInt,posx,posy=0;
 		JLabel etiquetaEnemigo;
-		FabricaEnemigo fabrica;
+		FabricaEnemigo fabricaBase, fabricaMejorado;
 		Enemigo enemigo;
-		int cantLineas = chance / 4;
+		Random rand = new Random();
+		horda = new Enemigo[cant_enemigos];
+		
+		int cantLineas = cant_enemigos / 4;
+		int contEnemigos=0;
+		
+		fabricaBase = new FabricaEnemigoAlfa();
+		fabricaMejorado = new FabricaEnemigoBeta();
+		
 		for(int l=0;l<cantLineas;l++) {
 			posx=0;
 			for(int i=0;i<4;i++) {
 				etiquetaEnemigo = new JLabel();
 				etiquetaEnemigo.setBounds(200, 500, 100, 100);
-				randInt = rand.nextInt(chance);
+				randInt = rand.nextInt(probabilidad);
 				if(randInt==0) {
-					fabrica = new FabricaEnemigoBeta();
-					enemigo = fabrica.crearEnemigo(juego, etiquetaEnemigo, posx, posy);
+					enemigo = fabricaMejorado.crearEnemigo(juego, etiquetaEnemigo, posx, posy);
 				}else {
-					fabrica = new FabricaEnemigoAlfa();
-					enemigo = fabrica.crearEnemigo(juego, etiquetaEnemigo, posx, posy);
+					enemigo = fabricaBase.crearEnemigo(juego, etiquetaEnemigo, posx, posy);
 				}
 				posy=posy+150;
-				//juego.agregarEnemigoActivo(enemigo);
+				horda[contEnemigos++] = enemigo;
+				juego.agregarEnemigoActivo(enemigo);
 			}
 		}
 	}

@@ -13,12 +13,9 @@ public class Mapa {
 	private List<Proyectil> proyectiles;
 	private Jugador jugador;
 	
-	public Mapa(Jugador j, Horda h) {
+	public Mapa(Jugador j) {
 		this.jugador=j;
 		this.enemigos = new ArrayList<Enemigo>();
-		for (Enemigo e: h.getHorda()) {
-			enemigos.add(e);
-		}
 		this.proyectiles = new ArrayList<Proyectil>();
 	}
 	
