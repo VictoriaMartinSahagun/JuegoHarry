@@ -5,19 +5,36 @@ import entidad.jugador.Jugador;
 import entidad.enemigo.Enemigo;
 import entidad.proyectil.Proyectil;
 
-public class Juego {
+import java.util.ArrayList;
+import java.util.List;
+
+import entidad.*;
+
+public class Juego implements Runnable{
 	private Jugador harry;
-	private Horda horda;
+	private Horda [] hordas;
 	private Mapa mapa;
-	private int cantHorda1,cantHorda2,cantHorda3,cantHorda4;
+	
+	private List<Entidad> porEliminar;
+	private List<Entidad> porAgregar;
 	
 	/**
 	 * Metodo iniciar juego
 	 */
     public void iniciar() {
-    	mapa = new Mapa(harry);
-    	horda = new Horda(this,1); //nose si esto esta bien
+    	porEliminar = new ArrayList<Entidad>();
+    	porAgregar = new ArrayList<Entidad>();
+    	
+    	mapa = new Mapa();
+
+    	
     	harry = new Jugador(this);
+    	
+    	hordas = new Horda[4];
+    	hordas[0] = new Horda(this,1);
+    	hordas[1] = new Horda(this,2);
+    	hordas[2] = new Horda(this,3);
+    	hordas[3] = new Horda(this,4);
     }
     
     /**
@@ -38,38 +55,19 @@ public class Juego {
     /**
      * Metodo mejorar hechizos
      */
-    public void mejorarHechizos() {}
-    
-    /**
-     * Establece un enemigo activo
-     * @param en Enemigo
-     */
-    public void agregarEnemigoActivo(Enemigo en) {
-    	mapa.agregarEnemigoActivo(en);
+    public void mejorarHechizos() {
+    	if (harry.getProyectilActual()=="Base") {
+    		harry.setProyectilActual("Mejorado");
+    	}
     }
     
-    /**
-     * Establece un proyectil activo
-     * @param p Proyectil
-     */
-    public void agregarProyectilActivo(Proyectil p) {
-    	mapa.agregarProyectilActivo(p);
+    public void porAgregarEntidad(Entidad e){
+    	if (this.porAgregar==null) System.out.println("AAAAA");
+    	porAgregar.add(e);
     }
     
-    /**
-     * Elimina un enemigo activo
-     * @param en Enemigo
-     */
-    public void eliminarEnemigoActivo(Enemigo en) {
-    	mapa.eliminarEnemigoActivo(en);
-    }
-    
-    /**
-     * Elimina un proyectil activo
-     * @param p Proyectil
-     */
-    public void eliminarProyectilActivo(Proyectil p) {
-    	mapa.eliminarProyectilActivo(p);;
+    public void porEliminarEntidad(Entidad e) {
+    	porEliminar.add(e);
     }
     
     /**
@@ -84,8 +82,8 @@ public class Juego {
      * Establece la horda 
      * @param horda Horda
      */
-    public void setHorda(Horda horda) {
-		this.horda = horda;
+    public void setHordas(Horda [] hordas) {
+		this.hordas = hordas;
 	}
     
     /**
@@ -94,38 +92,6 @@ public class Juego {
      */
     public void setMapa(Mapa mapa) {
 		this.mapa = mapa;
-	}
-    
-    /**
-     * Establece la cantidad de la primer horda
-     * @param cantHorda1 int
-     */
-    public void setCantHorda1(int cantHorda1) {
-		this.cantHorda1 = cantHorda1;
-	}
-    
-    /**
-     * Establece la cantidad de la segunda horda
-     * @param cantHorda2 int
-     */
-    public void setCantHorda2(int cantHorda2) {
-		this.cantHorda2 = cantHorda2;
-	}
-    
-    /**
-     * Establece la cantidad de la tercer horda
-     * @param cantHorda3 int
-     */
-    public void setCantHorda3(int cantHorda3) {
-		this.cantHorda3 = cantHorda3;
-	}
-    
-    /**
-     * Establece la cantidad de la cuarta horda
-     * @param cantHorda4 int
-     */
-    public void setCantHorda4(int cantHorda4) {
-		this.cantHorda4 = cantHorda4;
 	}
     
     /**
@@ -140,8 +106,8 @@ public class Juego {
      * Consulta la horda
      * @return horda
      */
-	public Horda getHorda() {
-		return horda;
+	public Horda[] getHordas() {
+		return hordas;
 	}
 	
 	/**
@@ -151,38 +117,11 @@ public class Juego {
 	public Mapa getMapa() {
 		return mapa;
 	}
-	
-	/**
-	 * Consulta la cantidad de la primer horda
-	 * @return cantidad
-	 */
-	public int getCantHorda1() {
-		return cantHorda1;
+
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		
 	}
-	
-	/**
-	 * Consulta la cantidad de la segunda horda
-	 * @return cantidad
-	 */
-	public int getCantHorda2() {
-		return cantHorda2;
-	}
-	
-	/**
-	 * Consulta la cantidad de la tercer horda
-	 * @return cantidad
-	 */
-	public int getCantHorda3() {
-		return cantHorda3;
-	}
-	
-	/**
-	 * Consulta la cantidad de la cuarta horda
-	 * @return cantidad
-	 */
-	public int getCantHorda4() {
-		return cantHorda4;
-	}
-	
     
 }

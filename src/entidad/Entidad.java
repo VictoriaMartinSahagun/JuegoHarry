@@ -32,6 +32,7 @@ public abstract class Entidad {
 	 * Desactiva la entidad.
 	 */
 	public void desactivar() {
+		juego.porEliminarEntidad(this);
 		ent_graf.desaparecer();
 	}
 	

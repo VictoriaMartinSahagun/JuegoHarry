@@ -13,6 +13,7 @@ public class Jugador extends Entidad{
 	
 	private int danio_recibido,pos_x,pos_y;
 	private FabricaProyectil fabrica_base, fabrica_mejorado;
+	private String proyectil_actual;
 	
 	/**
 	 * Crea un nuevo Jugador partiendo de un determinado juego
@@ -27,6 +28,7 @@ public class Jugador extends Entidad{
 		fabrica_base = new FabricaProyectilBase();
 		fabrica_mejorado = new FabricaProyectilMejorado();
 		v = new VisitorJugador(this);
+		proyectil_actual = "Base";
 		
 		borde_arriba =  pos_y + ent_graf.getEtiqueta().getY()/2;
 		borde_abajo = pos_y - ent_graf.getEtiqueta().getY()/2;
@@ -34,6 +36,8 @@ public class Jugador extends Entidad{
 		borde_der = pos_x + ent_graf.getEtiqueta().getX()/2;
 		
 		actualizarBordes();
+		
+		juego.porAgregarEntidad(this);
 	}
 	
 	/**
@@ -41,15 +45,15 @@ public class Jugador extends Entidad{
 	 */
 	public void atacarBase() {
 		ProyectilBase p = (ProyectilBase) fabrica_base.crearProyectil(juego,this);
-		juego.agregarProyectilActivo(p);
+		juego.porAgregarEntidad(p);
 	}
-	
+
 	/**
 	 * Ataque mejorado
 	 */
 	public void atacarMejorado() {
 		ProyectilMejorado p = (ProyectilMejorado) fabrica_mejorado.crearProyectil(juego,this);
-		juego.agregarProyectilActivo(p);
+		juego.porAgregarEntidad(p);
 	}
 	
 	@Override
@@ -144,6 +148,10 @@ public class Jugador extends Entidad{
 		pos_y = y;
 	}
 
+	public void setProyectilActual(String proyectil) {
+		this.proyectil_actual = proyectil;
+	}
+	
 	/**
 	 * Consulta el danio recibido
 	 * @return danio
@@ -166,5 +174,8 @@ public class Jugador extends Entidad{
 	 */
 	public int getPosY() {
 		return pos_y;
+	}
+	public String getProyectilActual() {
+		return proyectil_actual;
 	}
 }

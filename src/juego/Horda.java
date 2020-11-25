@@ -92,7 +92,7 @@ public class Horda {
 				}
 				posy=posy+150;
 				horda[contEnemigos++] = enemigo;
-				juego.agregarEnemigoActivo(enemigo);
+				juego.porAgregarEntidad(enemigo);
 			}
 		}
 	}

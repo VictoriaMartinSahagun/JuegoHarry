@@ -9,70 +9,36 @@ import entidad.jugador.Jugador;
 import entidad.proyectil.Proyectil;
 
 public class Mapa {
-	private List<Enemigo> enemigos;
-	private List<Proyectil> proyectiles;
-	private Jugador jugador;
+	private List<Entidad> entidades;
 	
 	/**
-	 * Crea un nuevo Mapa partiendo del parametro jugador
-	 * @param j Jugador
+	 * Crea un nuevo Mapa
 	 */
-	public Mapa(Jugador j) {
-		this.jugador=j;
-		this.enemigos = new ArrayList<Enemigo>();
-		this.proyectiles = new ArrayList<Proyectil>();
+	public Mapa() {
+		entidades = new ArrayList<Entidad>();
 	}
 	
 	/**
-	 * Establece un nuevo enemigo activo
-	 * @param e Enemigo
+	 * Agrega una nueva entidad activa
+	 * @param e Entidad
 	 */
-	public void agregarEnemigoActivo(Enemigo e) {
-		enemigos.add(e);
-		e.getEntidadGrafica().iniciar();
+	public void agregarEntidadActiva(Entidad e) {
+		entidades.add(e);
 	}
 	
 	/**
-	 * Elimina un enemigo activo
-	 * @param e Enemigo
+	 * Elimina una entidad activa del mapa
+	 * @param e Entidad
 	 */
-	public void eliminarEnemigoActivo(Enemigo e) {
-		enemigos.remove(e);
-		e.getEntidadGrafica().desaparecer();
+	public void eliminarEntidadActiva(Entidad e) {
+		entidades.remove(e);
 	}
-	
-	/**
-	 * Establece un nuevo proyectil activo
-	 * @param p Proyectil
-	 */
-	public void agregarProyectilActivo(Proyectil p) {
-		proyectiles.add(p);
-		p.getGrafica().disparo();
-	}
-	
-	/**
-	 * Elimina un proyectil activo
-	 * @param p Proyectil
-	 */
-	public void eliminarProyectilActivo(Proyectil p) {
-		proyectiles.remove(p);
-		p.getGrafica().desaparecer();
-	}
-	
 	/**
 	 * Consulta los elementos activos
-	 * @return lista de elementos activos
+	 * @return iterable de elementos activos
 	 */
-	public List<Entidad> ElementosActivos() {
-		List<Entidad> lista = new ArrayList<Entidad>();
-		lista.add(jugador);
-		
-		for(Enemigo e:enemigos)
-			lista.add(e);
-		
-		for(Proyectil p:proyectiles)
-			lista.add(p);
-		return lista;
+	public Iterable<Entidad> ElementosActivos() {
+		return entidades;
 	}
 	
 }

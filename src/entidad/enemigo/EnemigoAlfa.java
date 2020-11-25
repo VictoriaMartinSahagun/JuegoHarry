@@ -42,7 +42,7 @@ public class EnemigoAlfa extends Enemigo{
 	@Override
 	public void atacar() {
 		ProyectilEnemigo proyectil = (ProyectilEnemigo) fabrica.crearProyectil(juego,this);
-		juego.agregarProyectilActivo(proyectil);
+		juego.porAgregarEntidad(proyectil);
 	}
 
 	@Override
