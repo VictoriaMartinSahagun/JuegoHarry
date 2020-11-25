@@ -39,7 +39,7 @@ public class EfectoCuarentena extends Efecto{
 	public List<Entidad> detectarColisiones() {
 		List<Entidad> lista = new ArrayList<Entidad>();
 		
-		for(Entidad e: juego.getMapa().ElementosActivos()) {
+		for(Entidad e: juego.getMapa().getEntidadesActivas()) {
 			if( (e.getBordeIzq()>=borde_izq && e.getBordeIzq()<=borde_der) || (e.getBordeDer()>=borde_izq && e.getBordeDer()<=borde_der) ) {
 				
 				if(borde_abajo<=e.getBordeArriba()) {
@@ -55,6 +55,11 @@ public class EfectoCuarentena extends Efecto{
 	@Override
 	public void mover() {
 		movimiento.mover();
+	}
+
+	@Override
+	public void accionar() {
+		this.mover();
 	}
 
 }

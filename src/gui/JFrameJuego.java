@@ -118,7 +118,7 @@ public class JFrameJuego extends JFrame {
 					jPanelNivel.add(lblCantVida);
 				}
 				{//Agrego elementos activos a la gui
-					for(Entidad e: juego.getMapa().ElementosActivos()) {
+					for(Entidad e: juego.getMapa().getEntidadesActivas()) {
 						jPanelNivel.add(e.getEntidadGrafica().getEtiqueta());
 					}
 				}

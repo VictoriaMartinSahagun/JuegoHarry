@@ -118,6 +118,11 @@ public class Juego implements Runnable{
 		return mapa;
 	}
 
+	public void accionar() {
+		for (Entidad e: mapa.getEntidadesActivas()) {
+			e.accionar();
+		}
+	}
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub

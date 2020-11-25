@@ -14,6 +14,7 @@ import movimiento.*;
 
 public class ProyectilBase extends Proyectil{
 	private JLabel lbl;
+	private int delay;
 	
 	/**
 	 * Crea un nuevo ProyectilBase partiendo de ciertos parametros
@@ -37,6 +38,8 @@ public class ProyectilBase extends Proyectil{
 		borde_abajo = pos_y - lbl.getY()/2;
 		borde_izq = pos_x - lbl.getX()/2;
 		borde_der = pos_x + lbl.getX()/2;
+		
+		delay=0;
 	}
 
 	@Override
@@ -64,7 +67,7 @@ public class ProyectilBase extends Proyectil{
 	public List<Entidad> detectarColisiones() {
 		List<Entidad> lista = new ArrayList<Entidad>();
 		
-		for(Entidad e: juego.getMapa().ElementosActivos()) {
+		for(Entidad e: juego.getMapa().getEntidadesActivas()) {
 			if( (e.getBordeIzq()>=borde_izq && e.getBordeIzq()<=borde_der) || (e.getBordeDer()>=borde_izq && e.getBordeDer()<=borde_der) ) {
 				
 				//ASEGURARSE QUE UNA VEZ QUE LO TOCA EL PROYECTIL YA NO SIGUE HACIENDO DANO
@@ -96,6 +99,13 @@ public class ProyectilBase extends Proyectil{
 		borde_abajo = pos_y - lbl.getY()/2;
 		borde_izq = pos_x - lbl.getX()/2;
 		borde_der = pos_x + lbl.getX()/2;
+	}
+
+	@Override
+	public void accionar() {
+		//cada 3 llamadas al hilo muevo el proyectil
+		if (delay++ % 3==0)
+			this.mover();
 	}
 	
 }

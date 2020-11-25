@@ -41,6 +41,8 @@ public abstract class Entidad {
 	 */
 	public abstract void mover();
 	
+	public abstract void accionar();
+	
 	//Setters
 	/**
 	 * Establece el borde superior

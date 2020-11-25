@@ -13,7 +13,7 @@ import visitor.Visitor;
 import entidad.enemigo.*;
 
 public class ProyectilEnemigo extends Proyectil{
-	
+	private int delay;
 	/**
 	 * Crea un nuevo ProyectilEnemigo partiendo de ciertos parametros 
 	 * @param juego Juego
@@ -38,6 +38,8 @@ public class ProyectilEnemigo extends Proyectil{
 		borde_abajo = pos_y - lbl.getY()/2;
 		borde_izq = pos_x - lbl.getX()/2;
 		borde_der = pos_x + lbl.getX()/2;
+		
+		delay = 0;
 	}
 	
 
@@ -57,7 +59,7 @@ public class ProyectilEnemigo extends Proyectil{
 	public List<Entidad> detectarColisiones() {
 		List<Entidad> lista = new ArrayList<Entidad>();
 		
-		for(Entidad e: juego.getMapa().ElementosActivos()) {
+		for(Entidad e: juego.getMapa().getEntidadesActivas()) {
 			if( (e.getBordeIzq()>=borde_izq && e.getBordeIzq()<=borde_der) || (e.getBordeDer()>=borde_izq && e.getBordeDer()<=borde_der) ) {
 				
 				if(borde_abajo<=e.getBordeArriba()) {
@@ -73,5 +75,13 @@ public class ProyectilEnemigo extends Proyectil{
 	@Override
 	public void mover() {
 		movimiento.mover();
+	}
+
+
+	@Override
+	public void accionar() {
+		//cada 5 llamadas al hilo muevo el proyectil
+		if (delay++ % 5 == 0)
+			this.mover();
 	}
 }

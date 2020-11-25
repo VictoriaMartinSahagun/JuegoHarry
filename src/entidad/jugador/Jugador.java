@@ -65,7 +65,7 @@ public class Jugador extends Entidad{
 	public List<Entidad> detectarColisiones() {
 		List<Entidad> lista = new ArrayList<Entidad>();
 		
-		for (Entidad e : juego.getMapa().ElementosActivos()) {
+		for (Entidad e : juego.getMapa().getEntidadesActivas()) {
 			if( (e.getBordeIzq()>=borde_izq && e.getBordeIzq()<=borde_der) || (e.getBordeDer()>=borde_izq && e.getBordeDer()<=borde_der) ) {
 				
 				if(borde_arriba>=e.getBordeAbajo()) {
@@ -177,5 +177,11 @@ public class Jugador extends Entidad{
 	}
 	public String getProyectilActual() {
 		return proyectil_actual;
+	}
+
+	@Override
+	public void accionar() {
+		// TODO Auto-generated method stub
+		
 	}
 }

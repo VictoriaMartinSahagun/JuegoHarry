@@ -15,6 +15,7 @@ import movimiento.*;
 
 public class ProyectilMejorado extends Proyectil{
 	private JLabel lbl;
+	protected int delay;
 	
 	/**
 	 * Crea un nuevo ProyectilMejorado partiendo de ciertos parametros
@@ -39,6 +40,8 @@ public class ProyectilMejorado extends Proyectil{
 		borde_abajo = pos_y - lbl.getY()/2;
 		borde_izq = pos_x - lbl.getX()/2;
 		borde_der = pos_x + lbl.getX()/2;
+		
+		delay = 0;
 	}
 
 	@Override
@@ -66,7 +69,7 @@ public class ProyectilMejorado extends Proyectil{
 	public List<Entidad> detectarColisiones() {
 		List<Entidad> lista = new ArrayList<Entidad>();
 		
-		for(Entidad e: juego.getMapa().ElementosActivos()) {
+		for(Entidad e: juego.getMapa().getEntidadesActivas()) {
 			if( (e.getBordeIzq()>=borde_izq && e.getBordeIzq()<=borde_der) || (e.getBordeDer()>=borde_izq && e.getBordeDer()<=borde_der) ) {
 				
 				//ASEGURARSE QUE UNA VEZ QUE LO TOCA EL PROYECTIL YA NO SIGUE HACIENDO DANO
@@ -84,6 +87,13 @@ public class ProyectilMejorado extends Proyectil{
 	@Override
 	public void mover() {
 		movimiento.mover();
+	}
+
+	@Override
+	public void accionar() {
+		//cada 2 llamadas al metodo muevo el proyectil
+		if (delay++ % 2 ==0)
+			this.mover();
 	}
 	
 }

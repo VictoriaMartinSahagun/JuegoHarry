@@ -14,7 +14,7 @@ import movimiento.MovimientoVerticalEnemigo;
 import visitor.Visitor;
 
 public class EnemigoBeta extends Enemigo{
-	protected int rango,direccion,velocidad;
+	protected int delay;
 	
 	/**
 	 * Crea un nuevo EnemigoAlfa partiendo de ciertos parametros
@@ -38,6 +38,8 @@ public class EnemigoBeta extends Enemigo{
 		//v = new Visitior();
 		
 		actualizarBordes();
+		
+		delay =0;
 	}
 	
 	@Override
@@ -55,7 +57,7 @@ public class EnemigoBeta extends Enemigo{
 	public List<Entidad> detectarColisiones() {
 		List<Entidad> lista = new ArrayList<Entidad>();
 		
-		for (Entidad e: juego.getMapa().ElementosActivos()) {
+		for (Entidad e: juego.getMapa().getEntidadesActivas()) {
 			if( (e.getBordeIzq()>=borde_izq && e.getBordeIzq()<=borde_der) || (e.getBordeDer()>=borde_izq && e.getBordeDer()<=borde_der) ) {
 				
 				if(borde_abajo<=e.getBordeArriba()) {
@@ -102,6 +104,18 @@ public class EnemigoBeta extends Enemigo{
 			//ent_graf.danio();
 		}
 		
+	}
+
+	@Override
+	public void accionar() {
+		//si tiene poca vida lo muevo cada 4 llamadas, sino cada 7
+		if (this.vida<50) {
+			if (delay++ % 4 == 0)
+				this.mover();
+		}else {
+			if (delay++ % 7 ==0)
+				this.mover();
+		}
 	}
 	
 }

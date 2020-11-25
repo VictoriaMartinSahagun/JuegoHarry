@@ -14,6 +14,7 @@ import movimiento.MovimientoVerticalEnemigo;
 import visitor.*;
 
 public class EnemigoAlfa extends Enemigo{
+	private int delay;
 	
 	/**
 	 * Crea un nuevo EnemigoAlfa partiendo de ciertos parametros
@@ -37,6 +38,8 @@ public class EnemigoAlfa extends Enemigo{
 	//	v = new Visitor();
 		
 		actualizarBordes();
+		
+		delay = 0;
 	}
 	
 	@Override
@@ -54,7 +57,7 @@ public class EnemigoAlfa extends Enemigo{
 	public List<Entidad> detectarColisiones() {
 		List<Entidad> lista = new ArrayList<Entidad>();
 		
-		for (Entidad e: juego.getMapa().ElementosActivos()) {
+		for (Entidad e: juego.getMapa().getEntidadesActivas()) {
 			if( (e.getBordeIzq()>=borde_izq && e.getBordeIzq()<=borde_der) || (e.getBordeDer()>=borde_izq && e.getBordeDer()<=borde_der) ) {
 				
 				if(borde_abajo<=e.getBordeArriba()) {
@@ -100,6 +103,12 @@ public class EnemigoAlfa extends Enemigo{
 			ent_graf.daniar();
 			//ent_graf.danio();
 		}		
+	}
+
+	@Override
+	public void accionar() {
+		if (delay++ % 7 ==0)
+			this.mover();
 	}	
 	
 }

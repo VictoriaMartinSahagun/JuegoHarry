@@ -37,7 +37,7 @@ public class Mapa {
 	 * Consulta los elementos activos
 	 * @return iterable de elementos activos
 	 */
-	public Iterable<Entidad> ElementosActivos() {
+	public Iterable<Entidad> getEntidadesActivas() {
 		return entidades;
 	}
 	
