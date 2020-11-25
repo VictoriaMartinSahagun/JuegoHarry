@@ -26,7 +26,6 @@ public class EnemigoAlfa extends Enemigo{
 	 */
 	public EnemigoAlfa(Juego j, JLabel etiqueta,int lim_inf, int lim_sup, int pos_X, int pos_y) {
 		juego = j;
-		activa=true;
 		vida=100;
 		danio_ataque=5;
 		ent_graf = new EntidadGraficaEnemigo(etiqueta);
@@ -35,6 +34,7 @@ public class EnemigoAlfa extends Enemigo{
 		velocidad = 2;
 		movimiento = new MovimientoVerticalEnemigo(this,direccion,velocidad, lim_inf,lim_sup);
 		fabrica = new FabricaProyectilEnemigo();
+	//	v = new Visitor();
 		
 		actualizarBordes();
 	}

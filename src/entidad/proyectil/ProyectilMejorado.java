@@ -10,6 +10,7 @@ import entidad.jugador.Jugador;
 import entidad_grafica.*;
 import juego.Juego;
 import visitor.Visitor;
+import visitor.VisitorProyectilMejorado;
 import movimiento.*;
 
 public class ProyectilMejorado extends Proyectil{
@@ -22,14 +23,15 @@ public class ProyectilMejorado extends Proyectil{
 	 * @param lim int
 	 */
 	public ProyectilMejorado(Juego juego, Jugador j,int lim) {
+	    this.juego = juego;
 		lbl = new JLabel();
 		direccion = MovimientoVertical.ARRIBA;
 		velocidad = 1;
 		cap_penetracion = 10;
 		grafica = new EntidadGraficaProyectilMejorado(lbl);
 		movimiento = new MovimientoVerticalProyectilJugador(this,direccion,velocidad,lim);
-	    this.juego = juego;
-	    
+	    visitor = new VisitorProyectilMejorado(this);
+		
 	    pos_y = j.getBordeArriba();
 		pos_x = j.getPosX();
 		

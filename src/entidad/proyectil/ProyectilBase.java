@@ -9,6 +9,7 @@ import entidad.jugador.Jugador;
 import entidad_grafica.*;
 import juego.Juego;
 import visitor.Visitor;
+import visitor.VisitorProyectilBase;
 import movimiento.*;
 
 public class ProyectilBase extends Proyectil{
@@ -28,6 +29,7 @@ public class ProyectilBase extends Proyectil{
 		velocidad = 1;
 		cap_penetracion = 5;
 		movimiento = new MovimientoVerticalProyectilJugador(this,direccion,velocidad,lim);
+		visitor = new VisitorProyectilBase(this);
 		pos_y = j.getBordeArriba();
 		pos_x = j.getPosX();
 		

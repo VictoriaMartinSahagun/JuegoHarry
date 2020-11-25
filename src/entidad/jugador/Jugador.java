@@ -20,14 +20,13 @@ public class Jugador extends Entidad{
 	 */
 	public Jugador(Juego juego) {
 		this.juego = juego;
-		activa = true;
 		this.danio_recibido=0;
 		ent_graf = new EntidadGraficaJugador();
 		pos_x=300;
 		pos_y=460;
-		v = new VisitorJugador(this);
 		fabrica_base = new FabricaProyectilBase();
 		fabrica_mejorado = new FabricaProyectilMejorado();
+		v = new VisitorJugador(this);
 		
 		borde_arriba =  pos_y + ent_graf.getEtiqueta().getY()/2;
 		borde_abajo = pos_y - ent_graf.getEtiqueta().getY()/2;

@@ -12,7 +12,6 @@ public abstract class Entidad {
 	
 	protected Juego juego;
 	protected Visitor v;
-	protected boolean activa;
 	protected EntidadGrafica ent_graf;
 	protected Movimiento movimiento;
 	protected int borde_arriba, borde_abajo, borde_izq, borde_der, pos_x, pos_y;
@@ -33,7 +32,6 @@ public abstract class Entidad {
 	 * Desactiva la entidad.
 	 */
 	public void desactivar() {
-		activa=false;
 		ent_graf.desaparecer();
 	}
 	
@@ -107,15 +105,6 @@ public abstract class Entidad {
 	 */
 	public void setEntidadGrafica(EntidadGrafica ent_graf) {
 		this.ent_graf = ent_graf;
-	}
-	
-	//Getters
-	/**
-	 * Consulta estado activo o inactivo de entidad
-	 * @return verdadero si esta activa, falso en caso contrario.
-	 */
-	public boolean estaActiva() {
-		return activa;
 	}
 	
 	/**

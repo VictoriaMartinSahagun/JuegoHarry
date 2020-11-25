@@ -29,6 +29,7 @@ public class ProyectilEnemigo extends Proyectil{
 		this.velocidad = 1;
 		this.cap_penetracion = 5;
 		this.movimiento = new MovimientoVerticalProyectilEnemigo(this,direccion,velocidad,lim_inf,lim_sup);
+		//visitor = new Visitor();
 		
 		pos_y = e.getBordeAbajo();
 		pos_x = e.getPosX();
