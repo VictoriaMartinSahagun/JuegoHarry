@@ -14,14 +14,20 @@ import movimiento.*;
 public class ProyectilBase extends Proyectil{
 	private JLabel lbl;
 	
-	public ProyectilBase(int lim, Juego juego, Jugador j) {
+	/**
+	 * Crea un nuevo ProyectilBase partiendo de ciertos parametros
+	 * @param juego Juego
+	 * @param j Jugador
+	 * @param lim
+	 */
+	public ProyectilBase(Juego juego, Jugador j, int lim) {
+		this.juego = juego;
 		lbl = new JLabel();
+		grafica = new EntidadGraficaProyectilBase(lbl);
 		direccion = MovimientoVertical.ARRIBA;
 		velocidad = 1;
 		cap_penetracion = 5;
-		grafica = new EntidadGraficaProyectilBase(lbl);
-		movimiento = new MovimientoVerticalProyectilJugador(direccion,velocidad,this,lim);
-		this.juego = juego;
+		movimiento = new MovimientoVerticalProyectilJugador(this,direccion,velocidad,lim);
 		pos_y = j.getBordeArriba();
 		pos_x = j.getPosX();
 		
@@ -36,10 +42,18 @@ public class ProyectilBase extends Proyectil{
 		v.visitarProyectilBase(this);
 	}
 	
+	/**
+	 * Establece el danio de la colision con un enemigo alfa
+	 * @param e EnemigoAlfa
+	 */
 	public void colisionarAlfa(EnemigoAlfa e) {
 		e.recibirDanio(cap_penetracion);
 	}
 	
+	/**
+	 * Establece el danio de la colision con un enemigo beta
+	 * @param e EnemigoBeta
+	 */
 	public void colisionarBeta(EnemigoBeta e) {
 		e.recibirDanio(cap_penetracion);
 	}

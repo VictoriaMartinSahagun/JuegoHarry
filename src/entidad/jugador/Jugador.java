@@ -15,17 +15,17 @@ public class Jugador extends Entidad{
 	private FabricaProyectil fabrica_base, fabrica_mejorado;
 	
 	/**
-	 * Constructor del jugador.
-	 * @param label etiqueta del jugador.
+	 * Crea un nuevo Jugador partiendo de un determinado juego
+	 * @param juego Juego
 	 */
 	public Jugador(Juego juego) {
+		this.juego = juego;
+		activa = true;
 		this.danio_recibido=0;
+		ent_graf = new EntidadGraficaJugador();
 		pos_x=300;
 		pos_y=460;
 		v = new VisitorJugador(this);
-		activa = true;
-		ent_graf = new EntidadGraficaJugador();
-		this.juego = juego;
 		fabrica_base = new FabricaProyectilBase();
 		fabrica_mejorado = new FabricaProyectilMejorado();
 		
@@ -37,11 +37,27 @@ public class Jugador extends Entidad{
 		actualizarBordes();
 	}
 	
+	/**
+	 * Ataque base
+	 */
+	public void atacarBase() {
+		ProyectilBase p = (ProyectilBase) fabrica_base.crearProyectil(juego,this);
+		juego.agregarProyectilActivo(p);
+	}
+	
+	/**
+	 * Ataque mejorado
+	 */
+	public void atacarMejorado() {
+		ProyectilMejorado p = (ProyectilMejorado) fabrica_mejorado.crearProyectil(juego,this);
+		juego.agregarProyectilActivo(p);
+	}
+	
 	@Override
 	public void aceptar(Visitor v) {
 		v.visitarJugador(this);
 	}
-
+	
 	@Override
 	public List<Entidad> detectarColisiones() {
 		List<Entidad> lista = new ArrayList<Entidad>();
@@ -80,29 +96,17 @@ public class Jugador extends Entidad{
 		borde_der = pos_x + lbl.getX()/2;
 	}
 	
-	//Ataques
-	
-	public void atacarBase() {
-		ProyectilBase p = (ProyectilBase) fabrica_base.crearProyectil(juego,this);
-		juego.agregarProyectilActivo(p);
-	}
-	
-	public void atacarMejorado() {
-		ProyectilMejorado p = (ProyectilMejorado) fabrica_mejorado.crearProyectil(juego,this);
-		juego.agregarProyectilActivo(p);
-	}
-	
-	//Getters y setters
-	
-	public int getDanioRecibido() {
-		return danio_recibido;
-	}
-	
-	//efecto pocion
+	/**
+	 * Metodo jugar
+	 */
 	public void curar() {
 		this.danio_recibido=0;
 	}
-
+	
+	/**
+	 * Establece el danio recibido
+	 * @param danio
+	 */
 	public void recibirDanio(int danio) {
 		this.danio_recibido += danio;
 		
@@ -114,26 +118,54 @@ public class Jugador extends Entidad{
 		}
 		
 	}
-
-	public int getPosX() {
-		return pos_x;
-	}
-
+	
+	/**
+	 * Establece la posicion respecto x
+	 * @param posx int
+	 */
 	public void setPosX(int posX) {
 		this.pos_x = posX;
 	}
-
-	public int getPosY() {
-		return pos_y;
-	}
-
+	
+	/**
+	 * Establece la posicion respecto y
+	 * @param posy int
+	 */
 	public void setPosY(int posY) {
 		this.pos_y = posY;
 	}
 	
+	/**
+	 * Establece las posiciones respecto x e y
+	 * @param x int
+	 * @param y int
+	 */
 	public void setPos(int x, int y) {
 		pos_x = x;
 		pos_y = y;
 	}
+
+	/**
+	 * Consulta el danio recibido
+	 * @return danio
+	 */
+	public int getDanioRecibido() {
+		return danio_recibido;
+	}
 	
+	/**
+	 * Contulta la posicion respecto x
+	 *  @param posicion respecto x
+	 */
+	public int getPosX() {
+		return pos_x;
+	}
+
+	/**
+	 * Consulta la posicion respecto y
+	 * @return posicion respecto y
+	 */
+	public int getPosY() {
+		return pos_y;
+	}
 }

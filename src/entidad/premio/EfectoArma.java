@@ -15,15 +15,22 @@ import visitor.VisitorPremio;
 
 public class EfectoArma extends Efecto {
 
+	/**
+	 * Crea un nuevo EfectoArma partiendo de ciertos parametros
+	 * @param lim_inf int
+	 * @param lim_sup int
+	 * @param nombre String
+	 * @param juego Juego
+	 */
 	public EfectoArma(int lim_inf,int lim_sup,String nombre, Juego juego) {
 		this.nombre=nombre;
 		this.juego=juego;
+		JLabel etiqueta = new JLabel();
+		EntidadGraficaPremio ent_graf = new EntidadGraficaPremioSnitch(new JLabel()); 
 		int direccion=-1;
 		int velocidad=2;
-		JLabel etiqueta = new JLabel();
-		EntidadGraficaPremio ent_graf = new EntidadGraficaPremioSnitch(etiqueta);
+		movimiento = new MovimientoVerticalPremio(this,direccion,velocidad,lim_inf,lim_sup);
 		v = new VisitorPremio(this);
-		movimiento = new MovimientoVerticalPremio(direccion,velocidad,this,lim_inf,lim_sup);
 	}
 	
 	@Override

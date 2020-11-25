@@ -18,12 +18,12 @@ public class MejoraPocion extends Mejora{
 	public MejoraPocion(int lim_inf,int lim_sup,String nombre, Juego juego) {
 		this.nombre=nombre;
 		this.juego=juego;
+		JLabel etiqueta = new JLabel();
+		EntidadGraficaPremio ent_graf = new EntidadGraficaPremioPocion(etiqueta);
 		int direccion=-1;
 		int velocidad=3;
-		JLabel etiqueta = new JLabel();
-		EntidadGraficaPremio ent = new EntidadGraficaPremioPocion(etiqueta);
+		movimiento = new MovimientoVerticalPremio(this, direccion, velocidad, lim_sup, lim_inf);
 		v = new VisitorPremio(this);
-		movimiento = new MovimientoVerticalPremio(direccion, velocidad, this, lim_sup, lim_inf);
 	}
 	@Override
 	public void activar() {

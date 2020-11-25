@@ -5,10 +5,18 @@ import entidad.proyectil.*;
 
 public class MovimientoVerticalProyectilJugador extends MovimientoVertical{
 	
-	public MovimientoVerticalProyectilJugador(int dir, int vel, Proyectil p, int lim) {
+	/**
+	 * Crea un nuevo MovimientoVerticalProyectilJugador partiendo de ciertos parametros
+	 * @param p Proyectil
+	 * @param dir int
+	 * @param vel int 
+	 * @param lim_inf int
+	 * @param lim_sup int
+	 */
+	public MovimientoVerticalProyectilJugador( Proyectil p, int dir, int vel,int lim) {
+		entidad = p;
 		direccion = dir;
 		velocidad = vel;
-		entidad = p;
 		lim_superior = lim;
 	}
 	

@@ -6,18 +6,17 @@ public class EntidadGraficaJugador extends EntidadGrafica{
 	private String harry = "/img/Harry.png", harry_daniado = "/img/HarryDaniado2.png";
 	private String[] harry_muerto = {"/img/HarryMuerte2.png","/img/HarryMuerte3.png"};
 	
+	/**
+	 * Crea una EntidadGraficaJugador nueva
+	 */
 	public EntidadGraficaJugador() {
 		etiqueta = new JLabel();
-		ImageIcon imagen;
 		grafica = new ImageIcon();
-		imagen = new ImageIcon(this.getClass().getResource(harry));
+		ImageIcon imagen = new ImageIcon(this.getClass().getResource(harry));
 		grafica.setImage(imagen.getImage());
 	}
 	
-	public void moverEtiqueta(int x, int y) {
-		etiqueta.setLocation(x,y);
-	}
-	
+	@Override
 	public void daniar() {
 		ImageIcon imagen;
 		
@@ -30,6 +29,12 @@ public class EntidadGraficaJugador extends EntidadGrafica{
 		grafica.setImage(imagen.getImage());
 	}
 	
+	@Override
+	public void moverEtiqueta(int x, int y) {
+		etiqueta.setLocation(x,y);
+	}
+	
+	@Override
 	public void muerte() {
 		ImageIcon imagen;
 		

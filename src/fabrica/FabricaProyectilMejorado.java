@@ -8,9 +8,14 @@ import juego.Juego;
 
 public class FabricaProyectilMejorado implements FabricaProyectil{
 
-	@Override
+	/**
+	 * Crea un nuevo ProyectilMejorado partiendo de ciertos parametros
+	 * @param juego Juego
+	 * @param entidad Entidad
+	 * @return proyectil mejorado
+	 */
 	public Proyectil crearProyectil(Juego juego, Entidad e) {
-		return new ProyectilMejorado(1000, juego, (Jugador) e);
+		return new ProyectilMejorado(juego, (Jugador) e, 1000);
 	}
 
 }

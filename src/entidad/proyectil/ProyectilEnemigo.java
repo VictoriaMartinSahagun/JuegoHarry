@@ -13,14 +13,22 @@ import visitor.Visitor;
 import entidad.enemigo.*;
 
 public class ProyectilEnemigo extends Proyectil{
-	public ProyectilEnemigo(int lim_inf,int lim_sup, Juego juego, Enemigo e) {
+	
+	/**
+	 * Crea un nuevo ProyectilEnemigo partiendo de ciertos parametros 
+	 * @param juego Juego
+	 * @param e Enemigo
+	 * @param lim_inf int
+	 * @param lim_sup int
+	 */
+	public ProyectilEnemigo(Juego juego, Enemigo e, int lim_inf,int lim_sup) {
+		this.juego = juego;
 		JLabel lbl = new JLabel();
+		this.grafica = new EntidadGraficaProyectilEnemigo(lbl);
 		this.direccion =-1;
 		this.velocidad = 1;
 		this.cap_penetracion = 5;
-		this.grafica = new EntidadGraficaProyectilEnemigo(lbl);
-		this.movimiento = new MovimientoVerticalProyectilEnemigo(direccion,velocidad,this,lim_inf,lim_sup);
-		this.juego = juego;
+		this.movimiento = new MovimientoVerticalProyectilEnemigo(this,direccion,velocidad,lim_inf,lim_sup);
 		
 		pos_y = e.getBordeAbajo();
 		pos_x = e.getPosX();
@@ -31,13 +39,17 @@ public class ProyectilEnemigo extends Proyectil{
 		borde_der = pos_x + lbl.getX()/2;
 	}
 	
-	public void colisionar() {
-		juego.getJugador().recibirDanio(cap_penetracion);
-	}
 
 	@Override
 	public void aceptar(Visitor v) {
 		v.visitarProyectilEnemigo(this);
+	}
+	
+	/**
+	 * Metodo colisionar
+	 */
+	public void colisionar() {
+		juego.getJugador().recibirDanio(cap_penetracion);
 	}
 
 	@Override

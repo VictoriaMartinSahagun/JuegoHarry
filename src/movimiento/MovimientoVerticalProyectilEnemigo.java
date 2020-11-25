@@ -6,10 +6,18 @@ import entidad.proyectil.ProyectilEnemigo;
 
 public class MovimientoVerticalProyectilEnemigo extends MovimientoVertical{
 
-	public MovimientoVerticalProyectilEnemigo(int dir, int vel, ProyectilEnemigo p, int lim_inf, int lim_sup) {
+	/**
+	 * Crea un nuevo MovimientoVerticalProyectilEnemigo partiendo de ciertos parametros
+	 * @param p ProyectilEnemigo
+	 * @param dir int
+	 * @param vel int 
+	 * @param lim_inf int
+	 * @param lim_sup int
+	 */
+	public MovimientoVerticalProyectilEnemigo( ProyectilEnemigo p, int dir, int vel, int lim_inf, int lim_sup) {
+		entidad = p;
 		direccion = dir;
 		velocidad = vel;
-		entidad = p;
 		lim_inferior = lim_inf;
 		lim_superior = lim_sup;
 	}

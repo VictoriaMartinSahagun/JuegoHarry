@@ -5,7 +5,15 @@ import entidad.premio.Premio;
 
 public class MovimientoVerticalPremio extends MovimientoVertical{
 
-	public MovimientoVerticalPremio(int dir, int vel, Premio p, int lim_inf, int lim_sup) {
+	/**
+	 * Crea un nuevo MovimientoVerticalPremio partiendo de ciertos parametros
+	 * @param p Premio
+	 * @param dir int
+	 * @param vel int 
+	 * @param lim_inf int
+	 * @param lim_sup int
+	 */
+	public MovimientoVerticalPremio( Premio p, int dir, int vel, int lim_inf, int lim_sup) {
 		direccion = dir;
 		velocidad = vel;
 		entidad = p;

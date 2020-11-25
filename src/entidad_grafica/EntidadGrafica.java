@@ -7,33 +7,72 @@ public abstract class EntidadGrafica {
 	protected JLabel etiqueta;
 	protected ImageIcon grafica;
 	
-	public abstract JLabel getEtiqueta();
+	/**
+	 * Establece la grafica inicial
+	 */
+	public void iniciar() {}
 	
+	/**
+	 *  Establece la grafica de libertad
+	 */
+	public void liberar() {}
+	
+	/**
+	 *  Establece la grafica de disparo
+	 */
+	public void disparo() {}
+	
+	/**
+	 *  Establece la grafica de daño
+	 */
+	public void daniar() {}
+	
+	/**
+	 * Desaparece la grafica
+	 */
+	public void desaparecer() {
+		this.etiqueta.setVisible(false);
+	}
+	
+	/**
+	 * Mueve la etiqueta segun las coordenadas x e y
+	 * @param x int
+	 * @param y int
+	 */
+	public void moverEtiqueta(int x, int y) {}
+	
+	/**
+	 * Establece la grafica de muerto
+	 */
+	public void muerte() {}
+	
+	/**
+	 * Establece la etiqueta 
+	 * @param etiqueta JLabel 
+	 */
 	public void setEtiqueta(JLabel etiqueta) {
 		this.etiqueta = etiqueta;
 	}
 	
-	public ImageIcon getGrafica() {
-		return grafica;
-	}
-	
+	/**
+	 * Establece la grafica
+	 * @param grafica ImageIcon
+	 */
 	public void setGrafica(ImageIcon grafica) {
 		this.grafica = grafica;
 	}
 	
-	public void iniciar() {}
+	/**
+	 * Consulta la etiqueta 
+	 * @return etiqueta
+	 */
+	public abstract JLabel getEtiqueta();
 	
-	public void liberar() {}
-	
-	public void disparo() {}
-	
-	public void daniar() {}
-	
-	public void desaparecer() {
-		//this.etiqueta.setVisible(false);
+	/**
+	 * Consulta la grafica
+	 * @return grafica
+	 */
+	public ImageIcon getGrafica() {
+		return grafica;
 	}
-	
-	public void moverEtiqueta(int x, int y) {}
-	
-	public void muerte() {}
 }

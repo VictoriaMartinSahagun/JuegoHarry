@@ -1,22 +1,16 @@
 package gui;
 
 import java.awt.BorderLayout;
-import java.awt.EventQueue;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-
 import audio.AudioPlayer;
 import img.ImagenFondo;
-
 import javax.swing.JButton;
-import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 public class JFrameCarga extends JFrame {
@@ -24,13 +18,14 @@ public class JFrameCarga extends JFrame {
 	private AudioPlayer ap;
 	private Thread audio;
 	
+	//Metodo principal
 	public static void main(String[] args) {
 		JFrameCarga frame_carga = new JFrameCarga();
 		frame_carga.setVisible(true);
 	}
 	
 	/**
-	 * Create the frame.
+	 * Metodo creo frame carga
 	 */
 	public JFrameCarga() {
 		
@@ -66,18 +61,26 @@ public class JFrameCarga extends JFrame {
 		panel_carga.add(boton_inicio);
 		
 	}
+	
+	/**
+	 * Metodo iniciar audio
+	 */
 	private void initAudio() {
 		//audioOn();
 	}
 	
+	/**
+	 * Metodo encender audio
+	 */
 	private void audioOn() {
 		ap = new AudioPlayer("/audio/musica_espera.mp3");
 		audio = new Thread(ap);
 		audio.start();
 	}
 
-
-
+	/**
+	 * Metodo apagar audio
+	 */
 	private void audioOff() {
 		ap = null;
 		audio.stop();

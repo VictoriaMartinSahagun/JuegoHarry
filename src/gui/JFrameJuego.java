@@ -47,7 +47,7 @@ public class JFrameJuego extends JFrame {
 	private JTextField textField;
 	
 	/**
-	 * Create the frame.
+	 * Metodo creo el frame del juego
 	 */
 	public JFrameJuego() {
 		
@@ -69,11 +69,17 @@ public class JFrameJuego extends JFrame {
 		
 	}
 	
+	/**
+	 * Metodo inicio el juego
+	 */
 	private void initJuego(){
 		juego = new Juego();
 		juego.iniciar();
 	}
 	
+	/**
+	 * Metodo inicio la gui
+	 */
 	private void initGUI() {
 		try {
 			
@@ -122,10 +128,17 @@ public class JFrameJuego extends JFrame {
 		}
 	}
 	
+	/**
+	 * Metodo cierro la ventana
+	 * @param evt WindowEvent
+	 */
 	private void thisWindowClosing(WindowEvent evt) {
 		cerrarJuego();
 	}
 	
+	/**
+	 * Metodo cerrar juego
+	 */
 	private void cerrarJuego() {
 		this.dispose();
 		System.exit(0);

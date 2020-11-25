@@ -8,11 +8,16 @@ import entidad.enemigo.Enemigo;
 import fabrica.*;
 
 public class Horda {
+	private Juego juego;
 	private Enemigo[] horda;
 	private int enemigos_restantes;
-	private Juego juego;
 	
-	public Horda(int dificultad,Juego j) {
+	/**
+	 * Crea una nueva Horda partiendo de ciertos parametros
+	 * @param j Juego
+	 * @param dificultad int
+	 */
+	public Horda(Juego j, int dificultad) {
 		this.juego = j;
 		switch (dificultad) {
 			case 1: crearHorda(8,5);
@@ -23,22 +28,43 @@ public class Horda {
 		
 	}
 
-	public Enemigo[] getHorda() {
-		return horda;
-	}
-
+	/**
+	 * Establece la horda
+	 * @param horda Enemigo[]
+	 */
 	public void setHorda(Enemigo[] horda) {
 		this.horda = horda;
 	}
-
-	public int getEnemigosRestantes() {
-		return enemigos_restantes;
-	}
-
+	
+	/**
+	 * Establece los enemigos restantes
+	 * @param enemigos_restantes int
+	 */
 	public void setEnemigosRestantes(int enemigos_restantes) {
 		this.enemigos_restantes = enemigos_restantes;
 	}
 	
+	/**
+	 * Consulta la horda
+	 * @return horda
+	 */
+	public Enemigo[] getHorda() {
+		return horda;
+	}
+
+	/**
+	 * Consulta los enemigos restantes
+	 * @return cantidad de enemigos
+	 */
+	public int getEnemigosRestantes() {
+		return enemigos_restantes;
+	}
+
+	/**
+	 * Crea una horda con determinada cantidad de enemigos y una probabilidad de obtener enemigos mas fuertes
+	 * @param cant_enemigos int
+	 * @param probabilidad int
+	 */
 	private void crearHorda(int cant_enemigos, int probabilidad) {
 		int randInt,posx,posy=0;
 		JLabel etiquetaEnemigo;

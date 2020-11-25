@@ -8,6 +8,14 @@ import juego.Juego;
 
 public class FabricaEnemigoBeta implements FabricaEnemigo{
 
+	/**
+	 * Crea un nuevo EnemigoBeta partiendo de ciertos parametros
+	 * @param j Juego
+	 * @param etiqueta JLabel
+	 * @param pos_x int
+	 * @param pos_y int
+	 * @return enemigo beta
+	 */
 	public Enemigo crearEnemigo(Juego j, JLabel etiqueta, int pos_x, int pos_y) {
 		return new EnemigoBeta(j,etiqueta,0,1000, pos_x, pos_y);
 	}

@@ -17,11 +17,11 @@ public class EfectoCuarentena extends Efecto{
 	public EfectoCuarentena(int lim_inf,int lim_sup,String nombre, Juego juego) {
 		this.nombre=nombre;
 		this.juego=juego;
+		JLabel etiqueta = new JLabel();
+		EntidadGraficaPremioTiempo ent_graf = new EntidadGraficaPremioTiempo(etiqueta);
 		int direccion=-1;
 		int velocidad=2;
-		JLabel etiqueta = new JLabel();
-		EntidadGraficaPremioTiempo ent = new EntidadGraficaPremioTiempo(etiqueta);
-		movimiento = new MovimientoVerticalPremio(direccion,velocidad,this,lim_inf,lim_sup);
+		movimiento = new MovimientoVerticalPremio(this,direccion,velocidad,lim_inf,lim_sup);
 		v = new VisitorPremio(this);
 	}
 	

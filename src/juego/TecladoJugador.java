@@ -5,11 +5,17 @@ import java.awt.event.KeyListener;
 import entidad.jugador.Jugador;
 
 public class TecladoJugador implements KeyListener{
-	
-	private Jugador j;
 	private Juego juego;
+	private Jugador j;
 	private int limite_izq, limite_der;
 	
+	/**
+	 * Crea un nuevo TecladoJugador partiendo de ciertos parametros
+	 * @param juego Juego
+	 * @param j Jugador
+	 * @param lim_izq int
+	 * @param lim_der int
+	 */
 	public TecladoJugador(Juego juego, Jugador j, int lim_izq, int lim_der) {
 		this.juego = juego;
 		this.j = j;

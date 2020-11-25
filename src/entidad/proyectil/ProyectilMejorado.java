@@ -15,13 +15,19 @@ import movimiento.*;
 public class ProyectilMejorado extends Proyectil{
 	private JLabel lbl;
 	
-	public ProyectilMejorado(int lim, Juego juego, Jugador j) {
+	/**
+	 * Crea un nuevo ProyectilMejorado partiendo de ciertos parametros
+	 * @param juego Juego
+	 * @param j Jugador
+	 * @param lim int
+	 */
+	public ProyectilMejorado(Juego juego, Jugador j,int lim) {
 		lbl = new JLabel();
 		direccion = MovimientoVertical.ARRIBA;
 		velocidad = 1;
 		cap_penetracion = 10;
 		grafica = new EntidadGraficaProyectilMejorado(lbl);
-		movimiento = new MovimientoVerticalProyectilJugador(direccion,velocidad,this,lim);
+		movimiento = new MovimientoVerticalProyectilJugador(this,direccion,velocidad,lim);
 	    this.juego = juego;
 	    
 	    pos_y = j.getBordeArriba();
@@ -38,10 +44,18 @@ public class ProyectilMejorado extends Proyectil{
 		v.visitarProyectilMejorado(this);
 	}
 	
+	/**
+	 * Establece el danio de la colision con un enemigo alfa
+	 * @param e EnemigoAlfa
+	 */
 	public void colisionarAlfa(EnemigoAlfa e) {
 		e.recibirDanio(cap_penetracion);
 	}
 	
+	/**
+	 * Establece el danio de la colision con un enemigo beta
+	 * @param e EnemigoBeta
+	 */
 	public void colisionarBeta(EnemigoBeta e) {
 		e.recibirDanio(cap_penetracion);
 	}
