@@ -30,14 +30,17 @@ public class Jugador extends Entidad{
 		v = new VisitorJugador(this);
 		proyectil_actual = "Base";
 		
-		borde_arriba =  pos_y + ent_graf.getEtiqueta().getY()/2;
-		borde_abajo = pos_y - ent_graf.getEtiqueta().getY()/2;
-		borde_izq = pos_x - ent_graf.getEtiqueta().getX()/2;
-		borde_der = pos_x + ent_graf.getEtiqueta().getX()/2;
-		
 		actualizarBordes();
 		
 		juego.porAgregarEntidad(this);
+	}
+	
+	public void atacar() {
+		if(proyectil_actual=="Base") {
+			atacarBase();
+		}else {
+			atacarMejorado();
+		}
 	}
 	
 	/**
@@ -89,9 +92,7 @@ public class Jugador extends Entidad{
 	 * Actualiza los bordes del jugador.
 	 */
 	private void actualizarBordes() {
-		JLabel lbl;
-		
-		lbl = ent_graf.getEtiqueta();
+		JLabel lbl = ent_graf.getEtiqueta();
 		
 		borde_arriba =  pos_y + lbl.getY()/2;
 		borde_abajo = pos_y - lbl.getY()/2;

@@ -54,7 +54,7 @@ public class TecladoJugador implements KeyListener{
 			}
 			//disparo
 			case KeyEvent.VK_ENTER: {
-				//TODO Disparo
+				j.atacar();
 				break;
 			}
 			

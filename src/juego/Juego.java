@@ -26,8 +26,6 @@ public class Juego implements Runnable{
     	porAgregar = new ArrayList<Entidad>();
     	
     	mapa = new Mapa();
-
-    	
     	harry = new Jugador(this);
     	
     	hordas = new Horda[4];
