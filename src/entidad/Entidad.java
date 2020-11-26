@@ -106,5 +106,15 @@ public abstract class Entidad {
 		return ent_graf;
 	}
 
+	public Juego getJuego() {
+		return juego;
+	}
+
+	public void setJuego(Juego juego) {
+		this.juego = juego;
+	}
+	
+	
+
 }
 

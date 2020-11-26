@@ -26,7 +26,6 @@ public class EntidadGraficaEnemigo extends EntidadGrafica {
 	
 	@Override
 	public void liberar() {
-		//ver como reproducir un gif y hacer q seaa herido, agarre la media y quede como bueno
 		ImageIcon nuevo = new ImageIcon(this.getClass().getResource(this.imagenes[1]));
 		grafica = nuevo;
 	}

@@ -28,7 +28,7 @@ public class MovimientoVerticalProyectilJugador extends MovimientoVertical{
 		
 		//si se pasa del rango desaparece
 		if (pos_y <= this.lim_superior) {
-			//entidad.destruir();
+			entidad.getJuego().porEliminarEntidad(entidad);
 		}else {
 			lbl.setLocation(lbl.getX(), pos_y);
 		}
