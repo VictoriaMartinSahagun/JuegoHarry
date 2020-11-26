@@ -136,9 +136,7 @@ public class Juego implements Runnable{
 	}
 	
 	@Override
-	public void run() {
-		int cant=0;
-		
+	public void run() {		
 		while(true) {
 			accionar();
 			
@@ -147,7 +145,6 @@ public class Juego implements Runnable{
 				e.getEntidadGrafica().iniciar();
 				gui.getPanel().add(e.getEntidadGrafica().getEtiqueta());
 				e.getEntidadGrafica().getEtiqueta().setVisible(true);
-				cant++;
 			}
 			por_agregar = new ArrayList<Entidad>();
 			
@@ -166,26 +163,6 @@ public class Juego implements Runnable{
 		}
 		
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
     
 }

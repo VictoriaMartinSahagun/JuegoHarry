@@ -19,12 +19,10 @@ public class VisitorProyectilMejorado extends Visitor{
 	@Override
 	public void visitarEnemigoAlfa(EnemigoAlfa e) {
 		p.colisionarAlfa(e);
-		p.desactivar();
 	}
 	
 	@Override
 	public void visitarEnemigoBeta(EnemigoBeta e) {
 		p.colisionarBeta(e);
-		p.desactivar();
 	}
 }

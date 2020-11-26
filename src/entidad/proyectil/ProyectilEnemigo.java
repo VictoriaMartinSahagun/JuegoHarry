@@ -20,7 +20,7 @@ public class ProyectilEnemigo extends Proyectil{
 	public ProyectilEnemigo(Juego juego, Enemigo e, int lim_inf,int lim_sup) {
 		this.juego = juego;
 		JLabel lbl = new JLabel();
-		this.grafica = new EntidadGraficaProyectilEnemigo(lbl);
+		this.ent_graf = new EntidadGraficaProyectilEnemigo(lbl);
 		this.direccion =-1;
 		this.velocidad = 1;
 		this.cap_penetracion = 5;

@@ -32,7 +32,7 @@ public class EnemigoAlfa extends Enemigo{
 		velocidad = 10;
 		movimiento = new MovimientoVerticalEnemigo(this,direccion,velocidad, lim_inf,lim_sup);
 		fabrica = new FabricaProyectilEnemigo();
-	//	v = new Visitor();
+		v = new VisitorEnemigo(this);
 		
 		delay = 0;
 	}

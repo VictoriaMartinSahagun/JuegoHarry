@@ -53,7 +53,7 @@ public class TecladoJugador implements KeyListener{
 				break;
 			}
 			//disparo
-			case KeyEvent.VK_ENTER: {
+			case KeyEvent.VK_SPACE: {
 				j.atacar();
 				break;
 			}

@@ -23,9 +23,11 @@ public class ProyectilBase extends Proyectil{
 	public ProyectilBase(Juego juego, Jugador j, int lim) {
 		this.juego = juego;
 		lbl = new JLabel();
-		grafica = new EntidadGraficaProyectilBase(lbl);
-		direccion = MovimientoVertical.ARRIBA;
-		velocidad = 1;
+		JLabel label_jugador = j.getEntidadGrafica().getEtiqueta();
+		lbl.setBounds(j.getPosX()+35, label_jugador.getY()-80, 50, 100);
+		ent_graf = new EntidadGraficaProyectilBase(lbl);
+		direccion = MovimientoVertical.ABAJO;
+		velocidad = 10;
 		cap_penetracion = 5;
 		movimiento = new MovimientoVerticalProyectilJugador(this,direccion,velocidad,lim);
 		visitor = new VisitorProyectilBase(this);
@@ -63,7 +65,7 @@ public class ProyectilBase extends Proyectil{
 	@Override
 	public void accionar() {
 		//cada 3 llamadas al hilo muevo el proyectil
-		if (delay++ % 3==0)
+		//if (delay++ % 3==0)
 			this.mover();
 	}
 	

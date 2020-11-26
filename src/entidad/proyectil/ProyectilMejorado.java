@@ -27,7 +27,7 @@ public class ProyectilMejorado extends Proyectil{
 		direccion = MovimientoVertical.ARRIBA;
 		velocidad = 1;
 		cap_penetracion = 10;
-		grafica = new EntidadGraficaProyectilMejorado(lbl);
+		ent_graf = new EntidadGraficaProyectilMejorado(lbl);
 		movimiento = new MovimientoVerticalProyectilJugador(this,direccion,velocidad,lim);
 	    visitor = new VisitorProyectilMejorado(this);
 		

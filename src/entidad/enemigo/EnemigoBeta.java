@@ -9,6 +9,7 @@ import fabrica.FabricaProyectilEnemigo;
 import juego.Juego;
 import movimiento.MovimientoVerticalEnemigo;
 import visitor.Visitor;
+import visitor.VisitorEnemigo;
 
 public class EnemigoBeta extends Enemigo{
 	protected int delay;
@@ -32,7 +33,7 @@ public class EnemigoBeta extends Enemigo{
 		velocidad = 3;
 		movimiento = new MovimientoVerticalEnemigo( this,direccion,velocidad,lim_inf,lim_sup);
 		fabrica = new FabricaProyectilEnemigo();
-		//v = new Visitior();
+		v = new VisitorEnemigo(this);
 		
 		delay =0;
 	}
