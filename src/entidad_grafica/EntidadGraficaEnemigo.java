@@ -15,12 +15,13 @@ public class EntidadGraficaEnemigo extends EntidadGrafica {
 		this.etiqueta=etiqueta;
 		grafica = new ImageIcon();
 		imagenes = new String[] {"/img/ElfoBueno.png","/img/ElfoLibre.png","/img/ElfoMalo.png","/img/ElfoMaloHerido.png"};
+		etiqueta.setIcon(grafica);
 	}
 	
 	@Override
 	public void iniciar() {
 		ImageIcon nuevo = new ImageIcon(this.getClass().getResource(this.imagenes[2]));
-		grafica = nuevo;
+		grafica.setImage(nuevo.getImage());
 	}
 	
 	@Override
@@ -29,7 +30,7 @@ public class EntidadGraficaEnemigo extends EntidadGrafica {
 		ImageIcon nuevo = new ImageIcon(this.getClass().getResource(this.imagenes[1]));
 		grafica = nuevo;
 	}
-
+	
 	@Override
 	public void daniar() {
 		ImageIcon nuevo = new ImageIcon(this.getClass().getResource(this.imagenes[3]));
@@ -40,7 +41,7 @@ public class EntidadGraficaEnemigo extends EntidadGrafica {
 	public void desaparecer() {
 		this.etiqueta.setVisible(false);
 	}
-
+	
 	/**
 	 * Establece las imagenes de la entidad grafica
 	 * @param img arreglo de nuevas imagenes de la entidad grafica

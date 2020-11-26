@@ -1,10 +1,7 @@
 package entidad.enemigo;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import java.awt.geom.Area;
 import javax.swing.JLabel;
-
 import entidad.Entidad;
 import entidad.proyectil.ProyectilEnemigo;
 import entidad_grafica.EntidadGraficaEnemigo;
@@ -31,13 +28,11 @@ public class EnemigoBeta extends Enemigo{
 		danio_ataque=10;
 		ent_graf = new EntidadGraficaEnemigo(label);
 		rango = 15;
-		direccion = -1;
+		direccion = 1;
 		velocidad = 3;
 		movimiento = new MovimientoVerticalEnemigo( this,direccion,velocidad,lim_inf,lim_sup);
 		fabrica = new FabricaProyectilEnemigo();
 		//v = new Visitior();
-		
-		actualizarBordes();
 		
 		delay =0;
 	}
@@ -54,39 +49,8 @@ public class EnemigoBeta extends Enemigo{
 	}
 
 	@Override
-	public List<Entidad> detectarColisiones() {
-		List<Entidad> lista = new ArrayList<Entidad>();
-		
-		for (Entidad e: juego.getMapa().getEntidadesActivas()) {
-			if( (e.getBordeIzq()>=borde_izq && e.getBordeIzq()<=borde_der) || (e.getBordeDer()>=borde_izq && e.getBordeDer()<=borde_der) ) {
-				
-				if(borde_abajo<=e.getBordeArriba()) {
-					lista.add(e);
-				}
-				
-			}
-		}
-		return lista;
-	}
-
-	@Override
 	public void mover() {
 		movimiento.mover();
-		actualizarBordes();
-	}
-	
-	/**
-	 * Actualiza los bordes del enemigo.
-	 */
-	private void actualizarBordes() {
-		JLabel lbl;
-		
-		lbl = ent_graf.getEtiqueta();
-		
-		borde_arriba =  pos_y + lbl.getY()/2;
-		borde_abajo = pos_y - lbl.getY()/2;
-		borde_izq = pos_x - lbl.getX()/2;
-		borde_der = pos_x + lbl.getX()/2;
 	}
 	
 	/**
@@ -110,10 +74,10 @@ public class EnemigoBeta extends Enemigo{
 	public void accionar() {
 		//si tiene poca vida lo muevo cada 4 llamadas, sino cada 7
 		if (this.vida<50) {
-			if (delay++ % 4 == 0)
+			//if (delay++ % 4 == 0)
 				this.mover();
 		}else {
-			if (delay++ % 7 ==0)
+			//if (delay++ % 7 ==0)
 				this.mover();
 		}
 	}

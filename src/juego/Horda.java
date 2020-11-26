@@ -20,10 +20,10 @@ public class Horda {
 	public Horda(Juego j, int dificultad) {
 		this.juego = j;
 		switch (dificultad) {
-			case 1: crearHorda(8,5);
-			case 2: crearHorda(12,4);
-			case 3: crearHorda(16,3);
-			case 4: crearHorda(20,2);
+			case 1: crearHorda(8,5); break;
+			case 2: crearHorda(12,4); break;
+			case 3: crearHorda(16,3); break;
+			case 4: crearHorda(20,2); break;
 		}
 		
 	}
@@ -72,7 +72,7 @@ public class Horda {
 		Enemigo enemigo;
 		Random rand = new Random();
 		horda = new Enemigo[cant_enemigos];
-		
+		int cant=0;
 		int cantLineas = cant_enemigos / 4;
 		int contEnemigos=0;
 		
@@ -93,7 +93,9 @@ public class Horda {
 				posy=posy+150;
 				horda[contEnemigos++] = enemigo;
 				juego.porAgregarEntidad(enemigo);
+				cant++;
 			}
 		}
+		//System.out.println("enemigos creados: "+cant);
 	}
 }

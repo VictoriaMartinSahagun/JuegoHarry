@@ -30,9 +30,7 @@ public class Jugador extends Entidad{
 		v = new VisitorJugador(this);
 		proyectil_actual = "Base";
 		
-		actualizarBordes();
-		
-		juego.porAgregarEntidad(this);
+		//juego.porAgregarEntidad(this);
 	}
 	
 	public void atacar() {
@@ -63,41 +61,10 @@ public class Jugador extends Entidad{
 	public void aceptar(Visitor v) {
 		v.visitarJugador(this);
 	}
-	
-	@Override
-	public List<Entidad> detectarColisiones() {
-		List<Entidad> lista = new ArrayList<Entidad>();
-		
-		for (Entidad e : juego.getMapa().getEntidadesActivas()) {
-			if( (e.getBordeIzq()>=borde_izq && e.getBordeIzq()<=borde_der) || (e.getBordeDer()>=borde_izq && e.getBordeDer()<=borde_der) ) {
-				
-				if(borde_arriba>=e.getBordeAbajo()) {
-					lista.add(e);
-				}
-				
-			}
-		}
-		
-		
-		return lista;
-	}
 
 	@Override
 	public void mover() {
 		ent_graf.moverEtiqueta(pos_x, pos_y);
-		actualizarBordes();
-	}
-	
-	/**
-	 * Actualiza los bordes del jugador.
-	 */
-	private void actualizarBordes() {
-		JLabel lbl = ent_graf.getEtiqueta();
-		
-		borde_arriba =  pos_y + lbl.getY()/2;
-		borde_abajo = pos_y - lbl.getY()/2;
-		borde_izq = pos_x - lbl.getX()/2;
-		borde_der = pos_x + lbl.getX()/2;
 	}
 	
 	/**
@@ -185,4 +152,7 @@ public class Jugador extends Entidad{
 		// TODO Auto-generated method stub
 		
 	}
+	
+	
+	
 }

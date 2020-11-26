@@ -45,6 +45,7 @@ public class JFrameJuego extends JFrame {
 	private AudioPlayer ap;
 	private Thread audio;
 	private JTextField textField;
+	private Thread t;
 	
 	/**
 	 * Metodo creo el frame del juego
@@ -59,7 +60,7 @@ public class JFrameJuego extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 600, 600);
 		getContentPane().setLayout(new BorderLayout(0, 0));
-		
+		jPanelNivel = new JPanel();
 		
 		//Comienza el juego
 		initJuego();
@@ -73,8 +74,11 @@ public class JFrameJuego extends JFrame {
 	 * Metodo inicio el juego
 	 */
 	private void initJuego(){
-		juego = new Juego();
+		juego = new Juego(this);
 		juego.iniciar();
+		t = new Thread(juego);
+		t.start();
+		
 	}
 	
 	/**
@@ -92,37 +96,31 @@ public class JFrameJuego extends JFrame {
 				}
 			});
 			
-			{//Panel nivel
-				jPanelNivel = new JPanel();
-				getContentPane().add(jPanelNivel, BorderLayout.CENTER);
-				jPanelNivel.setLayout(null);
-				jPanelNivel.setOpaque(false);
+			//Panel nivel
+			getContentPane().add(jPanelNivel, BorderLayout.CENTER);
+			jPanelNivel.setLayout(null);
+			jPanelNivel.setOpaque(false);
 				
-				{//Jugador
-					lbl_jugador = new JLabel();
-					lbl_jugador.setIcon(juego.getJugador().getEntidadGrafica().getGrafica());
-					lbl_jugador.setBounds(200, 500, 100, 100);
-					juego.getJugador().getEntidadGrafica().setEtiqueta(lbl_jugador);
-					juego.getJugador().mover();
-					jPanelNivel.add(lbl_jugador);
-					addKeyListener(new TecladoJugador(juego,juego.getJugador(),0,400));
-					
-				}
-				{//Contador vida
-					int cantVida = 100;
-					JLabel lblCantVida = new JLabel("Vida: "+cantVida+ " %");
-					lblCantVida.setHorizontalAlignment(SwingConstants.RIGHT);
-					lblCantVida.setForeground(Color.WHITE);
-					lblCantVida.setFont(new Font("Tempus Sans ITC", Font.BOLD, 20));
-					lblCantVida.setBounds(10, 11, 109, 29);
-					jPanelNivel.add(lblCantVida);
-				}
-				{//Agrego elementos activos a la gui
-					for(Entidad e: juego.getMapa().getEntidadesActivas()) {
-						jPanelNivel.add(e.getEntidadGrafica().getEtiqueta());
-					}
-				}
-			}
+			//Jugador
+			lbl_jugador = new JLabel();
+			lbl_jugador.setIcon(juego.getJugador().getEntidadGrafica().getGrafica());
+			lbl_jugador.setBounds(200, 500, 100, 100);
+			juego.getJugador().getEntidadGrafica().setEtiqueta(lbl_jugador);
+			juego.getJugador().mover();
+			jPanelNivel.add(lbl_jugador);
+			addKeyListener(new TecladoJugador(juego,juego.getJugador(),0,400));
+				
+			
+			//Contador vida
+			int cantVida = 100;
+			JLabel lblCantVida = new JLabel("Vida: "+cantVida+ " %");
+			lblCantVida.setHorizontalAlignment(SwingConstants.RIGHT);
+			lblCantVida.setForeground(Color.WHITE);
+			lblCantVida.setFont(new Font("Tempus Sans ITC", Font.BOLD, 20));
+			lblCantVida.setBounds(10, 11, 109, 29);
+			jPanelNivel.add(lblCantVida);
+
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -142,6 +140,10 @@ public class JFrameJuego extends JFrame {
 	private void cerrarJuego() {
 		this.dispose();
 		System.exit(0);
+	}
+	
+	public JPanel getPanel() {
+		return jPanelNivel;
 	}
 	
 	//private void initAudio() {}

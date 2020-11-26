@@ -1,10 +1,6 @@
 package entidad.proyectil;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.swing.JLabel;
-
 import entidad.Entidad;
 import entidad_grafica.EntidadGraficaProyectilEnemigo;
 import juego.Juego;
@@ -31,14 +27,6 @@ public class ProyectilEnemigo extends Proyectil{
 		this.movimiento = new MovimientoVerticalProyectilEnemigo(this,direccion,velocidad,lim_inf,lim_sup);
 		//visitor = new Visitor();
 		
-		pos_y = e.getBordeAbajo();
-		pos_x = e.getPosX();
-		
-		borde_arriba =  pos_y + lbl.getY()/2;
-		borde_abajo = pos_y - lbl.getY()/2;
-		borde_izq = pos_x - lbl.getX()/2;
-		borde_der = pos_x + lbl.getX()/2;
-		
 		delay = 0;
 	}
 	
@@ -53,23 +41,6 @@ public class ProyectilEnemigo extends Proyectil{
 	 */
 	public void colisionar() {
 		juego.getJugador().recibirDanio(cap_penetracion);
-	}
-
-	@Override
-	public List<Entidad> detectarColisiones() {
-		List<Entidad> lista = new ArrayList<Entidad>();
-		
-		for(Entidad e: juego.getMapa().getEntidadesActivas()) {
-			if( (e.getBordeIzq()>=borde_izq && e.getBordeIzq()<=borde_der) || (e.getBordeDer()>=borde_izq && e.getBordeDer()<=borde_der) ) {
-				
-				if(borde_abajo<=e.getBordeArriba()) {
-					lista.add(e);
-				}
-				
-			}
-		}
-		
-		return lista;
 	}
 
 	@Override

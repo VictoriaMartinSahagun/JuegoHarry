@@ -46,6 +46,8 @@ public abstract class EntidadGrafica {
 	 */
 	public void muerte() {}
 	
+	//Getters y setters
+	
 	/**
 	 * Establece la etiqueta 
 	 * @param etiqueta JLabel 
