@@ -30,7 +30,7 @@ public class EnemigoBeta extends Enemigo{
 		ent_graf = new EntidadGraficaEnemigo(label);
 		rango = 15;
 		direccion = 1;
-		velocidad = 3;
+		velocidad = 5;
 		movimiento = new MovimientoVerticalEnemigo( this,direccion,velocidad,lim_inf,lim_sup);
 		fabrica = new FabricaProyectilEnemigo();
 		v = new VisitorEnemigo(this);

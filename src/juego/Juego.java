@@ -144,12 +144,12 @@ public class Juego implements Runnable{
 				mapa.agregarEntidadActiva(e);
 				e.getEntidadGrafica().iniciar();
 				gui.getPanel().add(e.getEntidadGrafica().getEtiqueta());
-				e.getEntidadGrafica().getEtiqueta().setVisible(true);
 			}
 			por_agregar = new ArrayList<Entidad>();
 			
 			for(Entidad e: por_eliminar) {
-				//eliminar
+				mapa.eliminarEntidadActiva(e);
+				e.getEntidadGrafica().desaparecer();
 			}
 			por_eliminar = new ArrayList<Entidad>();
 			

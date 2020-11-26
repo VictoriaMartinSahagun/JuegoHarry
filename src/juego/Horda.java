@@ -80,9 +80,10 @@ public class Horda {
 		fabricaBase = new FabricaEnemigoAlfa();
 		fabricaMejorado = new FabricaEnemigoBeta();
 		
+		posx=0;
 		for(int l=0;l<cantLineas;l++) {
 			for(int i=0;i<4;i++) {
-				posx= rand.nextInt(500);
+				posx += 100;
 				etiquetaEnemigo = new JLabel();
 				etiquetaEnemigo.setBounds(posx, posy, 100, 100);
 				randInt = rand.nextInt(probabilidad);
@@ -95,6 +96,8 @@ public class Horda {
 				juego.porAgregarEntidad(enemigo);
 				//cant++;
 			}
+			posx=0;
+			posy+=100;
 		}
 		//System.out.println("enemigos creados: "+cant);
 	}

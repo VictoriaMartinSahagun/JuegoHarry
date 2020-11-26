@@ -65,8 +65,7 @@ public class ProyectilBase extends Proyectil{
 	@Override
 	public void accionar() {
 		//cada 3 llamadas al hilo muevo el proyectil
-		//if (delay++ % 3==0)
-			this.mover();
+		this.mover();
 	}
 	
 }

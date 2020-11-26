@@ -17,7 +17,7 @@ public class FabricaEnemigoBeta implements FabricaEnemigo{
 	 * @return enemigo beta
 	 */
 	public Enemigo crearEnemigo(Juego j, JLabel etiqueta, int pos_x, int pos_y) {
-		return new EnemigoBeta(j,etiqueta,0,1000, pos_x, pos_y);
+		return new EnemigoBeta(j,etiqueta,500,0, pos_x, pos_y);
 	}
 	
 }

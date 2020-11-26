@@ -15,7 +15,7 @@ public class FabricaProyectilBase implements FabricaProyectil{
 	 * @return proyectil base
 	 */
 	public Proyectil crearProyectil(Juego juego, Entidad e) {
-		return new ProyectilBase(juego, (Jugador) e,1000);
+		return new ProyectilBase(juego, (Jugador) e,0);
 	}
 
 }
