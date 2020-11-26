@@ -72,7 +72,8 @@ public class Horda {
 		Enemigo enemigo;
 		Random rand = new Random();
 		horda = new Enemigo[cant_enemigos];
-		int cant=0;
+		enemigos_restantes=cant_enemigos;
+		//int cant=0;
 		int cantLineas = cant_enemigos / 4;
 		int contEnemigos=0;
 		
@@ -80,22 +81,25 @@ public class Horda {
 		fabricaMejorado = new FabricaEnemigoBeta();
 		
 		for(int l=0;l<cantLineas;l++) {
-			posx=0;
 			for(int i=0;i<4;i++) {
+				posx= rand.nextInt(500);
 				etiquetaEnemigo = new JLabel();
-				etiquetaEnemigo.setBounds(200, 500, 100, 100);
+				etiquetaEnemigo.setBounds(posx, posy, 100, 100);
 				randInt = rand.nextInt(probabilidad);
 				if(randInt==0) {
 					enemigo = fabricaMejorado.crearEnemigo(juego, etiquetaEnemigo, posx, posy);
 				}else {
 					enemigo = fabricaBase.crearEnemigo(juego, etiquetaEnemigo, posx, posy);
 				}
-				posy=posy+150;
 				horda[contEnemigos++] = enemigo;
 				juego.porAgregarEntidad(enemigo);
-				cant++;
+				//cant++;
 			}
 		}
 		//System.out.println("enemigos creados: "+cant);
+	}
+	
+	public boolean termino() {
+		return (enemigos_restantes==0);
 	}
 }

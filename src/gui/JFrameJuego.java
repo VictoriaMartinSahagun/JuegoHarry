@@ -108,7 +108,7 @@ public class JFrameJuego extends JFrame {
 			juego.getJugador().getEntidadGrafica().setEtiqueta(lbl_jugador);
 			juego.getJugador().mover();
 			jPanelNivel.add(lbl_jugador);
-			addKeyListener(new TecladoJugador(juego,juego.getJugador(),0,400));
+			addKeyListener(new TecladoJugador(juego,juego.getJugador(),0,540));
 				
 			
 			//Contador vida

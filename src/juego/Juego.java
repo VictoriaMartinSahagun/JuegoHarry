@@ -13,11 +13,11 @@ import entidad.*;
 
 public class Juego implements Runnable{
 	private Jugador harry;
-	private Horda [] hordas;
+	private Horda horda;
 	private Mapa mapa;
 	private JFrameJuego gui;
 	private boolean activo;
-	
+	private int horda_actual;
 	private List<Entidad> por_eliminar;
 	private List<Entidad> por_agregar;
 	
@@ -35,16 +35,9 @@ public class Juego implements Runnable{
     	mapa = new Mapa();
     	harry = new Jugador(this);
     	
-    	hordas = new Horda[4];
+    	horda_actual=1;
     	//System.out.println("Horda 1");
-    	hordas[0] = new Horda(this,1);
-    	//System.out.println("Horda 2");
-    	hordas[1] = new Horda(this,2);
-    	//System.out.println("Horda 3");
-    	hordas[2] = new Horda(this,3);
-    	//System.out.println("Horda 4");
-    	hordas[3] = new Horda(this,4);
-    	
+    	horda = new Horda(this,horda_actual);
     	
     }
     
@@ -97,8 +90,8 @@ public class Juego implements Runnable{
      * Establece la horda 
      * @param horda Horda
      */
-    public void setHordas(Horda [] hordas) {
-		this.hordas = hordas;
+    public void setHordas(Horda hordas) {
+		this.horda = hordas;
 	}
     
     /**
@@ -121,8 +114,8 @@ public class Juego implements Runnable{
      * Consulta la horda
      * @return horda
      */
-	public Horda[] getHordas() {
-		return hordas;
+	public Horda getHordas() {
+		return horda;
 	}
 	
 	/**
@@ -134,7 +127,9 @@ public class Juego implements Runnable{
 	}
 
 	public void accionar() {
-		
+		if(horda.termino() && horda_actual<4) {
+			horda = new Horda(this,++horda_actual);
+		}
 		for (Entidad e: mapa.getEntidadesActivas()) {
 			e.accionar();
 		}
