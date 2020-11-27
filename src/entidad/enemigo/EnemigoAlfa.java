@@ -61,7 +61,8 @@ public class EnemigoAlfa extends Enemigo{
 		this.vida -= danio;
 		
 		if(this.vida <= 0) {
-			ent_graf.desaparecer();
+			//ent_graf.desaparecer();
+			this.juego.porEliminarEntidad(this);
 			//terminar juego?
 		}else {
 			ent_graf.daniar();

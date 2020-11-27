@@ -62,7 +62,8 @@ public class EnemigoBeta extends Enemigo{
 		this.vida -= danio;
 		
 		if(this.vida <= 0) {
-			ent_graf.desaparecer();
+			this.juego.porEliminarEntidad(this);
+			//ent_graf.desaparecer();
 			//terminar juego?
 		}else {
 			ent_graf.daniar();

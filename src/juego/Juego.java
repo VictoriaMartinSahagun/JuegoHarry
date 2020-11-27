@@ -151,6 +151,7 @@ public class Juego implements Runnable{
 			
 			for(Entidad e: por_eliminar) {
 				mapa.eliminarEntidadActiva(e);
+				e.getEntidadGrafica().desaparecer();
 				cont++;
 			}
 			//System.out.println("Eliminadas: "+cont);
