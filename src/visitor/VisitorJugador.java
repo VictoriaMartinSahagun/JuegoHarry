@@ -6,6 +6,7 @@ import entidad.jugador.Jugador;
 import entidad.premio.EfectoArma;
 import entidad.premio.EfectoCuarentena;
 import entidad.premio.MejoraPocion;
+import entidad.proyectil.ProyectilEnemigo;
 
 public class VisitorJugador extends Visitor{
 	
@@ -22,11 +23,19 @@ public class VisitorJugador extends Visitor{
 	@Override
 	public void visitarEnemigoAlfa(EnemigoAlfa e) {
 		j.recibirDanio(e.getDanioAtaque());
+		e.getMovimiento().moverArriba();
 	}
 	
 	@Override
 	public void visitarEnemigoBeta(EnemigoBeta e) {
 		j.recibirDanio(e.getDanioAtaque());
+		e.getMovimiento().moverArriba();
+	}
+	
+	public void visitarProyectilEnemigo(ProyectilEnemigo p) {
+		j.recibirDanio(p.getCapPenetracion());
+		p.desactivar();
+		System.out.println("Danio recibido: "+j.getDanioRecibido());
 	}
 	
 	@Override

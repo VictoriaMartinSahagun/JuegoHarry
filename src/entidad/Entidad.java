@@ -64,19 +64,6 @@ public abstract class Entidad {
 			
 		}
 		
-		/*Rectangle rect_this = this.getEntidadGrafica().getEtiqueta().getBounds();
-		
-		for (Entidad e: juego.getMapa().getEntidadesActivas()) {
-			//System.out.println(e.toString());
-			JLabel lbl_ent = e.getEntidadGrafica().getEtiqueta();
-			Rectangle rect_colision = SwingUtilities.computeIntersection(lbl_ent.getX(), lbl_ent.getY(), lbl_ent.getWidth(), lbl_ent.getHeight(), rect_this);	
-			
-			if (rect_colision.getWidth()>0 && rect_colision.getHeight()>0) {
-				lista.add(e);
-				System.out.println(this.toString()+"-"+e.toString());
-			}
-			
-		}*/
 		return lista;
 	}
 	
@@ -141,7 +128,7 @@ public abstract class Entidad {
 	}
 	
 	public String toString(Entidad e) {
-		return e.getClass().getName();
+		return e.getClass().getSimpleName();
 	}
 	
 

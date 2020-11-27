@@ -85,7 +85,7 @@ public class Horda {
 			for(int i=0;i<4;i++) {
 				posx += 100;
 				etiquetaEnemigo = new JLabel();
-				etiquetaEnemigo.setBounds(posx, posy, 100, 100);
+				etiquetaEnemigo.setBounds(posx, posy, 70, 70);
 				randInt = rand.nextInt(probabilidad);
 				if(randInt==0) {
 					enemigo = fabricaMejorado.crearEnemigo(juego, etiquetaEnemigo, posx, posy);

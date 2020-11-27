@@ -26,10 +26,6 @@ public class EntidadGraficaJugador extends EntidadGrafica{
 		
 		imagen = new ImageIcon(this.getClass().getResource(harry_daniado));
 		grafica.setImage(imagen.getImage());
-		
-		
-		imagen = new ImageIcon(this.getClass().getResource(harry));
-		grafica.setImage(imagen.getImage());
 	}
 	
 	@Override

@@ -18,6 +18,7 @@ public class EntidadGraficaEnemigo extends EntidadGrafica {
 		this.etiqueta=etiqueta;
 		grafica = new ImageIcon();
 		imagenes = new String[] {"/img/ElfoBueno.png","/img/ElfoLibre.png","/img/ElfoMalo.png","/img/ElfoMaloHerido.png"};
+		
 		etiqueta.setIcon(grafica);
 		etiqueta.setBorder(new LineBorder(Color.black));
 	}

@@ -30,8 +30,6 @@ public class MovimientoVerticalEnemigo extends MovimientoVertical {
 		lbl = entidad.getEntidadGrafica().getEtiqueta();
 		pos_y = lbl.getY() + direccion * velocidad;
 		
-		//System.out.println("estoy en: "+lbl.getX()+"-"+lbl.getY());
-		
 		//si llega al final del mapa, aparece arriba
 		if (pos_y >= this.lim_inferior) {
 			lbl.setLocation(lbl.getX(), this.lim_superior);
@@ -41,4 +39,17 @@ public class MovimientoVerticalEnemigo extends MovimientoVertical {
 		
 		entidad.setPosY(pos_y);
 	}
+	
+	public void moverArriba() {
+		JLabel lbl;
+		int pos_y;
+		
+		lbl = entidad.getEntidadGrafica().getEtiqueta();
+		pos_y = lbl.getY() + direccion * velocidad;
+		
+		lbl.setLocation(lbl.getX(), this.lim_superior);
+		
+		entidad.setPosY(pos_y);
+	}
+	
 }

@@ -151,17 +151,16 @@ public class Juego implements Runnable{
 			
 			for(Entidad e: por_eliminar) {
 				mapa.eliminarEntidadActiva(e);
-				e.getEntidadGrafica().desaparecer();
 				cont++;
 			}
-			//System.out.println(cont);
-			cont=0;
+			//System.out.println("Eliminadas: "+cont);
+			
 			por_eliminar = new ArrayList<Entidad>();
 			
 			gui.getPanel().repaint();
 			
 			try {
-				Thread.sleep(100);
+				Thread.sleep(50);
 			} catch (InterruptedException e1) {
 				e1.printStackTrace();
 			}

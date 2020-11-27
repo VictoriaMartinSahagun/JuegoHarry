@@ -1,6 +1,10 @@
 package entidad_grafica;
 
+import java.awt.Color;
+
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.border.LineBorder;
 
 public class EntidadGraficaProyectilEnemigo extends EntidadGraficaProyectil {
 	
@@ -10,9 +14,16 @@ public class EntidadGraficaProyectilEnemigo extends EntidadGraficaProyectil {
 	 */
 	public EntidadGraficaProyectilEnemigo(JLabel etiqueta) {
 		this.etiqueta=etiqueta;
-		imagen = "/img/AtaqueEnemigo.png";
+		grafica = new ImageIcon();
+		imagen = "/img/AtaqueMalo.png";
+		etiqueta.setIcon(grafica);
+		etiqueta.setBorder(new LineBorder(Color.black));
 	}
 	
-
+	@Override
+	public void iniciar() {
+		ImageIcon nuevo = new ImageIcon(this.getClass().getResource(imagen));
+		grafica.setImage(nuevo.getImage());
+	}
 	
 }

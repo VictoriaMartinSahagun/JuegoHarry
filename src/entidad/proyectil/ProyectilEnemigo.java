@@ -6,6 +6,7 @@ import entidad_grafica.EntidadGraficaProyectilEnemigo;
 import juego.Juego;
 import movimiento.MovimientoVerticalProyectilEnemigo;
 import visitor.Visitor;
+import visitor.VisitorProyectilEnemigo;
 import entidad.enemigo.*;
 
 public class ProyectilEnemigo extends Proyectil{
@@ -20,12 +21,14 @@ public class ProyectilEnemigo extends Proyectil{
 	public ProyectilEnemigo(Juego juego, Enemigo e, int lim_inf,int lim_sup) {
 		this.juego = juego;
 		JLabel lbl = new JLabel();
+		lbl.setBounds(e.getEntidadGrafica().getEtiqueta().getX(), e.getEntidadGrafica().getEtiqueta().getY()+80, 30, 45);
 		this.ent_graf = new EntidadGraficaProyectilEnemigo(lbl);
-		this.direccion =-1;
-		this.velocidad = 1;
+		this.direccion = 1;
+		this.velocidad = 5;
 		this.cap_penetracion = 5;
 		this.movimiento = new MovimientoVerticalProyectilEnemigo(this,direccion,velocidad,lim_inf,lim_sup);
-		//visitor = new Visitor();
+		
+		visitor = new VisitorProyectilEnemigo(this);
 		
 		delay = 0;
 	}
@@ -52,9 +55,10 @@ public class ProyectilEnemigo extends Proyectil{
 	@Override
 	public void accionar() {
 		this.mover();
+		
 		Iterable<Entidad> colisiones = this.detectarColisiones();
-		for (Entidad e:colisiones)
-			e.aceptar(this.v);
+		/*for (Entidad e:colisiones)
+			e.aceptar(this.v);*/
 		//this.mover();
 	}
 }

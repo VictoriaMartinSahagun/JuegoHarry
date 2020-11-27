@@ -20,11 +20,10 @@ public class ProyectilBase extends Proyectil{
 	 * @param j Jugador
 	 * @param lim
 	 */
-	public ProyectilBase(Juego juego, Jugador j, int lim) {
+	public ProyectilBase(Juego juego, Jugador jugador, int lim) {
 		this.juego = juego;
 		lbl = new JLabel();
-		JLabel label_jugador = j.getEntidadGrafica().getEtiqueta();
-		lbl.setBounds(j.getPosX()+35, label_jugador.getY()-80, 50, 100);
+		lbl.setBounds(jugador.getPosX()+35, jugador.getPosY()-80, 11, 45);
 		ent_graf = new EntidadGraficaProyectilBase(lbl);
 		direccion = MovimientoVertical.ABAJO;
 		velocidad = 2;

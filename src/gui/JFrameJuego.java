@@ -105,7 +105,7 @@ public class JFrameJuego extends JFrame {
 			//Jugador
 			lbl_jugador = new JLabel();
 			lbl_jugador.setIcon(juego.getJugador().getEntidadGrafica().getGrafica());
-			lbl_jugador.setBounds(200, 500, 100, 100);
+			lbl_jugador.setBounds(200, 500, 50, 100);
 			lbl_jugador.setBorder(new LineBorder(Color.black));
 			juego.getJugador().getEntidadGrafica().setEtiqueta(lbl_jugador);
 			juego.getJugador().mover();

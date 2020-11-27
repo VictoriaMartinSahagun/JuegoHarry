@@ -39,8 +39,8 @@ public class EnemigoAlfa extends Enemigo{
 	
 	@Override
 	public void atacar() {
-		ProyectilEnemigo proyectil = (ProyectilEnemigo) fabrica.crearProyectil(juego,this);
-		juego.porAgregarEntidad(proyectil);
+		ProyectilEnemigo p = (ProyectilEnemigo) fabrica.crearProyectil(juego,this);
+		juego.porAgregarEntidad(p);
 	}
 
 	@Override
@@ -71,12 +71,15 @@ public class EnemigoAlfa extends Enemigo{
 	@Override
 	public void accionar() {
 		Iterable<Entidad> colisiones = this.detectarColisiones();
+		
 		for (Entidad e:colisiones)
 			e.aceptar(this.v);
+		
 		this.mover();
 		
-		if (delay++ % 3 == 0);
-			//this.atacar();
+		/*if (++delay % 50 == 0) {
+			this.atacar();
+		}*/
 	}	
 	
 }

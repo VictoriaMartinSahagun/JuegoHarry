@@ -60,4 +60,6 @@ public abstract class Movimiento {
 	 * Metodo para mover
 	 */
 	public abstract void mover();
+	
+	public void moverArriba() {};
 }
