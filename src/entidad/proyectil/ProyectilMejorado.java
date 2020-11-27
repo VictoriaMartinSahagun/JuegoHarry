@@ -26,7 +26,7 @@ public class ProyectilMejorado extends Proyectil{
 		lbl = new JLabel();
 		direccion = MovimientoVertical.ARRIBA;
 		velocidad = 1;
-		cap_penetracion = 10;
+		cap_penetracion = 25;
 		ent_graf = new EntidadGraficaProyectilMejorado(lbl);
 		movimiento = new MovimientoVerticalProyectilJugador(this,direccion,velocidad,lim);
 	    visitor = new VisitorProyectilMejorado(this);

@@ -63,6 +63,7 @@ public class EnemigoBeta extends Enemigo{
 		
 		if(this.vida <= 0) {
 			this.juego.porEliminarEntidad(this);
+			this.juego.descontarEnemigo();
 			//ent_graf.desaparecer();
 			//terminar juego?
 		}else {

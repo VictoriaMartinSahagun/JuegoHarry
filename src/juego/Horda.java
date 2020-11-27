@@ -85,7 +85,7 @@ public class Horda {
 			for(int i=0;i<4;i++) {
 				posx += 100;
 				etiquetaEnemigo = new JLabel();
-				etiquetaEnemigo.setBounds(posx, posy, 70, 70);
+				etiquetaEnemigo.setBounds(posx, posy, 45, 50);
 				randInt = rand.nextInt(probabilidad);
 				if(randInt==0) {
 					enemigo = fabricaMejorado.crearEnemigo(juego, etiquetaEnemigo, posx, posy);
@@ -104,5 +104,10 @@ public class Horda {
 	
 	public boolean termino() {
 		return (enemigos_restantes==0);
+	}
+	
+	public void enemigoAbatido() {
+		enemigos_restantes--;
+		//System.out.println("Enemigos restantes:"+enemigos_restantes);
 	}
 }

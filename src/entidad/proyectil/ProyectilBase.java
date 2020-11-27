@@ -27,7 +27,7 @@ public class ProyectilBase extends Proyectil{
 		ent_graf = new EntidadGraficaProyectilBase(lbl);
 		direccion = MovimientoVertical.ABAJO;
 		velocidad = 2;
-		cap_penetracion = 5;
+		cap_penetracion = 20;
 		movimiento = new MovimientoVerticalProyectilJugador(this,direccion,velocidad,lim);
 		v = new VisitorProyectilBase(this);
 		
@@ -45,7 +45,7 @@ public class ProyectilBase extends Proyectil{
 	 */
 	public void colisionarAlfa(EnemigoAlfa e) {
 		e.recibirDanio(cap_penetracion);
-		System.out.println(ent_graf.getEtiqueta().getY()+"-"+e.getEntidadGrafica().getEtiqueta().getY());
+		//System.out.println(ent_graf.getEtiqueta().getY()+"-"+e.getEntidadGrafica().getEtiqueta().getY());
 	}
 	
 	/**

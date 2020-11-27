@@ -125,6 +125,10 @@ public class Juego implements Runnable{
 	public Mapa getMapa() {
 		return mapa;
 	}
+	
+	public void descontarEnemigo() {
+		this.horda.enemigoAbatido();
+	}
 
 	public void accionar() {
 		if(horda.termino() && horda_actual<4) {
