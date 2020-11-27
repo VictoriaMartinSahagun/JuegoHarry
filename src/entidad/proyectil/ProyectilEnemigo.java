@@ -24,7 +24,7 @@ public class ProyectilEnemigo extends Proyectil{
 		lbl.setBounds(e.getEntidadGrafica().getEtiqueta().getX(), e.getEntidadGrafica().getEtiqueta().getY()+80, 30, 45);
 		this.ent_graf = new EntidadGraficaProyectilEnemigo(lbl);
 		this.direccion = 1;
-		this.velocidad = 5;
+		this.velocidad = 2;
 		this.cap_penetracion = 5;
 		this.movimiento = new MovimientoVerticalProyectilEnemigo(this,direccion,velocidad,lim_inf,lim_sup);
 		

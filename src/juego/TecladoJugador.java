@@ -26,7 +26,7 @@ public class TecladoJugador implements KeyListener{
 	@Override
 	public void keyPressed(KeyEvent e) {
 		int pos_x = j.getPosX();
-		int factor_movimiento = 4;
+		int factor_movimiento = 8;
 		
 		switch(e.getKeyCode()){
 			

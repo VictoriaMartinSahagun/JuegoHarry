@@ -57,7 +57,7 @@ public class JFrameJuego extends JFrame {
 		this.setIconImage(new ImageIcon(this.getClass().getResource("/img/iconoFrame.png")).getImage());
 		ImagenFondo imagen_Fondo = new ImagenFondo(new ImageIcon(this.getClass().getResource("/img/FondoJuego.jpg")).getImage());
 		setContentPane(imagen_Fondo);
-		setTitle("Las aventuras de Potter");
+		setTitle("Las aventuras del gordo Potter");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 600, 600);
 		getContentPane().setLayout(new BorderLayout(0, 0));
@@ -106,7 +106,7 @@ public class JFrameJuego extends JFrame {
 			lbl_jugador = new JLabel();
 			lbl_jugador.setIcon(juego.getJugador().getEntidadGrafica().getGrafica());
 			lbl_jugador.setBounds(200, 500, 50, 100);
-			lbl_jugador.setBorder(new LineBorder(Color.black));
+			//lbl_jugador.setBorder(new LineBorder(Color.black));
 			juego.getJugador().getEntidadGrafica().setEtiqueta(lbl_jugador);
 			juego.getJugador().mover();
 			jPanelNivel.add(lbl_jugador);
