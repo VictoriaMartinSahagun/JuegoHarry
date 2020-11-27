@@ -27,10 +27,10 @@ public class ProyectilBase extends Proyectil{
 		lbl.setBounds(j.getPosX()+35, label_jugador.getY()-80, 50, 100);
 		ent_graf = new EntidadGraficaProyectilBase(lbl);
 		direccion = MovimientoVertical.ABAJO;
-		velocidad = 10;
+		velocidad = 2;
 		cap_penetracion = 5;
 		movimiento = new MovimientoVerticalProyectilJugador(this,direccion,velocidad,lim);
-		visitor = new VisitorProyectilBase(this);
+		v = new VisitorProyectilBase(this);
 		
 		delay=0;
 	}
@@ -46,6 +46,7 @@ public class ProyectilBase extends Proyectil{
 	 */
 	public void colisionarAlfa(EnemigoAlfa e) {
 		e.recibirDanio(cap_penetracion);
+		System.out.println(ent_graf.getEtiqueta().getY()+"-"+e.getEntidadGrafica().getEtiqueta().getY());
 	}
 	
 	/**
@@ -64,8 +65,12 @@ public class ProyectilBase extends Proyectil{
 
 	@Override
 	public void accionar() {
-		//cada 3 llamadas al hilo muevo el proyectil
 		this.mover();
+		Iterable<Entidad> colisiones = this.detectarColisiones();
+		for (Entidad e:colisiones)
+			e.aceptar(this.v);
+
+		//this.mover();
 	}
 	
 }

@@ -62,9 +62,12 @@ public class ProyectilMejorado extends Proyectil{
 
 	@Override
 	public void accionar() {
-		//cada 2 llamadas al metodo muevo el proyectil
-		if (delay++ % 2 ==0)
-			this.mover();
+		this.mover();
+		Iterable<Entidad> colisiones = this.detectarColisiones();
+		for (Entidad e:colisiones)
+			e.aceptar(this.v);
+		//this.mover();
+		
 	}
 	
 }

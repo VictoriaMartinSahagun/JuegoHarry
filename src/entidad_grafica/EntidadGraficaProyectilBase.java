@@ -1,7 +1,10 @@
 package entidad_grafica;
 
+import java.awt.Color;
+
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.border.LineBorder;
 
 public class EntidadGraficaProyectilBase extends EntidadGraficaProyectil {
 	
@@ -14,6 +17,7 @@ public class EntidadGraficaProyectilBase extends EntidadGraficaProyectil {
 		grafica = new ImageIcon();
 		imagen = "/img/HechizoBase.png";
 		etiqueta.setIcon(grafica);
+		etiqueta.setBorder(new LineBorder(Color.black));
 	}
 	
 	@Override

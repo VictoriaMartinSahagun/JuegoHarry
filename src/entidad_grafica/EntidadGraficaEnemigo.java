@@ -1,7 +1,10 @@
 package entidad_grafica;
 
+import java.awt.Color;
+
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.border.LineBorder;
 
 
 public class EntidadGraficaEnemigo extends EntidadGrafica {
@@ -16,6 +19,7 @@ public class EntidadGraficaEnemigo extends EntidadGrafica {
 		grafica = new ImageIcon();
 		imagenes = new String[] {"/img/ElfoBueno.png","/img/ElfoLibre.png","/img/ElfoMalo.png","/img/ElfoMaloHerido.png"};
 		etiqueta.setIcon(grafica);
+		etiqueta.setBorder(new LineBorder(Color.black));
 	}
 	
 	@Override
@@ -27,13 +31,13 @@ public class EntidadGraficaEnemigo extends EntidadGrafica {
 	@Override
 	public void liberar() {
 		ImageIcon nuevo = new ImageIcon(this.getClass().getResource(this.imagenes[1]));
-		grafica = nuevo;
+		grafica.setImage(nuevo.getImage());
 	}
 	
 	@Override
 	public void daniar() {
 		ImageIcon nuevo = new ImageIcon(this.getClass().getResource(this.imagenes[3]));
-		grafica = nuevo;
+		grafica.setImage(nuevo.getImage());
 	}
 	
 	@Override

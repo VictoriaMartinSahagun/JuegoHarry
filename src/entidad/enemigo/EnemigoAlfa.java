@@ -29,7 +29,7 @@ public class EnemigoAlfa extends Enemigo{
 		ent_graf = new EntidadGraficaEnemigo(etiqueta);
 		rango = 10;
 		direccion = 1;
-		velocidad = 10;
+		velocidad = 2;
 		movimiento = new MovimientoVerticalEnemigo(this,direccion,velocidad, lim_inf,lim_sup);
 		fabrica = new FabricaProyectilEnemigo();
 		v = new VisitorEnemigo(this);
@@ -65,14 +65,18 @@ public class EnemigoAlfa extends Enemigo{
 			//terminar juego?
 		}else {
 			ent_graf.daniar();
-			//ent_graf.danio();
 		}		
 	}
 
 	@Override
 	public void accionar() {
-		//if (delay++ % 7 ==0)
-			this.mover();
+		Iterable<Entidad> colisiones = this.detectarColisiones();
+		for (Entidad e:colisiones)
+			e.aceptar(this.v);
+		this.mover();
+		
+		if (delay++ % 3 == 0);
+			//this.atacar();
 	}	
 	
 }

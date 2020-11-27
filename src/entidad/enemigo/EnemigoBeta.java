@@ -30,7 +30,7 @@ public class EnemigoBeta extends Enemigo{
 		ent_graf = new EntidadGraficaEnemigo(label);
 		rango = 15;
 		direccion = 1;
-		velocidad = 5;
+		velocidad = 2;
 		movimiento = new MovimientoVerticalEnemigo( this,direccion,velocidad,lim_inf,lim_sup);
 		fabrica = new FabricaProyectilEnemigo();
 		v = new VisitorEnemigo(this);
@@ -73,14 +73,11 @@ public class EnemigoBeta extends Enemigo{
 
 	@Override
 	public void accionar() {
-		//si tiene poca vida lo muevo cada 4 llamadas, sino cada 7
-		if (this.vida<50) {
-			//if (delay++ % 4 == 0)
-				this.mover();
-		}else {
-			//if (delay++ % 7 ==0)
-				this.mover();
-		}
+		Iterable<Entidad> colisiones = this.detectarColisiones();
+		for (Entidad e:colisiones)
+			e.aceptar(this.v);
+		this.mover();
+		
 	}
 	
 }

@@ -149,8 +149,10 @@ public class Jugador extends Entidad{
 
 	@Override
 	public void accionar() {
-		// TODO Auto-generated method stub
-		
+		Iterable<Entidad> colisiones = this.detectarColisiones();
+		for (Entidad e:colisiones)
+			e.aceptar(this.v);
+
 	}
 	
 	

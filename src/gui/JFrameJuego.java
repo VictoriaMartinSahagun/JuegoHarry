@@ -21,6 +21,7 @@ import javax.swing.JToolBar;
 import javax.swing.SwingConstants;
 
 import javax.swing.WindowConstants;
+import javax.swing.border.LineBorder;
 
 import audio.AudioPlayer;
 import entidad.Entidad;
@@ -105,6 +106,7 @@ public class JFrameJuego extends JFrame {
 			lbl_jugador = new JLabel();
 			lbl_jugador.setIcon(juego.getJugador().getEntidadGrafica().getGrafica());
 			lbl_jugador.setBounds(200, 500, 100, 100);
+			lbl_jugador.setBorder(new LineBorder(Color.black));
 			juego.getJugador().getEntidadGrafica().setEtiqueta(lbl_jugador);
 			juego.getJugador().mover();
 			jPanelNivel.add(lbl_jugador);

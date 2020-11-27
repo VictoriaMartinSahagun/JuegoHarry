@@ -45,6 +45,10 @@ public class EfectoArma extends Efecto {
 
 	@Override
 	public void accionar() {
+		Iterable<Entidad> colisiones = this.detectarColisiones();
+		for (Entidad e:colisiones)
+			e.aceptar(this.v);
+
 		this.mover();
 	}
 

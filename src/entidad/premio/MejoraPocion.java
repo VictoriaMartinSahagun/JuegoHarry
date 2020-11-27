@@ -36,7 +36,11 @@ public class MejoraPocion extends Mejora{
 		movimiento.mover();
 	}
 	@Override
-	public void accionar() {
+	public void accionar(){
+		Iterable<Entidad> colisiones = this.detectarColisiones();
+		for (Entidad e:colisiones)
+			e.aceptar(this.v);
+
 		this.mover();
 	}
 

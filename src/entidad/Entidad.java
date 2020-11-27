@@ -1,8 +1,12 @@
 package entidad;
 
+import java.awt.Rectangle;
 import java.awt.geom.Area;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.swing.JLabel;
+import javax.swing.SwingUtilities;
 
 import entidad_grafica.EntidadGrafica;
 import juego.Juego;
@@ -48,6 +52,7 @@ public abstract class Entidad {
 	 */
 	public List<Entidad> detectarColisiones() {
 		List<Entidad> lista = new ArrayList<Entidad>();
+		
 		Area area_e, area_this = new Area(this.getEntidadGrafica().getEtiqueta().getBounds());
 		
 		for (Entidad e: juego.getMapa().getEntidadesActivas()) {
@@ -59,6 +64,19 @@ public abstract class Entidad {
 			
 		}
 		
+		/*Rectangle rect_this = this.getEntidadGrafica().getEtiqueta().getBounds();
+		
+		for (Entidad e: juego.getMapa().getEntidadesActivas()) {
+			//System.out.println(e.toString());
+			JLabel lbl_ent = e.getEntidadGrafica().getEtiqueta();
+			Rectangle rect_colision = SwingUtilities.computeIntersection(lbl_ent.getX(), lbl_ent.getY(), lbl_ent.getWidth(), lbl_ent.getHeight(), rect_this);	
+			
+			if (rect_colision.getWidth()>0 && rect_colision.getHeight()>0) {
+				lista.add(e);
+				System.out.println(this.toString()+"-"+e.toString());
+			}
+			
+		}*/
 		return lista;
 	}
 	
@@ -113,7 +131,18 @@ public abstract class Entidad {
 	public void setJuego(Juego juego) {
 		this.juego = juego;
 	}
+
+	public Visitor getVisitor() {
+		return v;
+	}
+
+	public void setVisitor(Visitor v) {
+		this.v = v;
+	}
 	
+	public String toString(Entidad e) {
+		return e.getClass().getName();
+	}
 	
 
 }

@@ -138,8 +138,8 @@ public class Juego implements Runnable{
 	@Override
 	public void run() {		
 		int cont=0;
-		
-		while(true) {
+		this.porAgregarEntidad(harry);
+		while(activo) {
 			accionar();
 			
 			for(Entidad e: por_agregar) {
@@ -154,14 +154,14 @@ public class Juego implements Runnable{
 				e.getEntidadGrafica().desaparecer();
 				cont++;
 			}
-			System.out.println(cont);
+			//System.out.println(cont);
 			cont=0;
 			por_eliminar = new ArrayList<Entidad>();
 			
 			gui.getPanel().repaint();
 			
 			try {
-				Thread.sleep(500);
+				Thread.sleep(100);
 			} catch (InterruptedException e1) {
 				e1.printStackTrace();
 			}

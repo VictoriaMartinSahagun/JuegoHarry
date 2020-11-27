@@ -1,6 +1,9 @@
 package entidad_grafica;
 
+import java.awt.Color;
+
 import javax.swing.*;
+import javax.swing.border.LineBorder;
 
 public class EntidadGraficaJugador extends EntidadGrafica{
 	private String harry = "/img/Harry.png", harry_daniado = "/img/HarryDaniado2.png";
@@ -14,6 +17,7 @@ public class EntidadGraficaJugador extends EntidadGrafica{
 		grafica = new ImageIcon();
 		ImageIcon imagen = new ImageIcon(this.getClass().getResource(harry));
 		grafica.setImage(imagen.getImage());
+		etiqueta.setBorder(new LineBorder(Color.black));
 	}
 	
 	@Override
@@ -23,7 +27,6 @@ public class EntidadGraficaJugador extends EntidadGrafica{
 		imagen = new ImageIcon(this.getClass().getResource(harry_daniado));
 		grafica.setImage(imagen.getImage());
 		
-		//COMO METO UN DELAY ACA?
 		
 		imagen = new ImageIcon(this.getClass().getResource(harry));
 		grafica.setImage(imagen.getImage());

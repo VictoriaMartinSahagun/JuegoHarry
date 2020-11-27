@@ -51,8 +51,10 @@ public class ProyectilEnemigo extends Proyectil{
 
 	@Override
 	public void accionar() {
-		//cada 5 llamadas al hilo muevo el proyectil
-		if (delay++ % 5 == 0)
-			this.mover();
+		this.mover();
+		Iterable<Entidad> colisiones = this.detectarColisiones();
+		for (Entidad e:colisiones)
+			e.aceptar(this.v);
+		//this.mover();
 	}
 }
