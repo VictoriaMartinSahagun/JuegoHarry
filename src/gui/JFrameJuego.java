@@ -115,7 +115,7 @@ public class JFrameJuego extends JFrame {
 			
 			//Contador vida
 			int cantVida = 100- juego.getJugador().getDanioRecibido();
-			jLabelVida = new JLabel("Vida: "+cantVida+ " %");
+			//jLabelVida = new JLabel("Vida: "+cantVida+ " %");
 			jLabelVida.setHorizontalAlignment(SwingConstants.RIGHT);
 			jLabelVida.setForeground(Color.WHITE);
 			jLabelVida.setFont(new Font("Tempus Sans ITC", Font.BOLD, 20));

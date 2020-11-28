@@ -9,7 +9,7 @@ import javax.swing.border.LineBorder;
 
 public class EntidadGraficaJugador extends EntidadGrafica{
 	private String harry = "/img/Harry.png", harry_daniado = "/img/HarryGolpeado.gif";
-	private String[] harry_muerto = {"/img/HarryMuerte2.png","/img/HarryMuerte3.png"};
+	private String harry_muerto = "/img/HarryMuerto.gif";
 	
 	/**
 	 * Crea una EntidadGraficaJugador nueva
@@ -37,7 +37,7 @@ public class EntidadGraficaJugador extends EntidadGrafica{
 	public void muerte() {
 		ImageIcon imagen;
 		
-		imagen = new ImageIcon(this.getClass().getResource(harry_muerto[0]));
+		imagen = new ImageIcon(this.getClass().getResource(harry_muerto));
 		grafica.setImage(imagen.getImage());
 	}
 

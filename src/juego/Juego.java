@@ -71,7 +71,7 @@ public class Juego implements Runnable{
     
     public void porAgregarEntidad(Entidad e){
     	if (this.por_agregar==null) System.out.println("AAAAA");
-    	por_agregar.add(e);
+    		por_agregar.add(e);
     }
     
     public void porEliminarEntidad(Entidad e) {
