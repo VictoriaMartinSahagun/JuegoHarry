@@ -1,5 +1,7 @@
 package entidad.enemigo;
 
+import java.util.Random;
+
 import entidad.Entidad;
 import fabrica.FabricaProyectil;
 import movimiento.Movimiento;
@@ -124,5 +126,32 @@ public abstract class Enemigo extends Entidad{
 	public Movimiento getMovimiento() {
 		return this.movimiento;
 	}
-
+	
+	/**
+	 * Establece el danio recibido
+	 * @param danio int
+	 */
+	public void recibirDanio(int danio) {
+		int rand_int, probabilidad = 5;
+		Random rand;
+		
+		this.vida -= danio;
+		
+		if(this.vida <= 0) {
+			this.juego.porEliminarEntidad(this);
+			this.juego.descontarEnemigo();
+			
+			//generacion de premios
+			rand = new Random();
+			rand_int = rand.nextInt(probabilidad);
+			if(rand_int==0) {
+				//crear premio
+			}
+			
+		}else {
+			ent_graf.daniar();
+		}
+		
+	}
+	
 }

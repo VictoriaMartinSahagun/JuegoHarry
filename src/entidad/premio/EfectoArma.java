@@ -22,8 +22,8 @@ public class EfectoArma extends Efecto {
 		this.juego=juego;
 		JLabel etiqueta = new JLabel();
 		EntidadGraficaPremio ent_graf = new EntidadGraficaPremioSnitch(new JLabel()); 
-		int direccion=-1;
-		int velocidad=2;
+		int direccion = 1;
+		int velocidad = 2;
 		movimiento = new MovimientoVerticalPremio(this,direccion,velocidad,lim_inf,lim_sup);
 		v = new VisitorPremio(this);
 	}

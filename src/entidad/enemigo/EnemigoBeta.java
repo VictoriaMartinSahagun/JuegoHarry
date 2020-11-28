@@ -53,35 +53,20 @@ public class EnemigoBeta extends Enemigo{
 	public void mover() {
 		movimiento.mover();
 	}
-	
-	/**
-	 * Establece el danio recibido
-	 * @param danio int
-	 */
-	public void recibirDanio(int danio) {
-		this.vida -= danio;
-		
-		if(this.vida <= 0) {
-			this.juego.porEliminarEntidad(this);
-			this.juego.descontarEnemigo();
-			//ent_graf.desaparecer();
-			//terminar juego?
-		}else {
-			ent_graf.daniar();
-			//ent_graf.danio();
-		}
-		
-	}
 
 	@Override
 	public void accionar() {
 		Iterable<Entidad> colisiones = this.detectarColisiones();
+		
 		for (Entidad e:colisiones)
 			e.aceptar(this.v);
+		
 		this.mover();
+		
 		if (++delay % 50 == 0) {
 			this.atacar();
 		}
+		
 	}
 	
 }

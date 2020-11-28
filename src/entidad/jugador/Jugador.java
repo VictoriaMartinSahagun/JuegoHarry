@@ -150,6 +150,7 @@ public class Jugador extends Entidad{
 	@Override
 	public void accionar() {
 		Iterable<Entidad> colisiones = this.detectarColisiones();
+		
 		for (Entidad e:colisiones)
 			e.aceptar(this.v);
 

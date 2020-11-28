@@ -9,6 +9,8 @@ import gui.JFrameJuego;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
 import entidad.*;
 
 public class Juego implements Runnable{
@@ -16,7 +18,7 @@ public class Juego implements Runnable{
 	private Horda horda;
 	private Mapa mapa;
 	private JFrameJuego gui;
-	private boolean activo;
+	private boolean activo,gano;
 	private int horda_actual;
 	private List<Entidad> por_eliminar;
 	private List<Entidad> por_agregar;
@@ -34,9 +36,8 @@ public class Juego implements Runnable{
     	activo=true;
     	mapa = new Mapa();
     	harry = new Jugador(this);
-    	
+    	gano=false;
     	horda_actual=1;
-    	//System.out.println("Horda 1");
     	horda = new Horda(this,horda_actual);
     	
     }
@@ -136,7 +137,15 @@ public class Juego implements Runnable{
 	public void accionar() {
 		if(horda.termino() && horda_actual<4) {
 			horda = new Horda(this,++horda_actual);
+		}else if(horda.termino() && horda_actual==4) {
+			gano=true;
+			activo=false;
 		}
+		
+		if(harry.getDanioRecibido()>=100) {
+			activo=false;
+		}
+		
 		for (Entidad e: mapa.getEntidadesActivas()) {
 			e.accionar();
 		}
@@ -146,6 +155,7 @@ public class Juego implements Runnable{
 	public void run() {		
 		int cont=0;
 		this.porAgregarEntidad(harry);
+		
 		while(activo) {
 			accionar();
 			
@@ -161,18 +171,26 @@ public class Juego implements Runnable{
 				e.getEntidadGrafica().desaparecer();
 				cont++;
 			}
-			//System.out.println("Eliminadas: "+cont);
 			
 			por_eliminar = new ArrayList<Entidad>();
 			
 			gui.getPanel().repaint();
 			gui.actualizarVida();
 			gui.actualizarNivel();
+			
 			try {
 				Thread.sleep(100);
 			} catch (InterruptedException e1) {
 				e1.printStackTrace();
 			}
+		}
+		
+		if(gano) {
+			JOptionPane.showMessageDialog(null, "Ganaste. Todos los elfos han sido liberados.");
+			System.exit(0);
+		}else {
+			JOptionPane.showMessageDialog(null, "Perdiste. Los elfos de Voldemort te han derrotado.");
+			System.exit(0);
 		}
 		
 	}

@@ -1,6 +1,5 @@
 package entidad.enemigo;
 
-import java.awt.geom.Area;
 import javax.swing.JLabel;
 import entidad.Entidad;
 import entidad.proyectil.ProyectilEnemigo;
@@ -11,7 +10,8 @@ import movimiento.MovimientoVerticalEnemigo;
 import visitor.*;
 
 public class EnemigoAlfa extends Enemigo{
-	private int delay;
+	private int delay,vida_inicial;
+	private boolean velocidad_cambiada;
 	
 	/**
 	 * Crea un nuevo EnemigoAlfa partiendo de ciertos parametros
@@ -24,16 +24,17 @@ public class EnemigoAlfa extends Enemigo{
 	 */
 	public EnemigoAlfa(Juego j, JLabel etiqueta,int lim_inf, int lim_sup, int pos_X, int pos_y) {
 		juego = j;
-		vida=100;
+		vida_inicial = 100;
+		vida = vida_inicial;
 		danio_ataque=5;
 		ent_graf = new EntidadGraficaEnemigo(etiqueta);
 		rango = 10;
 		direccion = 1;
 		velocidad = 2;
-		movimiento = new MovimientoVerticalEnemigo(this,direccion,velocidad, lim_inf,lim_sup);
+		movimiento = new MovimientoVerticalEnemigo(this,direccion,velocidad,lim_inf,lim_sup);
 		fabrica = new FabricaProyectilEnemigo();
 		v = new VisitorEnemigo(this);
-		
+		velocidad_cambiada = false;
 		delay = 0;
 	}
 	
@@ -52,23 +53,6 @@ public class EnemigoAlfa extends Enemigo{
 	public void mover() {
 		movimiento.mover();
 	}
-	
-	/**
-	 * Establece el danio recibido
-	 * @param danio int
-	 */
-	public void recibirDanio(int danio) {
-		this.vida -= danio;
-		
-		if(this.vida <= 0) {
-			//ent_graf.desaparecer();
-			this.juego.porEliminarEntidad(this);
-			this.juego.descontarEnemigo();
-			//terminar juego?
-		}else {
-			ent_graf.daniar();
-		}		
-	}
 
 	@Override
 	public void accionar() {
@@ -81,6 +65,12 @@ public class EnemigoAlfa extends Enemigo{
 		
 		if (++delay % 50 == 0) {
 			this.atacar();
+		}
+		
+		if(!velocidad_cambiada && vida<=vida_inicial*0.2) {
+			velocidad = velocidad*2;
+			movimiento.setVelocidad(velocidad);
+			velocidad_cambiada = true;
 		}
 	}	
 	
