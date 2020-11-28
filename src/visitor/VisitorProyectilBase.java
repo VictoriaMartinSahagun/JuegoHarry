@@ -27,4 +27,8 @@ public class VisitorProyectilBase extends Visitor{
 		p.desactivar();
 	}
 	
+	public void visitarProyectilEnemigo(ProyectilEnemigo p) {
+		this.p.desactivar();
+		p.desactivar();
+	}
 }

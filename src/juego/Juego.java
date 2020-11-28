@@ -126,6 +126,9 @@ public class Juego implements Runnable{
 		return mapa;
 	}
 	
+	public int getHordaActual() {
+		return horda_actual;
+	}
 	public void descontarEnemigo() {
 		this.horda.enemigoAbatido();
 	}
@@ -163,9 +166,10 @@ public class Juego implements Runnable{
 			por_eliminar = new ArrayList<Entidad>();
 			
 			gui.getPanel().repaint();
-			
+			gui.actualizarVida();
+			gui.actualizarNivel();
 			try {
-				Thread.sleep(50);
+				Thread.sleep(100);
 			} catch (InterruptedException e1) {
 				e1.printStackTrace();
 			}

@@ -1,5 +1,7 @@
 package entidad.proyectil;
 
+import java.util.Random;
+
 import javax.swing.JLabel;
 import entidad.Entidad;
 import entidad_grafica.EntidadGraficaProyectilEnemigo;
@@ -21,10 +23,13 @@ public class ProyectilEnemigo extends Proyectil{
 	public ProyectilEnemigo(Juego juego, Enemigo e, int lim_inf,int lim_sup) {
 		this.juego = juego;
 		JLabel lbl = new JLabel();
-		lbl.setBounds(e.getEntidadGrafica().getEtiqueta().getX(), e.getEntidadGrafica().getEtiqueta().getY()+80, 30, 45);
+		int ancho_enemigo = e.getEntidadGrafica().getEtiqueta().getWidth();
+		Random rand = new Random();
+		int random_x = rand.nextInt(ancho_enemigo);
+		lbl.setBounds(e.getEntidadGrafica().getEtiqueta().getX()+random_x, e.getEntidadGrafica().getEtiqueta().getY()+80, 15, 20);
 		this.ent_graf = new EntidadGraficaProyectilEnemigo(lbl);
 		this.direccion = 1;
-		this.velocidad = 2;
+		this.velocidad = 4;
 		this.cap_penetracion = 5;
 		this.movimiento = new MovimientoVerticalProyectilEnemigo(this,direccion,velocidad,lim_inf,lim_sup);
 		

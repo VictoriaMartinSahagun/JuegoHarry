@@ -97,7 +97,7 @@ public class Horda {
 				//cant++;
 			}
 			posx=0;
-			posy+=100;
+			posy+=60;
 		}
 		//System.out.println("enemigos creados: "+cant);
 	}
