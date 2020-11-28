@@ -1,12 +1,14 @@
 package entidad_grafica;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 
 public class EntidadGraficaJugador extends EntidadGrafica{
-	private String harry = "/img/Harry.png", harry_daniado = "/img/HarryDaniado2.png";
+	private String harry = "/img/Harry.png", harry_daniado = "/img/HarryGolpeado.gif";
 	private String[] harry_muerto = {"/img/HarryMuerte2.png","/img/HarryMuerte3.png"};
 	
 	/**
@@ -23,7 +25,6 @@ public class EntidadGraficaJugador extends EntidadGrafica{
 	@Override
 	public void daniar() {
 		ImageIcon imagen;
-		
 		imagen = new ImageIcon(this.getClass().getResource(harry_daniado));
 		grafica.setImage(imagen.getImage());
 	}
