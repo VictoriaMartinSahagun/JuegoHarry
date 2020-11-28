@@ -17,7 +17,7 @@ public class EntidadGraficaProyectilEnemigo extends EntidadGraficaProyectil {
 		grafica = new ImageIcon();
 		imagen = "/img/AtaqueMalo.png";
 		etiqueta.setIcon(grafica);
-		etiqueta.setBorder(new LineBorder(Color.black));
+		//etiqueta.setBorder(new LineBorder(Color.black));
 	}
 	
 	@Override

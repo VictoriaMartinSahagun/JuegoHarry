@@ -20,7 +20,7 @@ public class EntidadGraficaEnemigo extends EntidadGrafica {
 		imagenes = new String[] {"/img/ElfoBueno.png","/img/ElfoLibre.png","/img/ElfoMalo.png","/img/ElfoMaloHerido.png"};
 		
 		etiqueta.setIcon(grafica);
-		etiqueta.setBorder(new LineBorder(Color.black));
+		//etiqueta.setBorder(new LineBorder(Color.black));
 	}
 	
 	@Override

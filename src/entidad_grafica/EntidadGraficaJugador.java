@@ -19,7 +19,6 @@ public class EntidadGraficaJugador extends EntidadGrafica{
 		grafica = new ImageIcon();
 		ImageIcon imagen = new ImageIcon(this.getClass().getResource(harry));
 		grafica.setImage(imagen.getImage());
-		etiqueta.setBorder(new LineBorder(Color.black));
 	}
 	
 	@Override

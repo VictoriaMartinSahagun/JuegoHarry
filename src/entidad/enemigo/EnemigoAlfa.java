@@ -79,9 +79,9 @@ public class EnemigoAlfa extends Enemigo{
 		
 		this.mover();
 		
-		/*if (++delay % 50 == 0) {
+		if (++delay % 50 == 0) {
 			this.atacar();
-		}*/
+		}
 	}	
 	
 }

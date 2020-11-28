@@ -17,7 +17,7 @@ public class EntidadGraficaProyectilBase extends EntidadGraficaProyectil {
 		grafica = new ImageIcon();
 		imagen = "/img/HechizoBase.png";
 		etiqueta.setIcon(grafica);
-		etiqueta.setBorder(new LineBorder(Color.black));
+		//etiqueta.setBorder(new LineBorder(Color.black));
 	}
 	
 	@Override

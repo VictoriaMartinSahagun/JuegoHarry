@@ -79,7 +79,9 @@ public class EnemigoBeta extends Enemigo{
 		for (Entidad e:colisiones)
 			e.aceptar(this.v);
 		this.mover();
-		
+		if (++delay % 50 == 0) {
+			this.atacar();
+		}
 	}
 	
 }

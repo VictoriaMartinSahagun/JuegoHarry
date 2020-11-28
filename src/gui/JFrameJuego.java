@@ -40,7 +40,7 @@ import java.awt.Font;
 public class JFrameJuego extends JFrame {
 	private Juego juego;
 	private JPanel jPanelNivel;
-	private JLabel jLabelVida;
+	private JLabel jLabelVida,jLabelNivel;
 	private JLabel lbl_jugador;
 	private JToggleButton jToggleButtonAudio;
 	private AudioPlayer ap;
@@ -57,7 +57,7 @@ public class JFrameJuego extends JFrame {
 		this.setIconImage(new ImageIcon(this.getClass().getResource("/img/iconoFrame.png")).getImage());
 		ImagenFondo imagen_Fondo = new ImagenFondo(new ImageIcon(this.getClass().getResource("/img/FondoJuego.jpg")).getImage());
 		setContentPane(imagen_Fondo);
-		setTitle("Las aventuras de Potter");
+		setTitle("Las aventuras del gordo Potter");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 600, 600);
 		getContentPane().setLayout(new BorderLayout(0, 0));
@@ -106,7 +106,7 @@ public class JFrameJuego extends JFrame {
 			lbl_jugador = new JLabel();
 			lbl_jugador.setIcon(juego.getJugador().getEntidadGrafica().getGrafica());
 			lbl_jugador.setBounds(200, 500, 50, 100);
-			lbl_jugador.setBorder(new LineBorder(Color.black));
+			//lbl_jugador.setBorder(new LineBorder(Color.black));
 			juego.getJugador().getEntidadGrafica().setEtiqueta(lbl_jugador);
 			juego.getJugador().mover();
 			jPanelNivel.add(lbl_jugador);
@@ -114,14 +114,21 @@ public class JFrameJuego extends JFrame {
 				
 			
 			//Contador vida
-			int cantVida = 100;
-			JLabel lblCantVida = new JLabel("Vida: "+cantVida+ " %");
-			lblCantVida.setHorizontalAlignment(SwingConstants.RIGHT);
-			lblCantVida.setForeground(Color.WHITE);
-			lblCantVida.setFont(new Font("Tempus Sans ITC", Font.BOLD, 20));
-			lblCantVida.setBounds(10, 11, 109, 29);
-			jPanelNivel.add(lblCantVida);
+			int cantVida = 100- juego.getJugador().getDanioRecibido();
+			jLabelVida = new JLabel("Vida: "+cantVida+ " %");
+			jLabelVida.setHorizontalAlignment(SwingConstants.RIGHT);
+			jLabelVida.setForeground(Color.WHITE);
+			jLabelVida.setFont(new Font("Tempus Sans ITC", Font.BOLD, 20));
+			jLabelVida.setBounds(10, 10, 109, 29);
+			jPanelNivel.add(jLabelVida);
 
+			//Contador de nivel
+			jLabelNivel = new JLabel("Nivel: 1");
+			jLabelNivel.setHorizontalAlignment(SwingConstants.RIGHT);
+			jLabelNivel.setForeground(Color.WHITE);
+			jLabelNivel.setFont(new Font("Tempus Sans ITC", Font.BOLD, 20));
+			jLabelNivel.setBounds(480, 10, 80, 30);
+			jPanelNivel.add(jLabelNivel);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -148,6 +155,19 @@ public class JFrameJuego extends JFrame {
 		return jPanelNivel;
 	}
 	
+	public void actualizarVida() {
+		jLabelVida.setText("Vida:"+(100-juego.getJugador().getDanioRecibido())+"%");
+	}
+	public void actualizarNivel() {
+		int horda_act = juego.getHordaActual();
+		int niv_act;
+		if (horda_act%2==0) {
+			niv_act=horda_act/2;
+		}else {
+			niv_act =(horda_act/2)+1;
+		}
+		jLabelNivel.setText("Nivel:"+niv_act);
+	}
 	//private void initAudio() {}
 	
 	//private void jToggleButtonAudioActionPerformed(ActionEvent evt) {}

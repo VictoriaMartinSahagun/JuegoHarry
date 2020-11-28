@@ -1,6 +1,7 @@
 package visitor;
 
 import entidad.jugador.Jugador;
+import entidad.proyectil.Proyectil;
 import entidad.proyectil.ProyectilEnemigo;
 
 public class VisitorProyectilEnemigo extends Visitor{

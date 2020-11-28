@@ -33,9 +33,10 @@ public class JFrameCarga extends JFrame {
 		this.setIconImage(new ImageIcon(this.getClass().getResource("/img/iconoFrame.png")).getImage());
 		ImagenFondo imagen_Fondo = new ImagenFondo(new ImageIcon(this.getClass().getResource("/img/fondoFrame.jpg")).getImage());
 		setContentPane(imagen_Fondo);
-		setTitle("Las aventuras de Potter");
+		setTitle("Las aventuras del gordo Potter");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 600, 600);
+		setResizable(false);
 		getContentPane().setLayout(new BorderLayout(0, 0));
 		
 		//Creo el audio
