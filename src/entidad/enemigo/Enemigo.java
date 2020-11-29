@@ -156,9 +156,10 @@ public abstract class Enemigo extends Entidad{
 			rand = new Random();
 			rand_int = rand.nextInt(1);
 			if(rand_int==0) {
+				rand = new Random();
 				//crear premio
 				rand_premio= rand.nextInt(3);
-				switch(rand_int) {
+				switch(rand_premio) {
 					case 0: premio = fabrica_cuarentena.crearPremio(juego,this);break;
 					case 1: premio = fabrica_arma.crearPremio(juego,this); break;
 					default: premio = fabrica_pocion.crearPremio(juego,this); break;

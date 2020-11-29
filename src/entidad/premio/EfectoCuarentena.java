@@ -16,8 +16,8 @@ public class EfectoCuarentena extends Efecto{
 		this.juego=juego;
 		JLabel etiqueta = new JLabel();
 		JLabel etiqueta_enemigo = e.getEntidadGrafica().getEtiqueta();
-		etiqueta.setBounds((etiqueta_enemigo.getX()+etiqueta_enemigo.getWidth())/2, etiqueta_enemigo.getY()+80, 25, 25);
-		System.out.println("b->"+etiqueta.getBounds().toString());
+		etiqueta.setBounds(etiqueta_enemigo.getX()+(etiqueta_enemigo.getWidth()/2), etiqueta_enemigo.getY()+80, 25, 25);
+		//System.out.println("b->"+etiqueta.getBounds().toString());
 		ent_graf = new EntidadGraficaPremioTiempo(etiqueta);
 		int direccion=1;
 		int velocidad=5;
