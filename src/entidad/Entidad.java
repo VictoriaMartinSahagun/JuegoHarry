@@ -1,12 +1,9 @@
 package entidad;
 
-import java.awt.Rectangle;
 import java.awt.geom.Area;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.JLabel;
-import javax.swing.SwingUtilities;
 
 import entidad_grafica.EntidadGrafica;
 import juego.Juego;

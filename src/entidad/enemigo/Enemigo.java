@@ -2,7 +2,14 @@ package entidad.enemigo;
 
 import java.util.Random;
 
+import javax.swing.JLabel;
+
 import entidad.Entidad;
+import entidad.premio.Premio;
+import fabrica.FabricaPremio;
+import fabrica.FabricaPremioEfectoArma;
+import fabrica.FabricaPremioEfectoCuarentena;
+import fabrica.FabricaPremioMejoraPocion;
 import fabrica.FabricaProyectil;
 import movimiento.Movimiento;
 
@@ -132,8 +139,12 @@ public abstract class Enemigo extends Entidad{
 	 * @param danio int
 	 */
 	public void recibirDanio(int danio) {
-		int rand_int, probabilidad = 5;
+		int rand_int,rand_premio, probabilidad = 5;
 		Random rand;
+		FabricaPremio fabrica_cuarentena = new FabricaPremioEfectoCuarentena();
+		FabricaPremio fabrica_arma = new FabricaPremioEfectoArma();
+		FabricaPremio fabrica_pocion = new FabricaPremioMejoraPocion();
+		Premio premio;
 		
 		this.vida -= danio;
 		
@@ -143,11 +154,17 @@ public abstract class Enemigo extends Entidad{
 			
 			//generacion de premios
 			rand = new Random();
-			rand_int = rand.nextInt(probabilidad);
+			rand_int = rand.nextInt(1);
 			if(rand_int==0) {
 				//crear premio
+				rand_premio= rand.nextInt(3);
+				switch(rand_int) {
+					case 0: premio = fabrica_cuarentena.crearPremio(juego,this);break;
+					case 1: premio = fabrica_arma.crearPremio(juego,this); break;
+					default: premio = fabrica_pocion.crearPremio(juego,this); break;
+				}
+				juego.porAgregarEntidad(premio);
 			}
-			
 		}else {
 			ent_graf.daniar();
 		}

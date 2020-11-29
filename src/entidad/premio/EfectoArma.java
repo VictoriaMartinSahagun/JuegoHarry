@@ -2,7 +2,7 @@ package entidad.premio;
 
 import javax.swing.JLabel;
 import entidad.Entidad;
-import entidad_grafica.EntidadGraficaPremio;
+import entidad.enemigo.Enemigo;
 import entidad_grafica.EntidadGraficaPremioSnitch;
 import juego.Juego;
 import movimiento.MovimientoVerticalPremio;
@@ -17,13 +17,16 @@ public class EfectoArma extends Efecto {
 	 * @param nombre String
 	 * @param juego Juego
 	 */
-	public EfectoArma(int lim_inf,int lim_sup,String nombre, Juego juego) {
-		this.nombre=nombre;
+	public EfectoArma(int lim_inf,int lim_sup,String nombre, Juego juego, Enemigo e) {
+		//this.nombre=nombre;
 		this.juego=juego;
 		JLabel etiqueta = new JLabel();
-		EntidadGraficaPremio ent_graf = new EntidadGraficaPremioSnitch(new JLabel()); 
+		JLabel etiqueta_enemigo = e.getEntidadGrafica().getEtiqueta();
+		etiqueta.setBounds((etiqueta_enemigo.getX()+etiqueta_enemigo.getWidth())/2, etiqueta_enemigo.getY()+80, 25, 25);
+		System.out.println("b->"+etiqueta.getBounds().toString());
+		ent_graf = new EntidadGraficaPremioSnitch(etiqueta); 
 		int direccion = 1;
-		int velocidad = 2;
+		int velocidad = 5;
 		movimiento = new MovimientoVerticalPremio(this,direccion,velocidad,lim_inf,lim_sup);
 		v = new VisitorPremio(this);
 	}

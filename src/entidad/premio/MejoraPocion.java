@@ -2,6 +2,7 @@ package entidad.premio;
 
 import javax.swing.JLabel;
 import entidad.Entidad;
+import entidad.enemigo.Enemigo;
 import entidad_grafica.EntidadGraficaPremio;
 import entidad_grafica.EntidadGraficaPremioPocion;
 import juego.Juego;
@@ -11,13 +12,16 @@ import visitor.VisitorPremio;
 
 public class MejoraPocion extends Mejora{
 
-	public MejoraPocion(int lim_inf,int lim_sup,String nombre, Juego juego) {
-		this.nombre=nombre;
+	public MejoraPocion(int lim_inf,int lim_sup,String nombre, Juego juego, Enemigo e) {
+		//this.nombre=nombre;
 		this.juego=juego;
 		JLabel etiqueta = new JLabel();
-		EntidadGraficaPremio ent_graf = new EntidadGraficaPremioPocion(etiqueta);
-		int direccion=-1;
-		int velocidad=3;
+		JLabel etiqueta_enemigo = e.getEntidadGrafica().getEtiqueta();
+		etiqueta.setBounds((etiqueta_enemigo.getX()+etiqueta_enemigo.getWidth())/2, etiqueta_enemigo.getY()+80, 25, 25);
+		System.out.println("b->"+etiqueta.getBounds().toString());
+		ent_graf = new EntidadGraficaPremioPocion(etiqueta);
+		int direccion=1;
+		int velocidad=5;
 		movimiento = new MovimientoVerticalPremio(this, direccion, velocidad, lim_sup, lim_inf);
 		v = new VisitorPremio(this);
 	}

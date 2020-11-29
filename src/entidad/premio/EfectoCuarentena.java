@@ -2,6 +2,7 @@ package entidad.premio;
 
 import javax.swing.JLabel;
 import entidad.Entidad;
+import entidad.enemigo.Enemigo;
 import entidad_grafica.EntidadGraficaPremioTiempo;
 import juego.Juego;
 import movimiento.MovimientoVerticalPremio;
@@ -10,13 +11,16 @@ import visitor.VisitorPremio;
 
 public class EfectoCuarentena extends Efecto{
 
-	public EfectoCuarentena(int lim_inf,int lim_sup,String nombre, Juego juego) {
-		this.nombre=nombre;
+	public EfectoCuarentena(int lim_inf,int lim_sup,String nombre, Juego juego,Enemigo e) {
+		//this.nombre=nombre;
 		this.juego=juego;
 		JLabel etiqueta = new JLabel();
-		EntidadGraficaPremioTiempo ent_graf = new EntidadGraficaPremioTiempo(etiqueta);
-		int direccion=-1;
-		int velocidad=2;
+		JLabel etiqueta_enemigo = e.getEntidadGrafica().getEtiqueta();
+		etiqueta.setBounds((etiqueta_enemigo.getX()+etiqueta_enemigo.getWidth())/2, etiqueta_enemigo.getY()+80, 25, 25);
+		System.out.println("b->"+etiqueta.getBounds().toString());
+		ent_graf = new EntidadGraficaPremioTiempo(etiqueta);
+		int direccion=1;
+		int velocidad=5;
 		movimiento = new MovimientoVerticalPremio(this,direccion,velocidad,lim_inf,lim_sup);
 		v = new VisitorPremio(this);
 	}

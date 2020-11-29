@@ -6,10 +6,6 @@ import javax.swing.JLabel;
 public class EntidadGraficaPremio extends EntidadGrafica{
 	protected String imagen;
 	
-	@Override
-	public void iniciar() {
-		this.etiqueta.setIcon(new ImageIcon(this.getClass().getResource(imagen)));
-	}
 	
 	@Override
 	public void desaparecer() {
@@ -18,7 +14,7 @@ public class EntidadGraficaPremio extends EntidadGrafica{
 
 	/**
 	 * Establece la imagen
-	 * @param s ruta de ka imagen
+	 * @param s ruta de la imagen
 	 */
 	public void setImagen(String s) {
 		imagen = s;

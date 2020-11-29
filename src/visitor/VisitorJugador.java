@@ -35,7 +35,7 @@ public class VisitorJugador extends Visitor{
 	public void visitarProyectilEnemigo(ProyectilEnemigo p) {
 		j.recibirDanio(p.getCapPenetracion());
 		p.desactivar();
-		System.out.println("Danio recibido: "+j.getDanioRecibido());
+		//System.out.println("Danio recibido: "+j.getDanioRecibido());
 	}
 	
 	@Override
