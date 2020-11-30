@@ -18,17 +18,17 @@ public class VisitorProyectilBase extends Visitor{
 	@Override
 	public void visitarEnemigoAlfa(EnemigoAlfa e) {
 		p.colisionarAlfa(e);
-		p.desactivar();
+		p.getJuego().porEliminarEntidad(p);
 	}
 	
 	@Override
 	public void visitarEnemigoBeta(EnemigoBeta e) {
 		p.colisionarBeta(e);
-		p.desactivar();
+		p.getJuego().porEliminarEntidad(p);
 	}
 	
 	public void visitarProyectilEnemigo(ProyectilEnemigo p) {
-		this.p.desactivar();
-		p.desactivar();
+		p.getJuego().porEliminarEntidad(p);
+		p.getJuego().porEliminarEntidad(this.p);
 	}
 }

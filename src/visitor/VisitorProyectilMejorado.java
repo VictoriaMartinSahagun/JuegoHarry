@@ -19,10 +19,14 @@ public class VisitorProyectilMejorado extends Visitor{
 	@Override
 	public void visitarEnemigoAlfa(EnemigoAlfa e) {
 		p.colisionarAlfa(e);
+		p.getJuego().porEliminarEntidad(p);
+
 	}
 	
 	@Override
 	public void visitarEnemigoBeta(EnemigoBeta e) {
 		p.colisionarBeta(e);
+		p.getJuego().porEliminarEntidad(p);
+
 	}
 }

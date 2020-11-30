@@ -21,15 +21,16 @@ public class ProyectilMejorado extends Proyectil{
 	 * @param j Jugador
 	 * @param lim int
 	 */
-	public ProyectilMejorado(Juego juego, Jugador j,int lim) {
+	public ProyectilMejorado(Juego juego, Jugador jugador,int lim) {
 	    this.juego = juego;
 		lbl = new JLabel();
-		direccion = MovimientoVertical.ARRIBA;
-		velocidad = 1;
-		cap_penetracion = 25;
+		lbl.setBounds(jugador.getPosX()+35, jugador.getPosY()-40, 11, 45);
+		direccion = MovimientoVertical.ABAJO;
+		velocidad = 2;
+		cap_penetracion = 30;
 		ent_graf = new EntidadGraficaProyectilMejorado(lbl);
 		movimiento = new MovimientoVerticalProyectilJugador(this,direccion,velocidad,lim);
-	    visitor = new VisitorProyectilMejorado(this);
+	    v = new VisitorProyectilMejorado(this);
 		
 		delay = 0;
 	}

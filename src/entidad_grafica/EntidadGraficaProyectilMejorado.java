@@ -13,12 +13,12 @@ public class EntidadGraficaProyectilMejorado extends EntidadGraficaProyectil {
 		this.etiqueta = etiqueta;
 		grafica = new ImageIcon();
 		imagen = "/img/HechizoMejorado.png";
-		etiqueta.setIcon(grafica);
+		this.etiqueta.setIcon(grafica);
 	}
 	
-	@Override
+	/*@Override
 	public void iniciar() {
 		ImageIcon nuevo = new ImageIcon(this.getClass().getResource(imagen));
 		grafica.setImage(nuevo.getImage());
-	}
+	}*/
 }

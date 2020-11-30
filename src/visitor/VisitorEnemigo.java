@@ -11,6 +11,6 @@ public class VisitorEnemigo extends Visitor{
 	}
 	
 	public void visitProyectil(Proyectil p) {
-		p.desactivar();
+		enemigo.getJuego().porEliminarEntidad(p);
 	}
 }

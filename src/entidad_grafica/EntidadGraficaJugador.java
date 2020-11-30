@@ -26,6 +26,7 @@ public class EntidadGraficaJugador extends EntidadGrafica{
 		ImageIcon imagen;
 		imagen = new ImageIcon(this.getClass().getResource(harry_daniado));
 		grafica.setImage(imagen.getImage());
+		//restablecer();
 	}
 	
 	@Override
@@ -41,6 +42,10 @@ public class EntidadGraficaJugador extends EntidadGrafica{
 		grafica.setImage(imagen.getImage());
 	}
 
+	private void restablecer() {
+		ImageIcon imagen = new ImageIcon(this.getClass().getResource(harry));
+		grafica.setImage(imagen.getImage());
+	}
 	@Override
 	public JLabel getEtiqueta() {
 		return this.etiqueta;

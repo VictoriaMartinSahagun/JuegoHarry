@@ -23,7 +23,7 @@ public class ProyectilBase extends Proyectil{
 	public ProyectilBase(Juego juego, Jugador jugador, int lim) {
 		this.juego = juego;
 		lbl = new JLabel();
-		lbl.setBounds(jugador.getPosX()+35, jugador.getPosY()-80, 11, 45);
+		lbl.setBounds(jugador.getPosX()+35, jugador.getPosY()-40, 11, 45);
 		ent_graf = new EntidadGraficaProyectilBase(lbl);
 		direccion = MovimientoVertical.ABAJO;
 		velocidad = 2;
