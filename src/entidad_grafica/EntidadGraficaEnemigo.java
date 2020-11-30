@@ -9,6 +9,7 @@ import javax.swing.border.LineBorder;
 
 public class EntidadGraficaEnemigo extends EntidadGrafica {
 	private String [] imagenes;
+	private int cont;
 	
 	/**
 	 * Crea una EntidadGraficaEnemigo nueva partiendo de una etiqueta
@@ -20,6 +21,8 @@ public class EntidadGraficaEnemigo extends EntidadGrafica {
 		imagenes = new String[] {"/img/ElfoBueno.png","/img/ElfoLibre.png","/img/ElfoMalo.png","/img/ElfoMaloHerido.png"};
 		
 		etiqueta.setIcon(grafica);
+		
+		cont=0;
 		//etiqueta.setBorder(new LineBorder(Color.black));
 	}
 	
@@ -43,6 +46,12 @@ public class EntidadGraficaEnemigo extends EntidadGrafica {
 	
 	@Override
 	public void desaparecer() {
+		/*if(cont==0) {
+			liberar();
+			cont++;
+		}else {
+			this.etiqueta.setVisible(false);
+		}*/
 		this.etiqueta.setVisible(false);
 	}
 	

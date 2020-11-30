@@ -36,6 +36,7 @@ public class EnemigoAlfa extends Enemigo{
 		v = new VisitorEnemigo(this);
 		velocidad_cambiada = false;
 		delay = 0;
+		tiempo_pausa=0;
 	}
 	
 	@Override
@@ -60,17 +61,20 @@ public class EnemigoAlfa extends Enemigo{
 		
 		for (Entidad e:colisiones)
 			e.aceptar(this.v);
-		
-		this.mover();
-		
-		if (++delay % 50 == 0) {
-			this.atacar();
-		}
-		
-		if(!velocidad_cambiada && vida<=vida_inicial*0.2) {
-			velocidad = velocidad*2;
-			movimiento.setVelocidad(velocidad);
-			velocidad_cambiada = true;
+		if(tiempo_pausa==0) {
+			this.mover();
+			
+			if (++delay % 50 == 0) {
+				this.atacar();
+			}
+			
+			if(!velocidad_cambiada && vida<=vida_inicial*0.2) {
+				velocidad = velocidad*2;
+				movimiento.setVelocidad(velocidad);
+				velocidad_cambiada = true;
+			}
+		}else {
+			tiempo_pausa--;
 		}
 	}	
 	

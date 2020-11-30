@@ -40,7 +40,7 @@ import java.awt.Font;
 public class JFrameJuego extends JFrame {
 	private Juego juego;
 	private JPanel jPanelNivel;
-	private JLabel jLabelVida,jLabelNivel;
+	private JLabel jLabelVida,jLabelNivel,JLabelPausa,JLabelMejora;
 	private JLabel lbl_jugador;
 	private JToggleButton jToggleButtonAudio;
 	private AudioPlayer ap;
@@ -129,6 +129,21 @@ public class JFrameJuego extends JFrame {
 			jLabelNivel.setBounds(480, 10, 80, 30);
 			jPanelNivel.add(jLabelNivel);
 			
+			//tiempo de hechizo mejorado
+			JLabelMejora = new JLabel();
+			JLabelMejora.setHorizontalAlignment(SwingConstants.RIGHT);
+			JLabelMejora.setForeground(Color.WHITE);
+			JLabelMejora.setFont(new Font("Tempus Sans ITC", Font.BOLD, 20));
+			JLabelMejora.setBounds(380, 50, 200, 30);
+			jPanelNivel.add(JLabelMejora);
+			
+			//tiempo de pausa
+			JLabelPausa = new JLabel();
+			JLabelPausa.setHorizontalAlignment(SwingConstants.RIGHT);
+			JLabelPausa.setForeground(Color.WHITE);
+			JLabelPausa.setFont(new Font("Tempus Sans ITC", Font.BOLD, 20));
+			JLabelPausa.setBounds(10, 50, 100, 30);
+			jPanelNivel.add(JLabelPausa);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -166,6 +181,26 @@ public class JFrameJuego extends JFrame {
 			niv_act =(horda_act/2)+1;
 		}
 		jLabelNivel.setText("Nivel:"+niv_act);
+	}
+	
+	public void mostrarMejora() {
+		JLabelMejora.setVisible(true);
+		int segs = juego.getJugador().getTiempoMejora()/10;
+		JLabelMejora.setText("Tiempo de mejora: "+segs);
+	}
+	public void ocultarMejora() {
+		JLabelMejora.setVisible(false);
+	}
+	
+	public void mostrarPausa() {
+		JLabelPausa.setVisible(true);
+		int segs = juego.getTiempoPausa();
+		JLabelPausa.setText("Pausa:"+segs);
+	}
+	
+	public void ocultarPausa() {
+		if(JLabelPausa!=null)
+			JLabelPausa.setVisible(false);
 	}
 	//private void initAudio() {}
 	

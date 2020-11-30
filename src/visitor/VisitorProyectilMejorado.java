@@ -29,4 +29,9 @@ public class VisitorProyectilMejorado extends Visitor{
 		p.getJuego().porEliminarEntidad(p);
 
 	}
+	
+	public void visitarProyectilEnemigo(ProyectilEnemigo p) {
+		p.getJuego().porEliminarEntidad(p);
+		p.getJuego().porEliminarEntidad(this.p);
+	}
 }

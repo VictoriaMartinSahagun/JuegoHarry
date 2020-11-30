@@ -33,9 +33,10 @@ public class ProyectilEnemigo extends Proyectil{
 		this.cap_penetracion = 5;
 		this.movimiento = new MovimientoVerticalProyectilEnemigo(this,direccion,velocidad,lim_inf,lim_sup);
 		
-		visitor = new VisitorProyectilEnemigo(this);
+		v = new VisitorProyectilEnemigo(this);
 		
 		delay = 0;
+		tiempo_pausa=0;
 	}
 	
 
@@ -58,12 +59,14 @@ public class ProyectilEnemigo extends Proyectil{
 
 
 	@Override
-	public void accionar() {
-		this.mover();
-		
+	public void accionar() {		
 		Iterable<Entidad> colisiones = this.detectarColisiones();
-		/*for (Entidad e:colisiones)
-			e.aceptar(this.v);*/
-		//this.mover();
+		for (Entidad e:colisiones)
+			e.aceptar(this.v);
+		
+		if (tiempo_pausa==0)
+			this.mover();
+		else
+			tiempo_pausa--;
 	}
 }

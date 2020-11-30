@@ -6,7 +6,7 @@ import movimiento.Movimiento;
 import visitor.Visitor;
 
 public abstract class Proyectil extends Entidad{
-	protected int direccion,velocidad,cap_penetracion;
+	protected int direccion,velocidad,cap_penetracion,tiempo_pausa;
 	protected Visitor visitor;
 	protected Movimiento movimiento;	
 	
@@ -87,5 +87,10 @@ public abstract class Proyectil extends Entidad{
 	 */
 	public Movimiento getMovimiento() {
 		return movimiento;
+	}
+	
+	@Override
+	public void setPausa(int tiempo) {
+		tiempo_pausa=tiempo;
 	}
 }

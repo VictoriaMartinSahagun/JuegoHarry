@@ -36,6 +36,7 @@ public class EnemigoBeta extends Enemigo{
 		v = new VisitorEnemigo(this);
 		
 		delay =0;
+		tiempo_pausa=0;
 	}
 	
 	@Override
@@ -60,11 +61,14 @@ public class EnemigoBeta extends Enemigo{
 		
 		for (Entidad e:colisiones)
 			e.aceptar(this.v);
-		
-		this.mover();
-		
-		if (++delay % 50 == 0) {
-			this.atacar();
+		if(tiempo_pausa==0) {
+			this.mover();
+			
+			if (++delay % 50 == 0) {
+				this.atacar();
+			}
+		}else {
+			tiempo_pausa--;
 		}
 		
 	}

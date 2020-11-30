@@ -33,6 +33,7 @@ public class ProyectilMejorado extends Proyectil{
 	    v = new VisitorProyectilMejorado(this);
 		
 		delay = 0;
+		tiempo_pausa=0;
 	}
 
 	@Override
@@ -63,12 +64,14 @@ public class ProyectilMejorado extends Proyectil{
 
 	@Override
 	public void accionar() {
-		this.mover();
 		Iterable<Entidad> colisiones = this.detectarColisiones();
 		for (Entidad e:colisiones)
-			e.aceptar(this.v);
-		//this.mover();
+			e.aceptar(this.v);		//this.mover();
 		
+		if (tiempo_pausa==0)
+			this.mover();
+		else
+			tiempo_pausa--;
 	}
 	
 }
