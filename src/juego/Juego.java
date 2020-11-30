@@ -59,7 +59,9 @@ public class Juego implements Runnable{
     /**
      * Metodo pausar juego
      */
-    public void pausar() {}
+    public void pausar() {
+    	
+    }
     
     /**
      * Metodo mejorar hechizos
@@ -71,7 +73,7 @@ public class Juego implements Runnable{
     }
     
     public void porAgregarEntidad(Entidad e){
-    	if (this.por_agregar==null) System.out.println("AAAAA");
+    	//if (this.por_agregar==null) System.out.println("AAAAA");
     		por_agregar.add(e);
     }
     
