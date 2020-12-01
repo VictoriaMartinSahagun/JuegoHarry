@@ -16,6 +16,7 @@ import movimiento.Movimiento;
 public abstract class Enemigo extends Entidad{
 	protected int vida,danio_ataque,rango,direccion,velocidad,tiempo_pausa;
 	protected FabricaProyectil fabrica;
+	protected boolean activo;
 	
 	/**
 	 * Metodo de ataque
@@ -148,26 +149,29 @@ public abstract class Enemigo extends Entidad{
 		
 		this.vida -= danio;
 		
-		if(this.vida <= 0) {
-			this.juego.porEliminarEntidad(this);
-			this.juego.descontarEnemigo();
-			
-			//generacion de premios
-			rand = new Random();
-			rand_int = rand.nextInt(probabilidad);
-			if(rand_int==0) {
+		if (activo) {
+			if(this.vida <= 0) {
+				this.juego.porEliminarEntidad(this);
+				this.juego.descontarEnemigo();
+				activo=false;
+				
+				//generacion de premios
 				rand = new Random();
-				//crear premio
-				rand_premio= rand.nextInt(3);
-				switch(rand_premio) {
-					case 0: premio = fabrica_cuarentena.crearPremio(juego,this);break;
-					case 1: premio = fabrica_arma.crearPremio(juego,this); break;
-					default: premio = fabrica_pocion.crearPremio(juego,this); break;
+				rand_int = rand.nextInt(probabilidad);
+				if(rand_int==0) {
+					rand = new Random();
+					//crear premio
+					rand_premio= rand.nextInt(3);
+					switch(rand_premio) {
+						case 0: premio = fabrica_cuarentena.crearPremio(juego,this);break;
+						case 1: premio = fabrica_arma.crearPremio(juego,this); break;
+						default: premio = fabrica_pocion.crearPremio(juego,this); break;
+					}
+					juego.porAgregarEntidad(premio);
 				}
-				juego.porAgregarEntidad(premio);
+			}else {
+				ent_graf.daniar();
 			}
-		}else {
-			ent_graf.daniar();
 		}
 		
 	}
@@ -176,5 +180,14 @@ public abstract class Enemigo extends Entidad{
 	public void setPausa(int tiempo) {
 		tiempo_pausa=tiempo;
 	}
+
+	public boolean getActivo() {
+		return activo;
+	}
+
+	public void setActivo(boolean activo) {
+		this.activo = activo;
+	}
+	
 	
 }

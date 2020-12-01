@@ -37,6 +37,7 @@ public class EnemigoAlfa extends Enemigo{
 		velocidad_cambiada = false;
 		delay = 0;
 		tiempo_pausa=0;
+		activo=true;
 	}
 	
 	@Override
