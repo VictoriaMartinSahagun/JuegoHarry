@@ -203,7 +203,7 @@ public class JFrameJuego extends JFrame {
 	
 	public void audioGano() {
 		audio.stop();
-		ap = new AudioPlayer("audio/musica_espera.mp3");
+		ap = new AudioPlayer("audio/harry_gano.mp3");
 		audio = new Thread(ap);
 		audio.start();
 	}

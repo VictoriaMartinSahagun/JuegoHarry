@@ -139,7 +139,7 @@ public abstract class Enemigo extends Entidad{
 	 * @param danio int
 	 */
 	public void recibirDanio(int danio) {
-		int rand_int,rand_premio, probabilidad = 3;
+		int rand_int,rand_premio, probabilidad = 4;
 		Random rand;
 		FabricaPremio fabrica_cuarentena = new FabricaPremioEfectoCuarentena();
 		FabricaPremio fabrica_arma = new FabricaPremioEfectoArma();
