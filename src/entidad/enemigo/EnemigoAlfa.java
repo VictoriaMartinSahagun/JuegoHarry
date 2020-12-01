@@ -74,7 +74,7 @@ public class EnemigoAlfa extends Enemigo{
 				velocidad_cambiada = true;
 			}
 		}else {
-			tiempo_pausa--;
+			--tiempo_pausa;
 		}
 	}	
 	

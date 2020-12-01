@@ -68,7 +68,7 @@ public class EnemigoBeta extends Enemigo{
 				this.atacar();
 			}
 		}else {
-			tiempo_pausa--;
+			--tiempo_pausa;
 		}
 		
 	}

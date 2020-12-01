@@ -67,6 +67,6 @@ public class ProyectilEnemigo extends Proyectil{
 		if (tiempo_pausa==0)
 			this.mover();
 		else
-			tiempo_pausa--;
+			--tiempo_pausa;
 	}
 }

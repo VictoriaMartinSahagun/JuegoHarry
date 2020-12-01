@@ -50,7 +50,7 @@ public class MejoraPocion extends Mejora{
 		if (tiempo_pausa==0)
 			this.mover();
 		else
-			tiempo_pausa--;
+			--tiempo_pausa;
 	}
 
 }

@@ -51,7 +51,7 @@ public class EfectoCuarentena extends Efecto{
 		if (tiempo_pausa==0)
 			this.mover();
 		else
-			tiempo_pausa--;
+			--tiempo_pausa;
 	}
 
 }
