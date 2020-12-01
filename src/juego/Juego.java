@@ -168,7 +168,9 @@ public class Juego implements Runnable{
 		this.porAgregarEntidad(harry);
 		
 		while(activo) {
+			//gui.setDisparo(true);
 			accionar();
+			//gui.setDisparo(false);
 			int tiempo_disp = harry.getTiempoMejora();
 			
 			if (tiempo_disp>0) {

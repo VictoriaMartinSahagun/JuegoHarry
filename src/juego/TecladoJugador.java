@@ -53,6 +53,11 @@ public class TecladoJugador implements KeyListener{
 				break;
 			}
 			
+			case KeyEvent.VK_SPACE: {
+				j.atacar();
+				break;
+			}
+			
 		}
 		
 	}
@@ -62,9 +67,9 @@ public class TecladoJugador implements KeyListener{
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		//disparo
+		/*//disparo
 		if(e.getKeyCode()==KeyEvent.VK_SPACE)
-			j.atacar();
+			j.atacar();*/
 	}
 	
 	

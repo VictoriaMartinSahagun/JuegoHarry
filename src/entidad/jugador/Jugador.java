@@ -14,6 +14,7 @@ public class Jugador extends Entidad{
 	private int danio_recibido,pos_x,pos_y,tiempo_mejora;
 	private FabricaProyectil fabrica_base, fabrica_mejorado;
 	private String proyectil_actual;
+	private List<Proyectil> en_espera;
 	
 	/**
 	 * Crea un nuevo Jugador partiendo de un determinado juego
@@ -31,6 +32,7 @@ public class Jugador extends Entidad{
 		proyectil_actual = "Base";
 		tiempo_mejora = 0;
 		
+		en_espera = new ArrayList<Proyectil>();
 		//juego.porAgregarEntidad(this);
 	}
 	
@@ -55,7 +57,8 @@ public class Jugador extends Entidad{
 	 */
 	public void atacarBase() {
 		ProyectilBase p = (ProyectilBase) fabrica_base.crearProyectil(juego,this);
-		juego.porAgregarEntidad(p);
+		en_espera.add(p);
+		//juego.porAgregarEntidad(p);
 	}
 
 	/**
@@ -63,7 +66,8 @@ public class Jugador extends Entidad{
 	 */
 	public void atacarMejorado() {
 		ProyectilMejorado p = (ProyectilMejorado) fabrica_mejorado.crearProyectil(juego,this);
-		juego.porAgregarEntidad(p);
+		en_espera.add(p);
+		//juego.porAgregarEntidad(p);
 	}
 	
 	@Override
@@ -158,6 +162,12 @@ public class Jugador extends Entidad{
 
 	@Override
 	public void accionar() {
+		for (Proyectil p : en_espera) {
+			juego.porAgregarEntidad(p);
+		}
+		
+		en_espera = new ArrayList<Proyectil>();
+		
 		Iterable<Entidad> colisiones = this.detectarColisiones();
 		
 		for (Entidad e:colisiones)
