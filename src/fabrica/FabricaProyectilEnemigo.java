@@ -15,7 +15,7 @@ public class FabricaProyectilEnemigo implements FabricaProyectil{
 	 * @return proyectil enemigo
 	 */
 	public Proyectil crearProyectil(Juego juego, Entidad e) {
-		return new ProyectilEnemigo(juego, (Enemigo) e, 0, 500);
+		return new ProyectilEnemigo(juego, (Enemigo) e, e.getEntidadGrafica().getEtiqueta().getY()+250, 0);
 	}
 	
 }
