@@ -13,9 +13,7 @@ public class VisitorProyectilEnemigo extends Visitor{
 	}
 	
 	public void visitarJugador(Jugador j) {
-		System.out.println("A");
-		p.colisionar();
-		p.desactivar();
+
 	}
 	
 }

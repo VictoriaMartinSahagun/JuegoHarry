@@ -67,14 +67,14 @@ public class JFrameCarga extends JFrame {
 	 * Metodo iniciar audio
 	 */
 	private void initAudio() {
-		ap = new AudioPlayer("/audio/musica_espera.mp3");
+		ap = new AudioPlayer("audio/musica_espera.mp3");
 		audio = new Thread(ap);
 		audio.start();
 	}
 
 	private void audioOff() {
 		ap = null;
-		audio.interrupt();
+		audio.stop();
 		audio = null;
 	}
 

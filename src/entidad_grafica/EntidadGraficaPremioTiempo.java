@@ -17,7 +17,7 @@ public class EntidadGraficaPremioTiempo extends EntidadGraficaPremio{
 		grafica = new ImageIcon();
 		imagen = "/img/PremioTiempo.png";
 		etiqueta.setIcon(grafica);
-		etiqueta.setBorder(new LineBorder(Color.black));
+		//etiqueta.setBorder(new LineBorder(Color.black));
 	}
 	
 	@Override

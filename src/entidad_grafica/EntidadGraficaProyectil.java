@@ -7,6 +7,12 @@ public class EntidadGraficaProyectil extends EntidadGrafica{
 	protected String imagen;
 	
 	@Override
+	public void iniciar() {
+		ImageIcon nuevo = new ImageIcon(this.getClass().getResource(imagen));
+		grafica.setImage(nuevo.getImage());
+	}
+	
+	@Override
 	public void disparo() {
 		this.etiqueta.setIcon(new ImageIcon(this.getClass().getResource(imagen)));
 	}

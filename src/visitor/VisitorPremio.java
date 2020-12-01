@@ -17,6 +17,6 @@ public class VisitorPremio extends Visitor{
 	@Override
 	public void visitarJugador(Jugador j) {
 		this.p.activar();
-		this.p.desactivar();
+		j.getJuego().porEliminarEntidad(this.p);
 	}
 }

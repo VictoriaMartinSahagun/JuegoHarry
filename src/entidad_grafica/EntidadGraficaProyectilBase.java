@@ -20,9 +20,9 @@ public class EntidadGraficaProyectilBase extends EntidadGraficaProyectil {
 		//etiqueta.setBorder(new LineBorder(Color.black));
 	}
 	
-	@Override
+	/*@Override
 	public void iniciar() {
 		ImageIcon nuevo = new ImageIcon(this.getClass().getResource(imagen));
 		grafica.setImage(nuevo.getImage());
-	}
+	}*/
 }

@@ -17,7 +17,7 @@ public class EntidadGraficaPremioPocion extends EntidadGraficaPremio {
 		grafica = new ImageIcon();
 		imagen = "/img/PremioPocion.png";
 		this.etiqueta.setIcon(grafica);
-		etiqueta.setBorder(new LineBorder(Color.black));
+		//etiqueta.setBorder(new LineBorder(Color.black));
 	}
 	
 	public void iniciar() {

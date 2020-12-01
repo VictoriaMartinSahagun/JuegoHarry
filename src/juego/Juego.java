@@ -18,8 +18,8 @@ public class Juego implements Runnable{
 	private Horda horda;
 	private Mapa mapa;
 	private JFrameJuego gui;
-	private boolean activo,gano;
-	private int horda_actual;
+	private boolean activo,gano,pausa,disparo;
+	private int horda_actual,tiempo_pausa;
 	private List<Entidad> por_eliminar;
 	private List<Entidad> por_agregar;
 	
@@ -40,6 +40,9 @@ public class Juego implements Runnable{
     	horda_actual=1;
     	horda = new Horda(this,horda_actual);
     	
+    	tiempo_pausa=0;
+    	pausa=false;
+    	disparo=false;
     }
     
     /**
@@ -60,21 +63,28 @@ public class Juego implements Runnable{
      * Metodo pausar juego
      */
     public void pausar() {
-    	
+    	tiempo_pausa=100;
+    	pausa=true;
+    	for (Entidad e : mapa.getEntidadesActivas()) {
+    		e.setPausa(tiempo_pausa);
+    	}
+    }
+    
+    public int getTiempoPausa() {
+    	return tiempo_pausa/10;
     }
     
     /**
      * Metodo mejorar hechizos
      */
     public void mejorarHechizos() {
-    	if (harry.getProyectilActual()=="Base") {
-    		harry.setProyectilActual("Mejorado");
-    	}
+    	harry.setProyectilActual("Mejorado");
+    	harry.setTiempoMejora(300);//30 segundos, variable puede cambiar
+    	disparo=true;
     }
     
     public void porAgregarEntidad(Entidad e){
-    	//if (this.por_agregar==null) System.out.println("AAAAA");
-    		por_agregar.add(e);
+    	por_agregar.add(e);
     }
     
     public void porEliminarEntidad(Entidad e) {
@@ -155,11 +165,17 @@ public class Juego implements Runnable{
 	
 	@Override
 	public void run() {		
-		int cont=0;
 		this.porAgregarEntidad(harry);
 		
 		while(activo) {
 			accionar();
+			int tiempo_disp = harry.getTiempoMejora();
+			if (tiempo_disp>0) {
+				harry.setTiempoMejora(--tiempo_disp);
+			}else {
+				harry.setProyectilActual("Base");
+				disparo=false;
+			}
 			
 			for(Entidad e: por_agregar) {
 				mapa.agregarEntidadActiva(e);
@@ -171,7 +187,6 @@ public class Juego implements Runnable{
 			for(Entidad e: por_eliminar) {
 				mapa.eliminarEntidadActiva(e);
 				e.getEntidadGrafica().desaparecer();
-				cont++;
 			}
 			
 			por_eliminar = new ArrayList<Entidad>();
@@ -179,6 +194,21 @@ public class Juego implements Runnable{
 			gui.getPanel().repaint();
 			gui.actualizarVida();
 			gui.actualizarNivel();
+			
+			if(disparo) {
+				gui.mostrarMejora();
+			}else {
+				gui.ocultarMejora();
+			}
+			
+			if (pausa) {
+				gui.mostrarPausa();
+				--tiempo_pausa;
+				if(tiempo_pausa==0)
+					pausa=false;
+			}else {
+				gui.ocultarPausa();
+			}
 			
 			try {
 				Thread.sleep(100);
@@ -188,9 +218,11 @@ public class Juego implements Runnable{
 		}
 		
 		if(gano) {
+			gui.audioGano();
 			JOptionPane.showMessageDialog(null, "Ganaste. Todos los elfos han sido liberados.");
 			System.exit(0);
 		}else {
+			gui.audioMurio();
 			JOptionPane.showMessageDialog(null, "Perdiste. Los elfos de Voldemort te han derrotado.");
 			System.exit(0);
 		}

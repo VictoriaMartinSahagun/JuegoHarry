@@ -15,7 +15,7 @@ public class FabricaProyectilMejorado implements FabricaProyectil{
 	 * @return proyectil mejorado
 	 */
 	public Proyectil crearProyectil(Juego juego, Entidad e) {
-		return new ProyectilMejorado(juego, (Jugador) e, 0);
+		return new ProyectilMejorado(juego, (Jugador) e, -40);
 	}
 
 }

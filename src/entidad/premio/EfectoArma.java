@@ -29,6 +29,8 @@ public class EfectoArma extends Efecto {
 		int velocidad = 5;
 		movimiento = new MovimientoVerticalPremio(this,direccion,velocidad,lim_inf,lim_sup);
 		v = new VisitorPremio(this);
+		
+		tiempo_pausa=0;
 	}
 	
 	@Override
@@ -51,7 +53,11 @@ public class EfectoArma extends Efecto {
 		Iterable<Entidad> colisiones = this.detectarColisiones();
 		for (Entidad e:colisiones) 
 			e.aceptar(this.v);
-		this.mover();
+		
+		if (tiempo_pausa==0)
+			this.mover();
+		else
+			tiempo_pausa--;
 	}
 
 }

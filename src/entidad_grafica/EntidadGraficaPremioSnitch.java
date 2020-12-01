@@ -17,7 +17,7 @@ public class EntidadGraficaPremioSnitch extends EntidadGraficaPremio{
 		grafica = new ImageIcon();
 		imagen = "/img/PremioSnitch.png";
 		etiqueta.setIcon(grafica);
-		etiqueta.setBorder(new LineBorder(Color.black));
+		//etiqueta.setBorder(new LineBorder(Color.black));
 	}
 	
 	@Override

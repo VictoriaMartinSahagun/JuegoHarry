@@ -11,7 +11,7 @@ import visitor.*;
 
 public class Jugador extends Entidad{
 	
-	private int danio_recibido,pos_x,pos_y;
+	private int danio_recibido,pos_x,pos_y,tiempo_mejora;
 	private FabricaProyectil fabrica_base, fabrica_mejorado;
 	private String proyectil_actual;
 	
@@ -29,16 +29,25 @@ public class Jugador extends Entidad{
 		fabrica_mejorado = new FabricaProyectilMejorado();
 		v = new VisitorJugador(this);
 		proyectil_actual = "Base";
+		tiempo_mejora = 0;
 		
 		//juego.porAgregarEntidad(this);
 	}
 	
 	public void atacar() {
-		if(proyectil_actual=="Base") {
+		if(proyectil_actual=="Base" || tiempo_mejora==0) {
 			atacarBase();
 		}else {
 			atacarMejorado();
 		}
+	}
+	
+	public void setTiempoMejora(int tiempo) {
+		tiempo_mejora=tiempo;
+	}
+	
+	public int getTiempoMejora() {
+		return tiempo_mejora;
 	}
 	
 	/**

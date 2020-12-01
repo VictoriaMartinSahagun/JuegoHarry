@@ -23,7 +23,7 @@ public class ProyectilBase extends Proyectil{
 	public ProyectilBase(Juego juego, Jugador jugador, int lim) {
 		this.juego = juego;
 		lbl = new JLabel();
-		lbl.setBounds(jugador.getPosX()+35, jugador.getPosY()-80, 11, 45);
+		lbl.setBounds(jugador.getPosX()+35, jugador.getPosY()-40, 11, 45);
 		ent_graf = new EntidadGraficaProyectilBase(lbl);
 		direccion = MovimientoVertical.ABAJO;
 		velocidad = 2;
@@ -32,6 +32,7 @@ public class ProyectilBase extends Proyectil{
 		v = new VisitorProyectilBase(this);
 		
 		delay=0;
+		tiempo_pausa=0;
 	}
 
 	@Override
@@ -64,12 +65,14 @@ public class ProyectilBase extends Proyectil{
 
 	@Override
 	public void accionar() {
-		this.mover();
 		Iterable<Entidad> colisiones = this.detectarColisiones();
 		for (Entidad e:colisiones)
 			e.aceptar(this.v);
-
-		//this.mover();
+		
+		if (tiempo_pausa==0)
+			this.mover();
+		else
+			tiempo_pausa--;
 	}
 	
 }

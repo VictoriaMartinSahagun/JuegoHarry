@@ -14,7 +14,7 @@ import fabrica.FabricaProyectil;
 import movimiento.Movimiento;
 
 public abstract class Enemigo extends Entidad{
-	protected int vida,danio_ataque,rango,direccion,velocidad;
+	protected int vida,danio_ataque,rango,direccion,velocidad,tiempo_pausa;
 	protected FabricaProyectil fabrica;
 	
 	/**
@@ -139,7 +139,7 @@ public abstract class Enemigo extends Entidad{
 	 * @param danio int
 	 */
 	public void recibirDanio(int danio) {
-		int rand_int,rand_premio, probabilidad = 5;
+		int rand_int,rand_premio, probabilidad = 3;
 		Random rand;
 		FabricaPremio fabrica_cuarentena = new FabricaPremioEfectoCuarentena();
 		FabricaPremio fabrica_arma = new FabricaPremioEfectoArma();
@@ -154,7 +154,7 @@ public abstract class Enemigo extends Entidad{
 			
 			//generacion de premios
 			rand = new Random();
-			rand_int = rand.nextInt(1);
+			rand_int = rand.nextInt(probabilidad);
 			if(rand_int==0) {
 				rand = new Random();
 				//crear premio
@@ -170,6 +170,11 @@ public abstract class Enemigo extends Entidad{
 			ent_graf.daniar();
 		}
 		
+	}
+	
+	@Override
+	public void setPausa(int tiempo) {
+		tiempo_pausa=tiempo;
 	}
 	
 }

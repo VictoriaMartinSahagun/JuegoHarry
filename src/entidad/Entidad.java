@@ -128,6 +128,8 @@ public abstract class Entidad {
 		return e.getClass().getSimpleName();
 	}
 	
-
+	public void setPausa(int tiempo) {}
+	
+	//public int getPausa() {}	
 }
 

@@ -34,22 +34,24 @@ public class VisitorJugador extends Visitor{
 	
 	public void visitarProyectilEnemigo(ProyectilEnemigo p) {
 		j.recibirDanio(p.getCapPenetracion());
-		p.desactivar();
-		//System.out.println("Danio recibido: "+j.getDanioRecibido());
+		j.getJuego().porEliminarEntidad(p);
 	}
 	
 	@Override
 	public void visitarEfectoCuarentena(EfectoCuarentena e) {
 		e.activar();
+		j.getJuego().porEliminarEntidad(e);
 	}
 	
 	@Override
 	public void visitarEfectoSuperArma(EfectoArma e) {
 		e.activar();
+		j.getJuego().porEliminarEntidad(e);
 	}
 	
 	@Override
 	public void visitarPocion(MejoraPocion p) {
 		p.activar();
+		j.getJuego().porEliminarEntidad(p);
 	}
 }
