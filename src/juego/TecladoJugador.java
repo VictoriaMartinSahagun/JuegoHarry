@@ -52,24 +52,19 @@ public class TecladoJugador implements KeyListener{
 				j.mover();
 				break;
 			}
-			//disparo
-			case KeyEvent.VK_SPACE: {
-				j.atacar();
-				break;
-			}
 			
 		}
 		
 	}
 	
 	@Override
-	public void keyTyped(KeyEvent e) {
-		// TODO Auto-generated method stub
-	}
+	public void keyTyped(KeyEvent e) {}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub
+		//disparo
+		if(e.getKeyCode()==KeyEvent.VK_SPACE)
+			j.atacar();
 	}
 	
 	
