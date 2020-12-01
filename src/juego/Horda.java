@@ -20,10 +20,10 @@ public class Horda {
 	public Horda(Juego j, int dificultad) {
 		this.juego = j;
 		switch (dificultad) {
-			case 1: crearHorda(8,5); break;
-			case 2: crearHorda(12,4); break;
-			case 3: crearHorda(16,3); break;
-			case 4: crearHorda(20,2); break;
+			case 1: crearHorda(4,5); break;
+			case 2: crearHorda(8,4); break;
+			case 3: crearHorda(12,3); break;
+			case 4: crearHorda(16,2); break;
 		}
 		
 	}
@@ -66,7 +66,7 @@ public class Horda {
 	 * @param probabilidad int
 	 */
 	private void crearHorda(int cant_enemigos, int probabilidad) {
-		int randInt,posx,posy=0;
+		int randInt,posx,posy=-80;
 		JLabel etiquetaEnemigo;
 		FabricaEnemigo fabricaBase, fabricaMejorado;
 		Enemigo enemigo;
