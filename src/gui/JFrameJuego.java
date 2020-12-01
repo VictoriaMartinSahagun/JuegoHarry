@@ -66,8 +66,7 @@ public class JFrameJuego extends JFrame {
 		//Comienza el juego
 		initJuego();
 		initGUI();
-		
-		//initAudio();
+		initAudio();
 		
 	}
 	
@@ -182,6 +181,32 @@ public class JFrameJuego extends JFrame {
 		}
 		jLabelNivel.setText("Nivel:"+niv_act);
 	}
+
+	private void initAudio() {
+		ap = new AudioPlayer("audio/musica_peleando.mp3");
+		audio = new Thread(ap);
+		audio.start();
+	}
+	
+	public void audioOff() {
+		ap=null;
+		audio.stop();
+		audio=null;
+	}
+	
+	public void audioMurio() {
+		audio.stop();
+		ap = new AudioPlayer("audio/harry_muere.mp3");
+		audio = new Thread(ap);
+		audio.start();
+	}
+	
+	public void audioGano() {
+		audio.stop();
+		ap = new AudioPlayer("audio/musica_espera.mp3");
+		audio = new Thread(ap);
+		audio.start();
+	}
 	
 	public void mostrarMejora() {
 		JLabelMejora.setVisible(true);
@@ -202,7 +227,5 @@ public class JFrameJuego extends JFrame {
 		if(JLabelPausa!=null)
 			JLabelPausa.setVisible(false);
 	}
-	//private void initAudio() {}
 	
-	//private void jToggleButtonAudioActionPerformed(ActionEvent evt) {}
 }

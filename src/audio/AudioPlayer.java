@@ -20,8 +20,7 @@ public class AudioPlayer implements Runnable {
 		    Player playMP3 = new Player(fis);
 		    playMP3.play();
 		}
-		catch(Exception ex)
-		{  
+		catch(Exception ex)	{  
 			ex.printStackTrace();
 		}
 	}

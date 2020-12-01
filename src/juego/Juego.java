@@ -218,9 +218,11 @@ public class Juego implements Runnable{
 		}
 		
 		if(gano) {
+			gui.audioGano();
 			JOptionPane.showMessageDialog(null, "Ganaste. Todos los elfos han sido liberados.");
 			System.exit(0);
 		}else {
+			gui.audioMurio();
 			JOptionPane.showMessageDialog(null, "Perdiste. Los elfos de Voldemort te han derrotado.");
 			System.exit(0);
 		}
