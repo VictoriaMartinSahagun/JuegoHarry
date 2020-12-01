@@ -170,6 +170,7 @@ public class Juego implements Runnable{
 		while(activo) {
 			accionar();
 			int tiempo_disp = harry.getTiempoMejora();
+			
 			if (tiempo_disp>0) {
 				harry.setTiempoMejora(--tiempo_disp);
 			}else {
