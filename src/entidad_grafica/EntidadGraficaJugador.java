@@ -38,6 +38,8 @@ public class EntidadGraficaJugador extends EntidadGrafica{
 	public void muerte() {
 		ImageIcon imagen;
 		
+		etiqueta.setBounds(etiqueta.getX(), etiqueta.getY(), etiqueta.getWidth()*2, etiqueta.getHeight());
+		
 		imagen = new ImageIcon(this.getClass().getResource(harry_muerto));
 		grafica.setImage(imagen.getImage());
 	}

@@ -147,6 +147,7 @@ public class Juego implements Runnable{
 	}
 
 	public void accionar() {
+		System.out.println(horda.getEnemigosRestantes());
 		if(horda.termino() && horda_actual<4) {
 			horda = new Horda(this,++horda_actual);
 		}else if(horda.termino() && horda_actual==4) {
