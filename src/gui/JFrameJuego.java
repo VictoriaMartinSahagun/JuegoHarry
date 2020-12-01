@@ -66,8 +66,7 @@ public class JFrameJuego extends JFrame {
 		//Comienza el juego
 		initJuego();
 		initGUI();
-		
-		//initAudio();
+		initAudio();
 		
 	}
 	
@@ -167,7 +166,11 @@ public class JFrameJuego extends JFrame {
 		}
 		jLabelNivel.setText("Nivel:"+niv_act);
 	}
-	//private void initAudio() {}
+	private void initAudio() {
+		ap = new AudioPlayer("audio/musica_peleando.mp3");
+		audio = new Thread(ap);
+		audio.start();
+	}
 	
 	//private void jToggleButtonAudioActionPerformed(ActionEvent evt) {}
 }

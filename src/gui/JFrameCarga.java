@@ -40,7 +40,7 @@ public class JFrameCarga extends JFrame {
 		getContentPane().setLayout(new BorderLayout(0, 0));
 		
 		//Creo el audio
-		//initAudio();
+		initAudio();
 		
 		//Creo el panel contenedor del boton para inciar el juego
 		JPanel panel_carga = new JPanel();
@@ -53,7 +53,7 @@ public class JFrameCarga extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				JFrameJuego frameJuego = new JFrameJuego();
 				frameJuego.setVisible(true);
-				//audioOff();
+				audioOff();
 				dispose();
 			}
 		});
@@ -67,24 +67,14 @@ public class JFrameCarga extends JFrame {
 	 * Metodo iniciar audio
 	 */
 	private void initAudio() {
-		//audioOn();
-	}
-	
-	/**
-	 * Metodo encender audio
-	 */
-	private void audioOn() {
 		ap = new AudioPlayer("/audio/musica_espera.mp3");
 		audio = new Thread(ap);
 		audio.start();
 	}
 
-	/**
-	 * Metodo apagar audio
-	 */
 	private void audioOff() {
 		ap = null;
-		audio.stop();
+		audio.interrupt();
 		audio = null;
 	}
 
