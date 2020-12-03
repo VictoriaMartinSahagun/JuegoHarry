@@ -37,6 +37,7 @@ public class EnemigoBeta extends Enemigo{
 		
 		delay =0;
 		tiempo_pausa=0;
+		activo=true;
 	}
 	
 	@Override

@@ -146,6 +146,7 @@ public class Juego implements Runnable{
 	}
 
 	public void accionar() {
+		System.out.println(horda.getEnemigosRestantes());
 		if(horda.termino() && horda_actual<4) {
 			horda = new Horda(this,++horda_actual);
 		}else if(horda.termino() && horda_actual==4) {
@@ -167,7 +168,9 @@ public class Juego implements Runnable{
 		this.porAgregarEntidad(harry);
 		
 		while(activo) {
+			//gui.setDisparo(true);
 			accionar();
+			//gui.setDisparo(false);
 			int tiempo_disp = harry.getTiempoMejora();
 			
 			if (tiempo_disp>0) {
