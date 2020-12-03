@@ -73,7 +73,6 @@ public class Horda {
 		Random rand = new Random();
 		horda = new Enemigo[cant_enemigos];
 		enemigos_restantes=cant_enemigos;
-		//int cant=0;
 		int cantLineas = cant_enemigos / 4;
 		int contEnemigos=0;
 		
@@ -94,12 +93,11 @@ public class Horda {
 				}
 				horda[contEnemigos++] = enemigo;
 				juego.porAgregarEntidad(enemigo);
-				//cant++;
+				
 			}
 			posx=0;
 			posy+=60;
 		}
-		//System.out.println("enemigos creados: "+cant);
 	}
 	
 	public boolean termino() {
@@ -108,6 +106,5 @@ public class Horda {
 	
 	public void enemigoAbatido() {
 		enemigos_restantes--;
-		//System.out.println("Enemigos restantes:"+enemigos_restantes);
-	}
+		}
 }

@@ -2,8 +2,6 @@ package juego;
 
 import entidad.jugador.Jugador;
 
-import entidad.enemigo.Enemigo;
-import entidad.proyectil.Proyectil;
 import gui.JFrameJuego;
 
 import java.util.ArrayList;
@@ -26,70 +24,6 @@ public class Juego implements Runnable{
 	public Juego(JFrameJuego gui) {
 		this.gui = gui;
 	}
-	
-	/**
-	 * Metodo iniciar juego
-	 */
-    public void iniciar() {
-    	por_eliminar = new ArrayList<Entidad>();
-    	por_agregar = new ArrayList<Entidad>();
-    	activo=true;
-    	mapa = new Mapa();
-    	harry = new Jugador(this);
-    	gano=false;
-    	horda_actual=1;
-    	horda = new Horda(this,horda_actual);
-    	
-    	tiempo_pausa=0;
-    	pausa=false;
-    	disparo=false;
-    }
-    
-    /**
-     * Metodo ganar juego
-     */
-    public void ganar() {
-    	activo=false;
-    }
-    
-    /**
-     * Metodo perder juego
-     */
-    public void perder() {
-    	activo=false;
-    }
-    
-    /**
-     * Metodo pausar juego
-     */
-    public void pausar() {
-    	tiempo_pausa=100;
-    	pausa=true;
-    	for (Entidad e : mapa.getEntidadesActivas()) {
-    		e.setPausa(tiempo_pausa);
-    	}
-    }
-    
-    public int getTiempoPausa() {
-    	return tiempo_pausa/10;
-    }
-    
-    /**
-     * Metodo mejorar hechizos
-     */
-    public void mejorarHechizos() {
-    	harry.setProyectilActual("Mejorado");
-    	harry.setTiempoMejora(300);//30 segundos, variable puede cambiar
-    	disparo=true;
-    }
-    
-    public void porAgregarEntidad(Entidad e){
-    	por_agregar.add(e);
-    }
-    
-    public void porEliminarEntidad(Entidad e) {
-    	por_eliminar.add(e);
-    }
     
     /**
      * Establece el jugador 
@@ -142,6 +76,71 @@ public class Juego implements Runnable{
 	public int getHordaActual() {
 		return horda_actual;
 	}
+	
+	public int getTiempoPausa() {
+	   	return tiempo_pausa/10;
+	}
+	
+	public void porAgregarEntidad(Entidad e){
+    	por_agregar.add(e);
+    }
+    
+    public void porEliminarEntidad(Entidad e) {
+    	por_eliminar.add(e);
+    }
+	
+	/**
+	 * Metodo iniciar juego
+	 */
+    public void iniciar() {
+    	por_eliminar = new ArrayList<Entidad>();
+    	por_agregar = new ArrayList<Entidad>();
+    	activo=true;
+    	mapa = new Mapa();
+    	harry = new Jugador(this);
+    	gano=false;
+    	horda_actual=1;
+    	horda = new Horda(this,horda_actual);
+    	
+    	tiempo_pausa=0;
+    	pausa=false;
+    	disparo=false;
+    }
+    
+	/**
+     * Metodo ganar juego
+     */
+    public void ganar() {
+    	activo=false;
+    }
+    
+    /**
+     * Metodo perder juego
+     */
+    public void perder() {
+    	activo=false;
+    }
+    
+    /**
+     * Metodo pausar juego
+     */
+    public void pausar() {
+    	tiempo_pausa=100;
+    	pausa=true;
+    	for (Entidad e : mapa.getEntidadesActivas()) {
+    		e.setPausa(tiempo_pausa);
+    	}
+    }
+    
+    /**
+     * Metodo mejorar hechizos
+     */
+    public void mejorarHechizos() {
+    	harry.setProyectilActual("Mejorado");
+    	harry.setTiempoMejora(300);
+    	disparo=true;
+    }
+    
 	public void descontarEnemigo() {
 		this.horda.enemigoAbatido();
 	}
