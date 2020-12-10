@@ -9,7 +9,7 @@ public class FabricaPremioEfectoCuarentena implements FabricaPremio{
 
 	@Override
 	public Premio crearPremio(Juego j,Enemigo e) {
-		return new EfectoCuarentena(500,0,null,j, e);
+		return new EfectoCuarentena(500,0,j, e);
 	}
 
 }

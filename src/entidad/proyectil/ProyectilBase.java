@@ -12,7 +12,6 @@ import movimiento.*;
 
 public class ProyectilBase extends Proyectil{
 	private JLabel lbl;
-	private int delay;
 	
 	/**
 	 * Crea un nuevo ProyectilBase partiendo de ciertos parametros
@@ -25,13 +24,12 @@ public class ProyectilBase extends Proyectil{
 		lbl = new JLabel();
 		lbl.setBounds(jugador.getPosX()+35, jugador.getPosY()-40, 11, 45);
 		ent_graf = new EntidadGraficaProyectilBase(lbl);
-		direccion = MovimientoVertical.ABAJO;
-		velocidad = 2;
+		direccion = -1;
+		velocidad = 4;
 		cap_penetracion = 20;
 		movimiento = new MovimientoVerticalProyectilJugador(this,direccion,velocidad,lim);
 		v = new VisitorProyectilBase(this);
 		
-		delay=0;
 		tiempo_pausa=0;
 	}
 
@@ -46,7 +44,6 @@ public class ProyectilBase extends Proyectil{
 	 */
 	public void colisionarAlfa(EnemigoAlfa e) {
 		e.recibirDanio(cap_penetracion);
-		//System.out.println(ent_graf.getEtiqueta().getY()+"-"+e.getEntidadGrafica().getEtiqueta().getY());
 	}
 	
 	/**

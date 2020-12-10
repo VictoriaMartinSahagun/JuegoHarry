@@ -10,7 +10,7 @@ public class FabricaPremioEfectoArma implements FabricaPremio{
 
 	@Override
 	public Premio crearPremio(Juego j, Enemigo e) {
-		return new EfectoArma(500,0,null,j, e);
+		return new EfectoArma(500,0,j, e);
 	}
 
 }

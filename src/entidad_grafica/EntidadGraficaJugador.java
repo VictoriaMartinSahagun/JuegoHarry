@@ -1,11 +1,6 @@
 package entidad_grafica;
 
-import java.awt.Color;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 import javax.swing.*;
-import javax.swing.border.LineBorder;
 
 public class EntidadGraficaJugador extends EntidadGrafica{
 	private String harry = "/img/Harry.png", harry_daniado = "/img/HarryGolpeado.gif";
@@ -26,7 +21,6 @@ public class EntidadGraficaJugador extends EntidadGrafica{
 		ImageIcon imagen;
 		imagen = new ImageIcon(this.getClass().getResource(harry_daniado));
 		grafica.setImage(imagen.getImage());
-		//restablecer();
 	}
 	
 	@Override
@@ -44,10 +38,6 @@ public class EntidadGraficaJugador extends EntidadGrafica{
 		grafica.setImage(imagen.getImage());
 	}
 
-	private void restablecer() {
-		ImageIcon imagen = new ImageIcon(this.getClass().getResource(harry));
-		grafica.setImage(imagen.getImage());
-	}
 	@Override
 	public JLabel getEtiqueta() {
 		return this.etiqueta;

@@ -1,7 +1,6 @@
 package entidad.proyectil;
 
 import entidad.Entidad;
-import entidad_grafica.EntidadGraficaProyectil;
 import movimiento.Movimiento;
 import visitor.Visitor;
 
@@ -49,6 +48,11 @@ public abstract class Proyectil extends Entidad{
 	public void setMovimiento(Movimiento movimiento) {
 		this.movimiento = movimiento;
 	}
+
+	public void setPausa(int tiempo) {
+		tiempo_pausa=tiempo;
+	}
+	
 	/**
 	 * Consulta la direccion
 	 * @return direccion
@@ -89,8 +93,7 @@ public abstract class Proyectil extends Entidad{
 		return movimiento;
 	}
 	
-	@Override
-	public void setPausa(int tiempo) {
-		tiempo_pausa=tiempo;
+	public int getPausa() {
+		return tiempo_pausa;
 	}
 }

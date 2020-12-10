@@ -1,15 +1,12 @@
 package entidad_grafica;
 
-import java.awt.Color;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-import javax.swing.border.LineBorder;
 
 
 public class EntidadGraficaEnemigo extends EntidadGrafica {
 	private String [] imagenes;
-	private int cont;
 	
 	/**
 	 * Crea una EntidadGraficaEnemigo nueva partiendo de una etiqueta
@@ -18,40 +15,25 @@ public class EntidadGraficaEnemigo extends EntidadGrafica {
 	public EntidadGraficaEnemigo(JLabel etiqueta) {
 		this.etiqueta=etiqueta;
 		grafica = new ImageIcon();
-		imagenes = new String[] {"/img/ElfoBueno.png","/img/ElfoLibre.png","/img/ElfoMalo.png","/img/ElfoMaloHerido.png"};
+		imagenes = new String[] {"/img/ElfoMalo.png","/img/ElfoMaloHerido.png"};
 		
 		etiqueta.setIcon(grafica);
-		
-		cont=0;
-		//etiqueta.setBorder(new LineBorder(Color.black));
 	}
 	
 	@Override
 	public void iniciar() {
-		ImageIcon nuevo = new ImageIcon(this.getClass().getResource(this.imagenes[2]));
-		grafica.setImage(nuevo.getImage());
-	}
-	
-	@Override
-	public void liberar() {
-		ImageIcon nuevo = new ImageIcon(this.getClass().getResource(this.imagenes[1]));
+		ImageIcon nuevo = new ImageIcon(this.getClass().getResource(this.imagenes[0]));
 		grafica.setImage(nuevo.getImage());
 	}
 	
 	@Override
 	public void daniar() {
-		ImageIcon nuevo = new ImageIcon(this.getClass().getResource(this.imagenes[3]));
+		ImageIcon nuevo = new ImageIcon(this.getClass().getResource(this.imagenes[1]));
 		grafica.setImage(nuevo.getImage());
 	}
 	
 	@Override
 	public void desaparecer() {
-		/*if(cont==0) {
-			liberar();
-			cont++;
-		}else {
-			this.etiqueta.setVisible(false);
-		}*/
 		this.etiqueta.setVisible(false);
 	}
 	

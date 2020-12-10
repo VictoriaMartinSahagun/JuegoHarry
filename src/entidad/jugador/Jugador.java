@@ -33,7 +33,6 @@ public class Jugador extends Entidad{
 		tiempo_mejora = 0;
 		
 		en_espera = new ArrayList<Proyectil>();
-		//juego.porAgregarEntidad(this);
 	}
 	
 	public void atacar() {
@@ -44,21 +43,12 @@ public class Jugador extends Entidad{
 		}
 	}
 	
-	public void setTiempoMejora(int tiempo) {
-		tiempo_mejora=tiempo;
-	}
-	
-	public int getTiempoMejora() {
-		return tiempo_mejora;
-	}
-	
 	/**
 	 * Ataque base
 	 */
 	public void atacarBase() {
 		ProyectilBase p = (ProyectilBase) fabrica_base.crearProyectil(juego,this);
 		en_espera.add(p);
-		//juego.porAgregarEntidad(p);
 	}
 
 	/**
@@ -67,7 +57,6 @@ public class Jugador extends Entidad{
 	public void atacarMejorado() {
 		ProyectilMejorado p = (ProyectilMejorado) fabrica_mejorado.crearProyectil(juego,this);
 		en_espera.add(p);
-		//juego.porAgregarEntidad(p);
 	}
 	
 	@Override
@@ -96,11 +85,25 @@ public class Jugador extends Entidad{
 		
 		if(this.danio_recibido >= 100) {
 			ent_graf.muerte();
-			//terminar juego?
 		}else {
 			ent_graf.daniar();
 		}
 		
+	}
+	
+	@Override
+	public void accionar() {
+		for (Proyectil p : en_espera) {
+			juego.porAgregarEntidad(p);
+		}
+		
+		en_espera = new ArrayList<Proyectil>();
+		
+		Iterable<Entidad> colisiones = this.detectarColisiones();
+		
+		for (Entidad e:colisiones)
+			e.aceptar(this.v);
+
 	}
 	
 	/**
@@ -133,6 +136,14 @@ public class Jugador extends Entidad{
 		this.proyectil_actual = proyectil;
 	}
 	
+	public void setTiempoMejora(int tiempo) {
+		tiempo_mejora=tiempo;
+	}
+	
+	public int getTiempoMejora() {
+		return tiempo_mejora;
+	}
+	
 	/**
 	 * Consulta el danio recibido
 	 * @return danio
@@ -156,24 +167,12 @@ public class Jugador extends Entidad{
 	public int getPosY() {
 		return pos_y;
 	}
+	
 	public String getProyectilActual() {
 		return proyectil_actual;
 	}
 
-	@Override
-	public void accionar() {
-		for (Proyectil p : en_espera) {
-			juego.porAgregarEntidad(p);
-		}
-		
-		en_espera = new ArrayList<Proyectil>();
-		
-		Iterable<Entidad> colisiones = this.detectarColisiones();
-		
-		for (Entidad e:colisiones)
-			e.aceptar(this.v);
-
-	}
+	
 	
 	
 	

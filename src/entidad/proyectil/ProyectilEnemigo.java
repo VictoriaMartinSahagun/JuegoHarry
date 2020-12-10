@@ -12,7 +12,6 @@ import visitor.VisitorProyectilEnemigo;
 import entidad.enemigo.*;
 
 public class ProyectilEnemigo extends Proyectil{
-	private int delay;
 	/**
 	 * Crea un nuevo ProyectilEnemigo partiendo de ciertos parametros 
 	 * @param juego Juego
@@ -35,7 +34,6 @@ public class ProyectilEnemigo extends Proyectil{
 		
 		v = new VisitorProyectilEnemigo(this);
 		
-		delay = 0;
 		tiempo_pausa=0;
 	}
 	

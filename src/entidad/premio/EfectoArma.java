@@ -14,16 +14,14 @@ public class EfectoArma extends Efecto {
 	 * Crea un nuevo EfectoArma partiendo de ciertos parametros
 	 * @param lim_inf int
 	 * @param lim_sup int
-	 * @param nombre String
 	 * @param juego Juego
+	 * @param e Enemigo
 	 */
-	public EfectoArma(int lim_inf,int lim_sup,String nombre, Juego juego, Enemigo e) {
-		//this.nombre=nombre;
+	public EfectoArma(int lim_inf,int lim_sup, Juego juego, Enemigo e) {
 		this.juego=juego;
 		JLabel etiqueta = new JLabel();
 		JLabel etiqueta_enemigo = e.getEntidadGrafica().getEtiqueta();
 		etiqueta.setBounds(etiqueta_enemigo.getX()+(etiqueta_enemigo.getWidth()/2), etiqueta_enemigo.getY()+80, 25, 25);
-		//System.out.println("b->"+etiqueta.getBounds().toString());
 		ent_graf = new EntidadGraficaPremioSnitch(etiqueta); 
 		int direccion = 1;
 		int velocidad = 5;

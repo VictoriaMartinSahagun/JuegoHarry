@@ -13,7 +13,6 @@ import movimiento.*;
 
 public class ProyectilMejorado extends Proyectil{
 	private JLabel lbl;
-	protected int delay;
 	
 	/**
 	 * Crea un nuevo ProyectilMejorado partiendo de ciertos parametros
@@ -25,14 +24,13 @@ public class ProyectilMejorado extends Proyectil{
 	    this.juego = juego;
 		lbl = new JLabel();
 		lbl.setBounds(jugador.getPosX()+35, jugador.getPosY()-40, 11, 45);
-		direccion = MovimientoVertical.ABAJO;
-		velocidad = 2;
+		direccion = -1;
+		velocidad = 5;
 		cap_penetracion = 30;
 		ent_graf = new EntidadGraficaProyectilMejorado(lbl);
 		movimiento = new MovimientoVerticalProyectilJugador(this,direccion,velocidad,lim);
 	    v = new VisitorProyectilMejorado(this);
 		
-		delay = 0;
 		tiempo_pausa=0;
 	}
 
@@ -66,7 +64,7 @@ public class ProyectilMejorado extends Proyectil{
 	public void accionar() {
 		Iterable<Entidad> colisiones = this.detectarColisiones();
 		for (Entidad e:colisiones)
-			e.aceptar(this.v);		//this.mover();
+			e.aceptar(this.v);		
 		
 		if (tiempo_pausa==0)
 			this.mover();

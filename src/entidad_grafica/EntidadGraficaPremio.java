@@ -1,6 +1,5 @@
 package entidad_grafica;
 
-import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 public class EntidadGraficaPremio extends EntidadGrafica{

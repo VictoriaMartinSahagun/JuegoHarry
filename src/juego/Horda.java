@@ -70,7 +70,9 @@ public class Horda {
 		JLabel etiquetaEnemigo;
 		FabricaEnemigo fabricaBase, fabricaMejorado;
 		Enemigo enemigo;
+		
 		Random rand = new Random();
+		
 		horda = new Enemigo[cant_enemigos];
 		enemigos_restantes=cant_enemigos;
 		int cantLineas = cant_enemigos / 4;
@@ -85,6 +87,7 @@ public class Horda {
 				posx += 100;
 				etiquetaEnemigo = new JLabel();
 				etiquetaEnemigo.setBounds(posx, posy, 45, 50);
+				//creo enemigo con una probabilidad determinada de que sea un enemigo mejorado y lo agrego a la horda.
 				randInt = rand.nextInt(probabilidad);
 				if(randInt==0) {
 					enemigo = fabricaMejorado.crearEnemigo(juego, etiquetaEnemigo, posx, posy);

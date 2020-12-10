@@ -99,7 +99,21 @@ public abstract class Entidad {
 	public void setEntidadGrafica(EntidadGrafica ent_graf) {
 		this.ent_graf = ent_graf;
 	}
+	
+	public void setVisitor(Visitor v) {
+		this.v = v;
+	}
+	
+	public void setMovimiento(Movimiento m) {
+		movimiento=m;
+	}
 
+	public void setJuego(Juego juego) {
+		this.juego = juego;
+	}
+	
+	public void setPausa(int pausa) {}
+	
 	/**
 	 * Consulta la entidad grafica
 	 * @return entidad grafica
@@ -112,24 +126,20 @@ public abstract class Entidad {
 		return juego;
 	}
 
-	public void setJuego(Juego juego) {
-		this.juego = juego;
-	}
-
 	public Visitor getVisitor() {
 		return v;
 	}
-
-	public void setVisitor(Visitor v) {
-		this.v = v;
+	
+	public Movimiento getMovimiento() {
+		return movimiento;
 	}
 	
-	public String toString(Entidad e) {
-		return e.getClass().getSimpleName();
+	public int getPosX() {
+		return pos_x;
 	}
 	
-	public void setPausa(int tiempo) {}
-	
-	//public int getPausa() {}	
+	public int getPosY() {
+		return pos_y;
+	}
 }
 

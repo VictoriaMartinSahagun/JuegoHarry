@@ -5,7 +5,6 @@ import java.awt.event.KeyListener;
 import entidad.jugador.Jugador;
 
 public class TecladoJugador implements KeyListener{
-	private Juego juego;
 	private Jugador j;
 	private int limite_izq, limite_der;
 	
@@ -16,8 +15,7 @@ public class TecladoJugador implements KeyListener{
 	 * @param lim_izq int
 	 * @param lim_der int
 	 */
-	public TecladoJugador(Juego juego, Jugador j, int lim_izq, int lim_der) {
-		this.juego = juego;
+	public TecladoJugador(Jugador j, int lim_izq, int lim_der) {
 		this.j = j;
 		limite_izq = lim_izq;
 		limite_der = lim_der;
@@ -66,11 +64,7 @@ public class TecladoJugador implements KeyListener{
 	public void keyTyped(KeyEvent e) {}
 
 	@Override
-	public void keyReleased(KeyEvent e) {
-		/*//disparo
-		if(e.getKeyCode()==KeyEvent.VK_SPACE)
-			j.atacar();*/
-	}
+	public void keyReleased(KeyEvent e) {}
 	
 	
 }

@@ -49,6 +49,34 @@ public class Juego implements Runnable{
 		this.mapa = mapa;
 	}
     
+    public void setGui(JFrameJuego gui) {
+    	this.gui=gui;
+    }
+    
+    public void setActivo(boolean activo) {
+    	this.activo=activo;
+    }
+    
+    public void setGano(boolean gano) {
+    	this.gano=gano;
+    }
+    
+    public void setPausa(boolean pausa) {
+    	this.pausa=pausa;
+    }
+    
+    public void setDisparo(boolean disparo) {
+    	this.disparo=disparo;
+    }
+    
+    public void setHordaActual(int horda) {
+    	horda_actual=horda;
+    }
+    
+    public void setTiempoPausa(int tiempo) {
+    	tiempo_pausa=tiempo;
+    }
+    
     /**
      * Consulta el jugador
      * @return jugador
@@ -72,6 +100,26 @@ public class Juego implements Runnable{
 	public Mapa getMapa() {
 		return mapa;
 	}
+	
+	public JFrameJuego getGui() {
+    	return gui;
+    }
+    
+    public boolean getActivo() {
+    	return activo;
+    }
+    
+    public boolean getGano() {
+    	return gano;
+    }
+    
+    public boolean getPausa() {
+    	return pausa;
+    }
+    
+    public boolean getDisparo() {
+    	return disparo;
+    }
 	
 	public int getHordaActual() {
 		return horda_actual;
@@ -146,7 +194,6 @@ public class Juego implements Runnable{
 	}
 
 	public void accionar() {
-		System.out.println(horda.getEnemigosRestantes());
 		if(horda.termino() && horda_actual<4) {
 			horda = new Horda(this,++horda_actual);
 		}else if(horda.termino() && horda_actual==4) {
@@ -168,9 +215,7 @@ public class Juego implements Runnable{
 		this.porAgregarEntidad(harry);
 		
 		while(activo) {
-			//gui.setDisparo(true);
 			accionar();
-			//gui.setDisparo(false);
 			int tiempo_disp = harry.getTiempoMejora();
 			
 			if (tiempo_disp>0) {
@@ -185,6 +230,8 @@ public class Juego implements Runnable{
 				e.getEntidadGrafica().iniciar();
 				gui.getPanel().add(e.getEntidadGrafica().getEtiqueta());
 			}
+			
+			//reseteo la lista por_agregar
 			por_agregar = new ArrayList<Entidad>();
 			
 			for(Entidad e: por_eliminar) {
@@ -192,7 +239,11 @@ public class Juego implements Runnable{
 				e.getEntidadGrafica().desaparecer();
 			}
 			
+			//reseteo la lista por_agregar
 			por_eliminar = new ArrayList<Entidad>();
+			
+			
+			//actualizaciones graficas
 			
 			gui.getPanel().repaint();
 			gui.actualizarVida();

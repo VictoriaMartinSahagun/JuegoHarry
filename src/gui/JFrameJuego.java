@@ -1,39 +1,23 @@
 package gui;
 
 import java.awt.BorderLayout;
-import java.awt.FlowLayout;
-import java.awt.Point;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.io.File;
-import java.io.FileInputStream;
 
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JSeparator;
-import javax.swing.JToggleButton;
-import javax.swing.JToolBar;
 import javax.swing.SwingConstants;
 
 import javax.swing.WindowConstants;
-import javax.swing.border.LineBorder;
 
 import audio.AudioPlayer;
-import entidad.Entidad;
-import entidad.jugador.Jugador;
 import img.ImagenFondo;
-
-import javax.swing.SwingUtilities;
 
 import juego.Juego;
 import juego.TecladoJugador;
 
-import javax.swing.JTextField;
 import java.awt.Color;
 import java.awt.Font;
 
@@ -42,10 +26,8 @@ public class JFrameJuego extends JFrame {
 	private JPanel jPanelNivel;
 	private JLabel jLabelVida,jLabelNivel,JLabelPausa,JLabelMejora;
 	private JLabel lbl_jugador;
-	private JToggleButton jToggleButtonAudio;
 	private AudioPlayer ap;
 	private Thread audio;
-	private JTextField textField;
 	private Thread t;
 	
 	/**
@@ -55,7 +37,7 @@ public class JFrameJuego extends JFrame {
 		
 		//Creo el panel
 		this.setIconImage(new ImageIcon(this.getClass().getResource("/img/iconoFrame.png")).getImage());
-		ImagenFondo imagen_Fondo = new ImagenFondo(new ImageIcon(this.getClass().getResource("/img/FondoJuego.jpg")).getImage());
+		ImagenFondo imagen_Fondo = new ImagenFondo(new ImageIcon(this.getClass().getResource("/img/fondoNuevo.jpg")).getImage());
 		setContentPane(imagen_Fondo);
 		setTitle("Las aventuras del gordo Potter");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -104,11 +86,10 @@ public class JFrameJuego extends JFrame {
 			lbl_jugador = new JLabel();
 			lbl_jugador.setIcon(juego.getJugador().getEntidadGrafica().getGrafica());
 			lbl_jugador.setBounds(200, 500, 50, 100);
-			//lbl_jugador.setBorder(new LineBorder(Color.black));
 			juego.getJugador().getEntidadGrafica().setEtiqueta(lbl_jugador);
 			juego.getJugador().mover();
 			jPanelNivel.add(lbl_jugador);
-			addKeyListener(new TecladoJugador(juego,juego.getJugador(),0,540));
+			addKeyListener(new TecladoJugador(juego.getJugador(),0,540));
 				
 			
 			//Contador vida

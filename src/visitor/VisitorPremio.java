@@ -4,7 +4,7 @@ import entidad.jugador.Jugador;
 import entidad.premio.Premio;
 
 public class VisitorPremio extends Visitor{
-	Premio p;
+	private Premio p;
 	
 	/**
 	 * Crea un nuevo visitorPremio partiendo de un parametro

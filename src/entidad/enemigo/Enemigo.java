@@ -2,7 +2,6 @@ package entidad.enemigo;
 
 import java.util.Random;
 
-import javax.swing.JLabel;
 
 import entidad.Entidad;
 import entidad.premio.Premio;
@@ -79,6 +78,18 @@ public abstract class Enemigo extends Entidad{
 		this.movimiento=mov;
 	}
 	
+	public void setPausa(int tiempo) {
+		tiempo_pausa=tiempo;
+	}
+	
+	public void setActivo(boolean activo) {
+		this.activo = activo;
+	}
+	
+	public int getPausa() {
+		return tiempo_pausa;
+	}
+	
 	/**
 	 * Consulta la vida
 	 * @return vida
@@ -135,6 +146,12 @@ public abstract class Enemigo extends Entidad{
 		return this.movimiento;
 	}
 	
+	public boolean getActivo() {
+		return activo;
+	}
+
+	
+	
 	/**
 	 * Establece el danio recibido
 	 * @param danio int
@@ -176,18 +193,7 @@ public abstract class Enemigo extends Entidad{
 		
 	}
 	
-	@Override
-	public void setPausa(int tiempo) {
-		tiempo_pausa=tiempo;
-	}
-
-	public boolean getActivo() {
-		return activo;
-	}
-
-	public void setActivo(boolean activo) {
-		this.activo = activo;
-	}
+	
 	
 	
 }
