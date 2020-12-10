@@ -6,7 +6,6 @@ import visitor.Visitor;
 
 public abstract class Proyectil extends Entidad{
 	protected int direccion,velocidad,cap_penetracion,tiempo_pausa;
-	protected Visitor visitor;
 	protected Movimiento movimiento;	
 	
 	/**
@@ -31,14 +30,6 @@ public abstract class Proyectil extends Entidad{
 	 */
 	public void setCapPenetracion(int cap_penetracion) {
 		this.cap_penetracion = cap_penetracion;
-	}
-	
-	/**
-	 * Establece el visitor
-	 * @param visitor Visitor
-	 */
-	public void setVisitor(Visitor visitor) {
-		this.visitor = visitor;
 	}
 	
 	/**
@@ -75,14 +66,6 @@ public abstract class Proyectil extends Entidad{
 	 */
 	public int getCapPenetracion() {
 		return cap_penetracion;
-	}
-	
-	/**
-	 * Consulta el visitor
-	 * @return visitor
-	 */
-	public Visitor getVisitor() {
-		return visitor;
 	}
 	
 	/**
