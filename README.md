@@ -1,8 +1,8 @@
 ## INFORMACION
 
 ### Controles:
-- Q: moverse a derecha.
-- W: moverse a izquierda.
+- Q: moverse a izquierda.
+- W: moverse a derecha.
 - Espacio: disparar.
 
 ### Licencias:
